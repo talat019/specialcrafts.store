@@ -1,0 +1,684 @@
+{
+  "brend": "special crafts",
+  "yenilenme": "2026-09-03",
+  "valyuta": "AZN",
+  "kateqoriyalar": [
+    {
+      "acar": "saat",
+      "ad": "Saat",
+      "kod": "SAT"
+    },
+    {
+      "acar": "sahmat",
+      "ad": "Şahmat",
+      "kod": "SHM"
+    },
+    {
+      "acar": "domino",
+      "ad": "Domino",
+      "kod": "DMN"
+    },
+    {
+      "acar": "panno",
+      "ad": "Divar pannosu",
+      "kod": "PNO"
+    },
+    {
+      "acar": "acar-asilqani",
+      "ad": "Açar asılqanı",
+      "kod": "ACR"
+    },
+    {
+      "acar": "rehil",
+      "ad": "Rəhil",
+      "kod": "RHL"
+    },
+    {
+      "acar": "tesbeh",
+      "ad": "Təsbeh",
+      "kod": "TSB"
+    },
+    {
+      "acar": "kulqabi",
+      "ad": "Külqabı",
+      "kod": "KLQ"
+    },
+    {
+      "acar": "guzgu-daraq",
+      "ad": "Güzgü & daraq",
+      "kod": "GZD"
+    },
+    {
+      "acar": "sep-xonca",
+      "ad": "Sep & xonça",
+      "kod": "SPX"
+    },
+    {
+      "acar": "diger",
+      "ad": "Digər işlər",
+      "kod": "DGR"
+    }
+  ],
+  "mehsullar": [
+    {
+      "kod": "SAT-001",
+      "ad": "«Bölünmüş» ağ-qızılı divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Kvars kristal",
+        "Qızılı roma rəqəmləri"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "ağ",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-001-1.jpg"
+      ],
+      "tesvir": "İki hissəyə bölünmüş formada tökülmüş ağ-krem mərmər effektli divar saatı. Kənarları şəffaf kristallarla, rəqəmləri qızılı roma rəqəmləri ilə bəzədilib.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SAT-002",
+      "ad": "«Kristal» ağ-qızılı divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Kvars kristal",
+        "Qızıl vərəq"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "ağ",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-002-1.jpg",
+        "/assets/products/saat/SAT-002-2.jpg"
+      ],
+      "tesvir": "Qalın kristal haşiyəli, qızıl vərəqli ağ mərmər saat. Qızılı halqa üzərində roma rəqəmləri.",
+      "aktiv": true,
+      "_qeyd": "İki şəkil eyni məhsula aid sayılıb (biri yaxın plan) — TƏSDİQ LAZIMDIR"
+    },
+    {
+      "kod": "SAT-003",
+      "ad": "«Qanad» divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Güzgü",
+        "Kristal",
+        "Qızıl vərəq"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "ağ",
+        "gümüşü",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-003-1.jpg"
+      ],
+      "tesvir": "Qanad formalı, güzgü parçaları və gümüşü kristallarla işlənmiş böyük ölçülü divar saatı. Statement əsər.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SAT-004",
+      "ad": "«Mərmər» bej divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qızılı roma rəqəmləri"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "bej",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-004-1.jpg"
+      ],
+      "tesvir": "Bej-ağ mərmər damarlı sadə formalı divar saatı, qızılı roma rəqəmləri ilə.",
+      "aktiv": true,
+      "_qeyd": "Şəkil zəif işıqda çəkilib — yenidən çəkilməlidir"
+    },
+    {
+      "kod": "SAT-005",
+      "ad": "«Geode» ağ-qızılı divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Kvars kristal",
+        "Qızıl vərəq"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "ağ",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-005-1.jpg"
+      ],
+      "tesvir": "Geode üslubunda ağ-qızılı damarlı divar saatı, kristal zolaqlar və qızılı roma rəqəmləri ilə.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SAT-006",
+      "ad": "«Okean» firuzəyi divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "sifarisle",
+      "stokSayi": 0,
+      "hazirliqGunu": "5-7",
+      "catdirilmaGunu": null,
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "firuzəyi",
+        "mavi"
+      ],
+      "rengSecimleri": [
+        "Okean firuzəyi",
+        "Ağ-qızılı",
+        "Bej mərmər"
+      ],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-006-1.jpg"
+      ],
+      "tesvir": "Firuzəyi-mavi okean effektli divar saatı, qara ərəb rəqəmləri ilə. Rəng fərdi seçilə bilər.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SAT-007",
+      "ad": "«Qum dalğası» divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "sifarisle",
+      "stokSayi": 0,
+      "hazirliqGunu": "5-7",
+      "catdirilmaGunu": null,
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qızıl tozu"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "bej",
+        "qızılı"
+      ],
+      "rengSecimleri": [
+        "Qum-qızılı",
+        "Ağ-qızılı",
+        "Boz-gümüşü"
+      ],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-007-1.jpg"
+      ],
+      "tesvir": "Qum rəngli dalğalar və qızıl tozu ilə işlənmiş divar saatı, qızılı roma rəqəmləri.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SAT-008",
+      "ad": "«Gecə və qızıl» divar saatı",
+      "kateqoriya": "saat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "sifarisle",
+      "stokSayi": 0,
+      "hazirliqGunu": "5-7",
+      "catdirilmaGunu": null,
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qızıl tozu"
+      ],
+      "olcu": {
+        "diametrSm": null
+      },
+      "rengAilesi": [
+        "qara",
+        "ağ",
+        "qızılı"
+      ],
+      "rengSecimleri": [
+        "Qara-qızılı",
+        "Ağ-qızılı",
+        "Boz-gümüşü"
+      ],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/saat/SAT-008-1.jpg"
+      ],
+      "tesvir": "Qara, ağ və qızılı damarların qarışdığı mərmər effektli divar saatı, qara ərəb rəqəmləri ilə.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SHM-001",
+      "ad": "«Zümrüd» şahmat dəsti",
+      "kateqoriya": "sahmat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qoz ağacı",
+        "Qızıl vərəq"
+      ],
+      "olcu": {
+        "lovheSm": null
+      },
+      "rengAilesi": [
+        "zümrüd",
+        "firuzəyi",
+        "ağac"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/sahmat/SHM-001-1.jpg"
+      ],
+      "tesvir": "Qoz ağacı və zümrüd yaşıl qatranın birləşməsindən tökülmüş şahmat lövhəsi. Qızıl vərəq detalları, firuzəyi və mat ağ fiqurlar. Kolleksiya səviyyəli iş.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SHM-002",
+      "ad": "«Gecə mavisi» şahmat dəsti",
+      "kateqoriya": "sahmat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran"
+      ],
+      "olcu": {
+        "lovheSm": null
+      },
+      "rengAilesi": [
+        "mavi",
+        "qara"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/sahmat/SHM-002-1.jpg"
+      ],
+      "tesvir": "Dərin mavi və qara qatran lövhə, şəffaf mavi və qara fiqurlarla.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SHM-003",
+      "ad": "«Ağ-qızılı» şahmat dəsti",
+      "kateqoriya": "sahmat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qızıl vərəq"
+      ],
+      "olcu": {
+        "lovheSm": null
+      },
+      "rengAilesi": [
+        "ağ",
+        "qara",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/sahmat/SHM-003-1.jpg"
+      ],
+      "tesvir": "Ağ-qara lövhə, qızıl vərəqli fiqur altlıqları və qızılı haşiyə.",
+      "aktiv": true,
+      "_qeyd": "ŞƏKİL ÇOX KİÇİK (360×360) — mütləq yenidən çəkilməlidir"
+    },
+    {
+      "kod": "SHM-004",
+      "ad": "Klub temalı şahmat dəsti",
+      "kateqoriya": "sahmat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran"
+      ],
+      "olcu": {
+        "lovheSm": null
+      },
+      "rengAilesi": [
+        "qırmızı",
+        "narıncı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": true,
+      "sekiller": [
+        "/assets/products/sahmat/SHM-004-1.jpg"
+      ],
+      "tesvir": "Komanda rəngləri və emblemi ilə fərdi hazırlanan şahmat dəsti. İstənilən klub və ya korporativ loqo ilə sifariş oluna bilər.",
+      "aktiv": true,
+      "_qeyd": "TİCARƏT NİŞANI: şəkildə Galatasaray emblemi var. Saytda klub loqosu ilə göstərmək riskli — ümumi «fərdi komanda rəngləri» kimi təqdim etmək tövsiyə olunur"
+    },
+    {
+      "kod": "DMN-001",
+      "ad": "«Gecə mavisi» domino dəsti",
+      "kateqoriya": "domino",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Ağac qutu"
+      ],
+      "olcu": {
+        "dasSayi": 28
+      },
+      "rengAilesi": [
+        "mavi"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/domino/DMN-001-1.jpg"
+      ],
+      "tesvir": "Ulduz tozu effektli mavi qatrandan tökülmüş 28 daşlıq domino dəsti. Lazerlə oyulmuş ağac qutuda təqdim olunur.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "DMN-002",
+      "ad": "«Qara-qızılı» domino dəsti",
+      "kateqoriya": "domino",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Ağac qutu",
+        "Sədəf"
+      ],
+      "olcu": {
+        "dasSayi": 28
+      },
+      "rengAilesi": [
+        "qara",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/domino/DMN-002-1.jpg"
+      ],
+      "tesvir": "Qara qatran üzərində qızılı nöqtələr və sədəf detalları olan 28 daşlıq domino dəsti. Lazerlə oyulmuş ağac qutuda.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "PNO-001",
+      "ad": "«Ayətəl-Kürsi» divar pannosu",
+      "kateqoriya": "panno",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qızılı xəttatlıq",
+        "Kristal"
+      ],
+      "olcu": {
+        "enSm": null,
+        "hundurlukSm": null
+      },
+      "rengAilesi": [
+        "qara",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/panno/PNO-001-1.jpg"
+      ],
+      "tesvir": "Qara qatran üzərində qızılı xəttatlıq, künclərdə qara kristal detalları olan divar pannosu.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "PNO-002",
+      "ad": "«Kəlmeyi-şəhadət» divar pannosu",
+      "kateqoriya": "panno",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qızıl vərəq",
+        "Kvars kristal"
+      ],
+      "olcu": {
+        "enSm": null,
+        "hundurlukSm": null
+      },
+      "rengAilesi": [
+        "qara",
+        "qızılı",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/panno/PNO-002-1.jpg"
+      ],
+      "tesvir": "Qara, qızılı və ağ geode üslubunda kvadrat divar pannosu. Qızılı xəttatlıq, kristal və qızıl vərəq damarları.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "ACR-001",
+      "ad": "«Geode» açar asılqanı",
+      "kateqoriya": "acar-asilqani",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Kvars kristal",
+        "Bürünc qarmaq"
+      ],
+      "olcu": {
+        "qarmaqSayi": 4
+      },
+      "rengAilesi": [
+        "ağ",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/acar-asilqani/ACR-001-1.jpg"
+      ],
+      "tesvir": "Ağ-qızılı geode üslubunda, kristal damarlı divar açar asılqanı. Dörd bürünc qarmaq.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "RHL-001",
+      "ad": "«Zümrüd» rəhil",
+      "kateqoriya": "rehil",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Püskül"
+      ],
+      "olcu": {
+        "enSm": null
+      },
+      "rengAilesi": [
+        "zümrüd",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/rehil/RHL-001-1.jpg"
+      ],
+      "tesvir": "Zümrüd yaşıl və qızıl parıltılı qatrandan tökülmüş qatlanan rəhil, ağ püskül ilə.",
+      "aktiv": true,
+      "_qeyd": "Məhsulun dəqiq adı təsdiqlənməlidir — rəhil (Quran altlığı) kimi qeyd edilib"
+    }
+  ]
+}

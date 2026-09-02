@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin:0; background:#EDE7DE; color:#1A1714; font-family:Manrope,"Helvetica Neue",system-ui,sans-serif; font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+    a { color:#1F6B5B; text-decoration:none; } a:hover { color:#175447; }
+    h1,h2,h3 { font-family:"Playfair Display",Georgia,"Times New Roman",serif; font-weight:500; margin:0; }
+    img { display:block; max-width:100%; }
+    .col { background:#F7F3ED; border:1px solid #DCD3C6; border-radius:20px; padding:36px 38px 40px; display:flex; flex-direction:column; }
+    .cap { font-size:11px; letter-spacing:.2em; text-transform:uppercase; font-weight:700; margin-bottom:20px; }
+    .code { font-size:12.5px; letter-spacing:.14em; color:#8B8177; font-family:ui-monospace,Menlo,monospace; }
+    .chip { border:1px solid #DCD3C6; background:#EDE7DE; border-radius:999px; padding:7px 15px; font-size:13px; }
+  </style>
+</helmet>
+
+<div style="width:1440px; background:#EDE7DE; padding:56px 56px 64px; box-sizing:border-box;">
+
+  <div style="margin-bottom:34px;">
+    <h1 style="font-size:40px; margin-bottom:10px;">Məhsul səhifəsinin digər iki halı</h1>
+    <p style="margin:0; font-size:16.5px; color:#6B635A; max-width:74ch;">Eyni şablon, dəyişən yalnız sağ sütundur. Fərq üç yerdə görünür: vəziyyət zolağı, fərdiləşdirmə blokunun olub-olmaması və düymənin mətni.</p>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:26px;">
+
+    <!-- ========== STOKDA VAR ========== -->
+    <div class="col">
+      <span class="cap" style="color:#3E7D5A;">Hal 1 — stokda var</span>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:26px; align-items:start;">
+        <img src="shm-001.jpg" alt="" style="width:200px; height:230px; object-fit:cover; border-radius:12px;">
+        <div style="display:flex; flex-direction:column;">
+          <h2 style="font-size:27px; line-height:1.2;">«Zümrüd»<br>şahmat dəsti</h2>
+          <span class="code" style="margin-top:8px;">SHM-001</span>
+          <span style="font-family:'Playfair Display',Georgia,serif; font-size:32px; margin-top:14px;">[890 ₼]</span>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:11px; margin-top:24px; padding:14px 18px; border:1px solid #B7D4C2; background:#E7F1EA; border-radius:12px;">
+        <span style="width:10px; height:10px; border-radius:50%; background:#3E7D5A; display:block; flex:none;"></span>
+        <span style="font-size:15px; font-weight:700; color:#2E6B4A;">Stokda var</span>
+        <span style="font-size:15px; color:#6B635A;">— 1–2 gün ərzində çatdırılır</span>
+      </div>
+
+      <div style="margin-top:22px; padding:16px 18px; border:1px dashed #C3B7A4; border-radius:12px; background:#EDE7DE;">
+        <p style="margin:0; font-size:14.5px; color:#6B635A; line-height:1.6;">Rəng, ölçü və həkk seçimləri <b>göstərilmir</b> — əşya artıq hazırdır, seçim təklif etmək yanlış gözlənti yaradar.</p>
+        <p style="margin:10px 0 0; font-size:14.5px; color:#1F6B5B; font-weight:600;">Bu rəngdə fərdi hazırlanmasını istəyirsiniz? →</p>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:center; gap:11px; background:#1F6B5B; color:#F7F3ED; padding:19px 28px; border-radius:14px; font-size:17px; font-weight:700; margin-top:24px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l2-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
+        Al — stokda var
+      </div>
+      <p style="margin:11px 0 0; font-size:13.5px; color:#8B8177; text-align:center;">Son 1 ədəd · sifarişdən sonra siyahıdan çıxarılır</p>
+
+      <div style="display:flex; flex-wrap:wrap; gap:9px; margin-top:24px;">
+        <span class="chip">Əl işi</span><span class="chip">Tək nüsxə</span><span class="chip">Hədiyyə qutusu daxildir</span><span class="chip">Bakıdaxili çatdırılma</span>
+      </div>
+    </div>
+
+    <!-- ========== SATILIB ========== -->
+    <div class="col">
+      <span class="cap" style="color:#8B8177;">Hal 2 — satılıb</span>
+      <div style="display:grid; grid-template-columns:200px 1fr; gap:26px; align-items:start;">
+        <img src="sat-005.jpg" alt="" style="width:200px; height:230px; object-fit:cover; border-radius:12px; filter:grayscale(.4); opacity:.72;">
+        <div style="display:flex; flex-direction:column;">
+          <h2 style="font-size:27px; line-height:1.2; color:#6B635A;">«Geode» ağ-qızılı<br>divar saatı</h2>
+          <span class="code" style="margin-top:8px;">SAT-005</span>
+          <span style="font-family:'Playfair Display',Georgia,serif; font-size:32px; margin-top:14px; color:#8B8177; text-decoration:line-through;">[280 ₼]</span>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:11px; margin-top:24px; padding:14px 18px; border:1px solid #D3CCC3; background:#E8E3DA; border-radius:12px;">
+        <span style="width:10px; height:10px; border-radius:50%; background:#8B8177; display:block; flex:none;"></span>
+        <span style="font-size:15px; font-weight:700; color:#8B8177;">Satılıb</span>
+        <span style="font-size:15px; color:#8B8177;">— bu iş tək nüsxə idi</span>
+      </div>
+
+      <p style="margin:22px 0 0; font-size:16px; line-height:1.7; color:#6B635A;">Səhifə silinmir. Google-dakı mövqeyi və Instagram-dakı köhnə linklər işləməyə davam edir, ziyarətçi isə sifariş axınına yönləndirilir.</p>
+
+      <div style="display:flex; align-items:center; justify-content:center; gap:11px; border:1.5px solid #1A1714; color:#1A1714; padding:18px 28px; border-radius:14px; font-size:17px; font-weight:700; margin-top:24px;">
+        Bənzərini sifariş et
+      </div>
+      <p style="margin:11px 0 0; font-size:13.5px; color:#8B8177; text-align:center;">Oxşarını 5–7 gün ərzində hazırlaya bilərik</p>
+
+      <div style="margin-top:26px; padding-top:22px; border-top:1px solid #DCD3C6;">
+        <span style="font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#8B8177; font-weight:700;">Stokda olan bənzərləri</span>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px;">
+          <div><img src="sat-002.jpg" alt="" style="width:100%; height:96px; object-fit:cover; border-radius:9px;"><span style="display:block; font-size:12.5px; margin-top:6px; color:#6B635A;">SAT-002 · [310 ₼]</span></div>
+          <div><img src="sat-001.jpg" alt="" style="width:100%; height:96px; object-fit:cover; border-radius:9px;"><span style="display:block; font-size:12.5px; margin-top:6px; color:#6B635A;">SAT-001 · [340 ₼]</span></div>
+          <div><img src="sat-003.jpg" alt="" style="width:100%; height:96px; object-fit:cover; border-radius:9px;"><span style="display:block; font-size:12.5px; margin-top:6px; color:#6B635A;">SAT-003 · [420 ₼]</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

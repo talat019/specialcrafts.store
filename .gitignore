@@ -1,0 +1,10 @@
+node_modules/
+.next/
+out/
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.env*.local
+assets/inbox/
+design/special-crafts-sayt.html

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin:0; background:#EDE7DE; color:#1A1714; font-family:Manrope,"Helvetica Neue",system-ui,sans-serif; font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+    a { color:#1F6B5B; text-decoration:none; } a:hover { color:#175447; }
+    h1,h2,h3 { font-family:"Playfair Display",Georgia,"Times New Roman",serif; font-weight:500; margin:0; }
+    img { display:block; max-width:100%; }
+    .ph { border:1px dashed #C3B7A4; border-radius:14px; background:#E5DDD1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; }
+    .pht { font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:#A98237; font-weight:700; }
+    .phs { font-size:13px; color:#8B8177; }
+    .field { background:#F7F3ED; border:1px solid #C3B7A4; border-radius:10px; padding:14px 16px; font-size:15px; color:#8B8177; }
+    .flabel { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#8B8177; font-weight:700; margin-bottom:8px; display:block; }
+  </style>
+</helmet>
+
+<div style="width:1440px; background:#EDE7DE;">
+
+  <!-- HEADER -->
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:40px; padding:22px 56px; border-bottom:1px solid #DCD3C6;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="logo.jpg" alt="" style="width:44px; height:44px; border-radius:50%; object-fit:cover;">
+      <span style="font-family:'Playfair Display',Georgia,serif; font-size:19px; letter-spacing:.06em;">special crafts</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:30px; font-size:14.5px;">
+      <span>Kataloq</span><span>Fərdi sifariş</span><span>Korporativ</span><span style="border-bottom:2px solid #1F6B5B; padding-bottom:3px;">Haqqımızda</span><span>Əlaqə</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:9px; background:#1F6B5B; color:#F7F3ED; padding:11px 20px; border-radius:999px; font-size:14px; font-weight:600;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l2-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>WhatsApp
+    </div>
+  </div>
+
+  <!-- HAQQIMIZDA -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; padding:88px 56px 0; align-items:center;">
+    <div style="display:flex; flex-direction:column; gap:22px; align-items:flex-start;">
+      <span style="font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#A98237; font-weight:600;">Haqqımızda</span>
+      <h1 style="font-size:56px; line-height:1.08;">Qatran öz axışını<br>özü seçir</h1>
+      <p style="margin:0; font-size:18px; line-height:1.75; color:#6B635A;">special crafts — Bakıda epoksid qatranla işləyən kiçik bir atelyedir. Hər saat, hər şahmat lövhəsi və hər panno əl ilə tökülür, cilalanır və barmaqla yoxlanılır.</p>
+      <p style="margin:0; font-size:18px; line-height:1.75; color:#6B635A;">Eyni rəngdən iki dəfə töksək də iki fərqli iş çıxır — damarlar heç vaxt eyni yerə düşmür. Ona görə kataloqdakı hər əşya tək nüsxədir: satıldıqdan sonra onun eynisi bir daha olmayacaq.</p>
+      <div style="display:flex; gap:38px; margin-top:12px;">
+        <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-family:'Playfair Display',Georgia,serif; font-size:36px;">5 900+</span><span style="font-size:13.5px; color:#8B8177;">Instagram izləyicisi</span></div>
+        <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-family:'Playfair Display',Georgia,serif; font-size:36px;">18</span><span style="font-size:13.5px; color:#8B8177;">kataloqdakı iş</span></div>
+        <div style="display:flex; flex-direction:column; gap:2px;"><span style="font-family:'Playfair Display',Georgia,serif; font-size:36px;">[N]</span><span style="font-size:13.5px; color:#8B8177;">sərgi iştirakı</span></div>
+      </div>
+    </div>
+    <div class="ph" style="height:480px;">
+      <span class="pht">[USTANIN ŞƏKLİ]</span>
+      <span class="phs">iş başında portret — şəkil gözlənilir</span>
+    </div>
+  </div>
+
+  <!-- ATELYE + SƏRGİ -->
+  <div style="padding:72px 56px 0;">
+    <h2 style="font-size:34px; margin-bottom:22px;">Atelyedən və sərgilərdən</h2>
+    <div style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:20px;">
+      <div class="ph" style="height:230px;"><span class="pht">[TÖKÜM]</span><span class="phs">proses fotosu</span></div>
+      <div class="ph" style="height:230px;"><span class="pht">[CİLALAMA]</span><span class="phs">proses fotosu</span></div>
+      <div class="ph" style="height:230px;"><span class="pht">[SƏRGİ]</span><span class="phs">festival stendi</span></div>
+      <div class="ph" style="height:230px;"><span class="pht">[PAKETLƏMƏ]</span><span class="phs">hədiyyə qutusu</span></div>
+    </div>
+    <p style="margin:16px 0 0; font-size:13.5px; color:#8B8177;">Bu dörd şəkil hələ gəlməyib. Instagram highlight-larında material var — orada başlıqlar «Sergiler», «Festival&amp;sergi» və «Paketleme» kimi diakritiksiz yazılıb, sayta keçəndə düzgün yazılışla veriləcək.</p>
+  </div>
+
+  <!-- FƏRDİ SİFARİŞ -->
+  <div style="margin-top:80px; background:#E5DDD1; padding:76px 56px 84px;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:38px;">
+      <div>
+        <span style="font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:#A98237; font-weight:600;">Fərdi sifariş</span>
+        <h2 style="font-size:40px; margin-top:12px;">Ağlınızdakı işi hazırlayaq</h2>
+      </div>
+      <p style="margin:0; font-size:16px; color:#6B635A; max-width:42ch; text-align:right;">Rəng, ölçü, həkk mətni — hamısını birlikdə seçirik. Korporativ hədiyyələr üçün loqo həkki də mümkündür.</p>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:20px; margin-bottom:44px;">
+      <div style="background:#F7F3ED; border:1px solid #DCD3C6; border-radius:16px; padding:26px 26px 28px; display:flex; flex-direction:column; gap:10px;">
+        <span style="font-family:'Playfair Display',Georgia,serif; font-size:30px; color:#A98237; line-height:1;">1</span>
+        <span style="font-size:16.5px; font-weight:600;">İdeyanı yazın</span>
+        <span style="font-size:14.5px; color:#6B635A; line-height:1.6;">Referans şəkil də göndərə bilərsiniz.</span>
+      </div>
+      <div style="background:#F7F3ED; border:1px solid #DCD3C6; border-radius:16px; padding:26px 26px 28px; display:flex; flex-direction:column; gap:10px;">
+        <span style="font-family:'Playfair Display',Georgia,serif; font-size:30px; color:#A98237; line-height:1;">2</span>
+        <span style="font-size:16.5px; font-weight:600;">Qiymət və müddət</span>
+        <span style="font-size:14.5px; color:#6B635A; line-height:1.6;">24 saat ərzində dəqiq cavab veririk.</span>
+      </div>
+      <div style="background:#F7F3ED; border:1px solid #DCD3C6; border-radius:16px; padding:26px 26px 28px; display:flex; flex-direction:column; gap:10px;">
+        <span style="font-family:'Playfair Display',Georgia,serif; font-size:30px; color:#A98237; line-height:1;">3</span>
+        <span style="font-size:16.5px; font-weight:600;">Təsdiq və töküm</span>
+        <span style="font-size:14.5px; color:#6B635A; line-height:1.6;">Rəng nümunəsini razılaşdırıb işə başlayırıq.</span>
+      </div>
+      <div style="background:#F7F3ED; border:1px solid #DCD3C6; border-radius:16px; padding:26px 26px 28px; display:flex; flex-direction:column; gap:10px;">
+        <span style="font-family:'Playfair Display',Georgia,serif; font-size:30px; color:#A98237; line-height:1;">4</span>
+        <span style="font-size:16.5px; font-weight:600;">5–7 gündə hazır</span>
+        <span style="font-size:14.5px; color:#6B635A; line-height:1.6;">Hədiyyə qutusunda göndəririk.</span>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div style="background:#F7F3ED; border:1px solid #DCD3C6; border-radius:20px; padding:40px 44px 44px; display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div><span class="flabel">Adınız</span><div class="field">Məsələn: Nigar</div></div>
+        <div><span class="flabel">Əlaqə (WhatsApp / telefon)</span><div class="field">+994 __ ___ __ __</div></div>
+        <div><span class="flabel">Nə hazırlansın</span>
+          <div style="display:flex; flex-wrap:wrap; gap:9px;">
+            <span style="border:1.5px solid #1F6B5B; background:#E7F1EA; color:#1F6B5B; font-weight:600; border-radius:999px; padding:8.5px 16px; font-size:13.5px;">Saat</span>
+            <span style="border:1px solid #C3B7A4; border-radius:999px; padding:9px 17px; font-size:13.5px;">Şahmat</span>
+            <span style="border:1px solid #C3B7A4; border-radius:999px; padding:9px 17px; font-size:13.5px;">Domino</span>
+            <span style="border:1px solid #C3B7A4; border-radius:999px; padding:9px 17px; font-size:13.5px;">Panno</span>
+            <span style="border:1px solid #C3B7A4; border-radius:999px; padding:9px 17px; font-size:13.5px;">Başqa</span>
+          </div>
+        </div>
+        <div><span class="flabel">Nə vaxta lazımdır</span><div class="field">Tarix seçin</div></div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <div style="flex:1; display:flex; flex-direction:column;"><span class="flabel">İdeyanız</span>
+          <div class="field" style="flex:1; min-height:150px;">Rəng, ölçü, həkk mətni, kimə hədiyyədir…</div>
+        </div>
+        <div><span class="flabel">Referans şəkil</span>
+          <div style="border:1px dashed #C3B7A4; border-radius:10px; padding:22px; display:flex; align-items:center; justify-content:center; gap:10px; font-size:14.5px; color:#6B635A; background:#EDE7DE;">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#8B8177" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+            Şəkil əlavə edin
+          </div>
+        </div>
+        <div style="display:flex; align-items:center; justify-content:center; gap:10px; background:#1F6B5B; color:#F7F3ED; padding:18px; border-radius:12px; font-size:16px; font-weight:700;">Sorğunu göndər</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#171412; color:#8B8177; padding:44px 56px 40px; display:flex; align-items:center; justify-content:space-between; font-size:13.5px;">
+    <span>© 2026 special crafts · by semedova</span>
+    <div style="display:flex; gap:24px;"><span>Instagram</span><span>TikTok</span><span>WhatsApp</span><span>Qaydalar</span></div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "artboards": [
+    { "file": "System.dc.html",      "x": 0,    "y": 0,    "w": 1440, "h": 2180, "title": "1 · Dizayn sistemi" },
+    { "file": "Kataloq.dc.html",     "x": 0,    "y": 2320, "w": 1440, "h": 2200, "title": "3 · Kataloq" },
+    { "file": "Haqqimizda.dc.html",  "x": 0,    "y": 4680, "w": 1440, "h": 2450, "title": "6 · Haqqımızda + fərdi sifariş" },
+
+    { "file": "Main.dc.html",        "x": 1560, "y": 0,    "w": 1440, "h": 4700, "title": "2 · Ana səhifə" },
+    { "file": "Mehsul.dc.html",      "x": 1560, "y": 4880, "w": 1440, "h": 2100, "title": "4 · Məhsul — sifarişlə" },
+
+    { "file": "Veziyyetler.dc.html", "x": 3120, "y": 0,    "w": 1440, "h": 1250, "title": "5 · Məhsul — stokda var / satılıb" },
+    { "file": "MobilAna.dc.html",    "x": 3120, "y": 1420, "w": 390,  "h": 2980, "title": "7 · Mobil ana səhifə" },
+    { "file": "MobilMehsul.dc.html", "x": 3650, "y": 1420, "w": 390,  "h": 1850, "title": "8 · Mobil məhsul" }
+  ],
+  "annotations": [
+    { "id": "brief", "x": 0, "y": -230, "w": 460, "text": "specialcrafts.store — 8 artboard\n\nPalitra loqodan gəlir: krem fon, isti qara mətn, zümrüd CTA, antik qızıl detal. Tünd fon yalnız xəttatlıq pannoları və footer üçün.\n\nBütün qiymətlər [mötərizədə] — real rəqəmlər hələ yoxdur." },
+    { "id": "veziyyet-note", "x": 3120, "y": -230, "w": 460, "text": "Saytın bütün strukturu bu üç vəziyyət üzərində qurulub:\n\n• Stokda var — 1–2 gün, yaşıl\n• Sifarişlə — 5–7 gün, qızılı\n• Satılıb — səhifə silinmir, boz\n\nStokda olanda rəng/ölçü seçimi GÖSTƏRİLMİR — əşya artıq hazırdır." },
+    { "id": "mobil-note", "x": 3120, "y": 4460, "w": 920, "text": "Trafikin ~85%-i Instagram-dan mobil gələcək. Hər iki mobil ekranda aşağıda yapışqan zolaq var; məhsul səhifəsində zolaq qiyməti və vəziyyəti də daşıyır. Saxta status bar və klaviatura çəkilməyib — real telefonda onlar öz yerində görünür." },
+    { "id": "sekil-note", "x": 1560, "y": -230, "w": 460, "text": "Şəkillər realdır — Telegram-dan gələn 18 məhsulun sıxılmış versiyaları.\n\n[KVADRAT MÖTƏRİZƏLİ] sahələr hələ olmayan materialdır: atelye, sərgi, paketləmə fotoları və hər məhsul üçün 2–3 əlavə rakurs." }
+  ],
+  "launch": { "view": "canvas" }
+}

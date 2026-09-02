@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  /* --- səthlər --- */
+  --color-ground: #edE7de;
+  --color-surface: #f7f3ed;
+  --color-band: #e5ddd1;
+  --color-line: #dcd3c6;
+  --color-line-strong: #c3b7a4;
+
+  /* --- mətn --- */
+  --color-ink: #1a1714;
+  --color-ink-muted: #6b635a;
+  --color-ink-faint: #8b8177;
+
+  /* --- aksentlər --- */
+  --color-emerald: #1f6b5b;
+  --color-emerald-dark: #175447;
+  --color-gold: #a98237;
+  --color-gold-dark: #8a6a2c;
+  --color-gold-bright: #c9a227; /* yalnız tünd zolağın içində */
+
+  /* --- tünd zolaq --- */
+  --color-dark: #171412;
+  --color-dark-line: #3a332b;
+  --color-dark-ink: #f2ece2;
+  --color-dark-muted: #b0a797;
+
+  /* --- vəziyyət rəngləri --- */
+  --color-stock: #3e7d5a;
+  --color-stock-dark: #2e6b4a;
+  --color-stock-tint: #e7f1ea;
+  --color-stock-line: #b7d4c2;
+  --color-order: #a98237;
+  --color-order-tint: #f5eedf;
+  --color-order-line: #ddcfa9;
+  --color-sold: #8b8177;
+  --color-sold-tint: #e8e3da;
+  --color-sold-line: #d3ccc3;
+
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), "Helvetica Neue", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-ground);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-emerald);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .eyebrow {
+    font-size: 0.6875rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    letter-spacing: 0.1em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}

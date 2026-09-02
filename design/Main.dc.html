@@ -1,0 +1,301 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #EDE7DE; color: #1A1714;
+           font-family: Manrope, "Helvetica Neue", system-ui, sans-serif;
+           font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: #1F6B5B; text-decoration: none; }
+    a:hover { color: #175447; }
+    h1, h2, h3 { font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+                 font-weight: 500; margin: 0; text-wrap: balance; }
+    img { display: block; max-width: 100%; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; background: #EDE7DE;">
+
+  <!-- ================= HEADER ================= -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 40px; padding: 22px 72px; border-bottom: 1px solid #DCD3C6; background: #EDE7DE;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <img src="logo.jpg" alt="special crafts" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover;">
+      <div style="display: flex; flex-direction: column; gap: 1px;">
+        <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 19px; letter-spacing: .06em;">special crafts</span>
+        <span style="font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #8B8177;">by semedova</span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 30px; font-size: 14.5px; color: #1A1714;">
+      <span>Kataloq</span><span>Fərdi sifariş</span><span>Korporativ</span><span>Haqqımızda</span><span>Əlaqə</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 9px; background: #1F6B5B; color: #F7F3ED; padding: 11px 20px; border-radius: 999px; font-size: 14px; font-weight: 600;">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l2-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
+      WhatsApp
+    </div>
+  </div>
+
+  <!-- ================= HERO ================= -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 0;">
+    <div style="padding: 108px 64px 108px 72px; display: flex; flex-direction: column; gap: 26px; align-items: flex-start;">
+      <span style="font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #A98237; font-weight: 600;">Epoksid əl işləri · Bakı</span>
+      <h1 style="font-size: 78px; line-height: 1.02; letter-spacing: -.015em;">Unikal<br>əl işləri</h1>
+      <p style="margin: 0; font-size: 18.5px; line-height: 1.6; color: #6B635A; max-width: 34ch;">Hər biri əllə tökülür, təkrarlanmır. Bir hissəsi hazır rəfdədir, qalanı 5–7 günə sizin üçün hazırlanır.</p>
+      <div style="display: flex; gap: 12px; margin-top: 8px;">
+        <div style="background: #1F6B5B; color: #F7F3ED; padding: 15px 30px; border-radius: 999px; font-size: 15px; font-weight: 600;">Kataloqa bax</div>
+        <div style="border: 1px solid #1A1714; color: #1A1714; padding: 15px 30px; border-radius: 999px; font-size: 15px; font-weight: 600; display: flex; align-items: center; gap: 8px;">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+          Stokda olanlar
+        </div>
+      </div>
+    </div>
+    <div style="position: relative; height: 620px; overflow: hidden;">
+      <img src="hero-sahmat.jpg" alt="Zümrüd şahmat dəsti" style="width: 100%; height: 100%; object-fit: cover;">
+      <div style="position: absolute; left: 28px; bottom: 28px; background: rgba(247,243,237,.94); padding: 13px 20px; border-radius: 12px; display: flex; flex-direction: column; gap: 3px;">
+        <span style="font-size: 14.5px; font-weight: 600;">«Zümrüd» şahmat dəsti</span>
+        <span style="font-size: 11.5px; letter-spacing: .1em; color: #8B8177; font-family: ui-monospace, Menlo, monospace;">SHM-001 · qoz ağacı + qatran</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= KATEQORİYALAR ================= -->
+  <div style="padding: 96px 72px 0;">
+    <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 34px;">
+      <h2 style="font-size: 40px;">Nə hazırlayırıq</h2>
+      <span style="font-size: 13.5px; color: #8B8177;">6 kateqoriya · 18 iş</span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px;">
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 16px; overflow: hidden;">
+        <img src="sat-005.jpg" alt="Saat" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px;">Saat</span>
+          <span style="font-size: 13px; color: #8B8177;">8 iş</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 16px; overflow: hidden;">
+        <img src="shm-001.jpg" alt="Şahmat" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px;">Şahmat</span>
+          <span style="font-size: 13px; color: #8B8177;">4 iş</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 16px; overflow: hidden;">
+        <img src="dmn-001.jpg" alt="Domino" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px;">Domino</span>
+          <span style="font-size: 13px; color: #8B8177;">2 iş</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 16px; overflow: hidden;">
+        <img src="pno-002.jpg" alt="Divar pannosu" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px;">Divar pannosu</span>
+          <span style="font-size: 13px; color: #8B8177;">2 iş</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 16px; overflow: hidden;">
+        <img src="acr-001.jpg" alt="Açar asılqanı" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px;">Açar asılqanı</span>
+          <span style="font-size: 13px; color: #8B8177;">1 iş</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 16px; overflow: hidden;">
+        <img src="rhl-001.jpg" alt="Rəhil" style="width: 100%; height: 250px; object-fit: cover;">
+        <div style="padding: 18px 20px; display: flex; align-items: baseline; justify-content: space-between;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px;">Rəhil</span>
+          <span style="font-size: 13px; color: #8B8177;">1 iş</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= STOKDA HAZIR ================= -->
+  <div style="margin: 96px 0 0; background: #E5DDD1; padding: 72px 72px 80px;">
+    <div style="display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 34px;">
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="width: 9px; height: 9px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+          <span style="font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda hazır</span>
+        </div>
+        <h2 style="font-size: 40px;">Dərhal göndərilir</h2>
+        <p style="margin: 0; font-size: 16px; color: #6B635A; max-width: 46ch;">Bu işlər hazırdır və gözləmək lazım deyil — sifarişdən sonra 1–2 gün ərzində əlinizdə olur.</p>
+      </div>
+      <span style="font-size: 14.5px; color: #1F6B5B; font-weight: 600;">Hamısına bax →</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 18px;">
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+        <img src="shm-001.jpg" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+        <div style="padding: 15px 16px 17px; display: flex; flex-direction: column; gap: 7px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+            <span style="font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda var</span>
+          </div>
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.35;">«Zümrüd» şahmat dəsti</span>
+          <span style="font-size: 11px; letter-spacing: .09em; color: #8B8177; font-family: ui-monospace, Menlo, monospace;">SHM-001</span>
+          <span style="font-size: 16px; font-weight: 700; color: #6B635A; margin-top: 2px;">[890 ₼]</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+        <img src="sat-002.jpg" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+        <div style="padding: 15px 16px 17px; display: flex; flex-direction: column; gap: 7px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+            <span style="font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda var</span>
+          </div>
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.35;">«Kristal» ağ-qızılı saat</span>
+          <span style="font-size: 11px; letter-spacing: .09em; color: #8B8177; font-family: ui-monospace, Menlo, monospace;">SAT-002</span>
+          <span style="font-size: 16px; font-weight: 700; color: #6B635A; margin-top: 2px;">[310 ₼]</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+        <img src="dmn-001.jpg" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+        <div style="padding: 15px 16px 17px; display: flex; flex-direction: column; gap: 7px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+            <span style="font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda var</span>
+          </div>
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.35;">«Gecə mavisi» domino</span>
+          <span style="font-size: 11px; letter-spacing: .09em; color: #8B8177; font-family: ui-monospace, Menlo, monospace;">DMN-001</span>
+          <span style="font-size: 16px; font-weight: 700; color: #6B635A; margin-top: 2px;">[150 ₼]</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+        <img src="acr-001.jpg" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+        <div style="padding: 15px 16px 17px; display: flex; flex-direction: column; gap: 7px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+            <span style="font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda var</span>
+          </div>
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.35;">«Geode» açar asılqanı</span>
+          <span style="font-size: 11px; letter-spacing: .09em; color: #8B8177; font-family: ui-monospace, Menlo, monospace;">ACR-001</span>
+          <span style="font-size: 16px; font-weight: 700; color: #6B635A; margin-top: 2px;">[65 ₼]</span>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+        <img src="rhl-001.jpg" alt="" style="width: 100%; height: 200px; object-fit: cover;">
+        <div style="padding: 15px 16px 17px; display: flex; flex-direction: column; gap: 7px;">
+          <div style="display: flex; align-items: center; gap: 6px;">
+            <span style="width: 7px; height: 7px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+            <span style="font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda var</span>
+          </div>
+          <span style="font-size: 15px; font-weight: 600; line-height: 1.35;">«Zümrüd» rəhil</span>
+          <span style="font-size: 11px; letter-spacing: .09em; color: #8B8177; font-family: ui-monospace, Menlo, monospace;">RHL-001</span>
+          <span style="font-size: 16px; font-weight: 700; color: #6B635A; margin-top: 2px;">[90 ₼]</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= PANNO — TÜND ZOLAQ ================= -->
+  <div style="background: #171412; color: #F2ECE2; padding: 88px 72px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center;">
+      <div style="display: flex; flex-direction: column; gap: 22px; align-items: flex-start;">
+        <span style="font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #C9A227; font-weight: 600;">Xəttatlıq</span>
+        <h2 style="font-size: 44px; color: #F2ECE2; line-height: 1.12;">Divar pannoları</h2>
+        <p style="margin: 0; font-size: 17px; line-height: 1.7; color: #B0A797; max-width: 40ch;">Qara qatran üzərində qızılı xəttatlıq, kristal və qızıl vərəq damarları. Ölçü və mətn sifarişə görə seçilir — ev açılışı və toy hədiyyəsi üçün ən çox seçilən işimiz.</p>
+        <div style="border: 1px solid #3A332B; color: #F2ECE2; padding: 14px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; margin-top: 6px;">Pannolara bax</div>
+      </div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <img src="pno-001.jpg" alt="Ayətəl-Kürsi pannosu" style="width: 100%; height: 330px; object-fit: cover; border-radius: 14px;">
+        <img src="pno-002.jpg" alt="Kəlmeyi-şəhadət pannosu" style="width: 100%; height: 330px; object-fit: cover; border-radius: 14px; margin-top: 34px;">
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= NECƏ İŞLƏYİR ================= -->
+  <div style="padding: 92px 72px;">
+    <h2 style="font-size: 40px; margin-bottom: 12px;">Necə işləyir</h2>
+    <p style="margin: 0 0 38px; font-size: 16.5px; color: #6B635A;">İki yol var — hansı sizə uyğundursa.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 18px; padding: 32px 34px 34px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="width: 9px; height: 9px; border-radius: 50%; background: #3E7D5A; display: block;"></span>
+          <span style="font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #3E7D5A; font-weight: 700;">Stokda var</span>
+        </div>
+        <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px;">1–2 gündə əlinizdə</span>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; gap: 14px; align-items: baseline;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #3E7D5A; min-width: 22px;">1</span><span style="font-size: 15.5px; color: #1A1714;">Kataloqdan hazır işi seçirsiniz</span></div>
+          <div style="display: flex; gap: 14px; align-items: baseline;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #3E7D5A; min-width: 22px;">2</span><span style="font-size: 15.5px; color: #1A1714;">«Al» düyməsi WhatsApp-ı hazır mesajla açır</span></div>
+          <div style="display: flex; gap: 14px; align-items: baseline;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #3E7D5A; min-width: 22px;">3</span><span style="font-size: 15.5px; color: #1A1714;">Ünvanı yazırsınız, göndəririk</span></div>
+        </div>
+      </div>
+
+      <div style="background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 18px; padding: 32px 34px 34px; display: flex; flex-direction: column; gap: 20px;">
+        <div style="display: flex; align-items: center; gap: 9px;">
+          <span style="width: 9px; height: 9px; border-radius: 50%; border: 2px solid #A98237; box-sizing: border-box; display: block;"></span>
+          <span style="font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #A98237; font-weight: 700;">Sifarişlə</span>
+        </div>
+        <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px;">5–7 iş günü</span>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; gap: 14px; align-items: baseline;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #A98237; min-width: 22px;">1</span><span style="font-size: 15.5px; color: #1A1714;">Bəyəndiyiniz işi və rəngi seçirsiniz</span></div>
+          <div style="display: flex; gap: 14px; align-items: baseline;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #A98237; min-width: 22px;">2</span><span style="font-size: 15.5px; color: #1A1714;">Ölçü, rəng və həkk mətnini razılaşdırırıq</span></div>
+          <div style="display: flex; gap: 14px; align-items: baseline;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 20px; color: #A98237; min-width: 22px;">3</span><span style="font-size: 15.5px; color: #1A1714;">Əl ilə tökülür, cilalanır və göndərilir</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= ATELYE ================= -->
+  <div style="padding: 0 72px 92px;">
+    <div style="display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; background: #F7F3ED; border: 1px solid #DCD3C6; border-radius: 20px; padding: 48px 52px;">
+      <div style="display: flex; flex-direction: column; gap: 18px;">
+        <span style="font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: #A98237; font-weight: 600;">Atelyedən</span>
+        <h2 style="font-size: 36px; line-height: 1.15;">Hər iş bir dəfə tökülür</h2>
+        <p style="margin: 0; font-size: 16.5px; line-height: 1.7; color: #6B635A;">Qatran öz axışını özü seçir — eyni rəngdən iki dəfə tökəndə də iki fərqli iş çıxır. Ona görə kataloqdakı hər əşya tək nüsxədir və satıldıqdan sonra eynisi təkrarlanmır.</p>
+        <div style="display: flex; gap: 26px; margin-top: 10px;">
+          <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px;">5 900+</span><span style="font-size: 13px; color: #8B8177;">Instagram izləyicisi</span></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px;">18</span><span style="font-size: 13px; color: #8B8177;">kataloqdakı iş</span></div>
+          <div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px;">5–7</span><span style="font-size: 13px; color: #8B8177;">gün hazırlıq</span></div>
+        </div>
+      </div>
+      <div style="border: 1px dashed #C3B7A4; border-radius: 16px; height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; background: #EDE7DE;">
+        <span style="font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: #A98237; font-weight: 700;">[ATELYE ŞƏKLİ]</span>
+        <span style="font-size: 13.5px; color: #8B8177;">töküm və cilalama — şəkil gözlənilir</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CTA + FOOTER ================= -->
+  <div style="background: #171412; color: #F2ECE2; padding: 76px 72px 40px;">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 48px; padding-bottom: 56px; border-bottom: 1px solid #3A332B;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <h2 style="font-size: 40px; color: #F2ECE2;">Bir işi bəyəndiniz?</h2>
+        <p style="margin: 0; font-size: 17px; color: #B0A797; max-width: 46ch;">Yazın — stokda varsa dərhal göndəririk, yoxdursa sizin üçün hazırlayırıq.</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 10px; background: #1F6B5B; color: #F7F3ED; padding: 17px 34px; border-radius: 999px; font-size: 16px; font-weight: 700;">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l2-4.9A8.4 8.4 0 0 1 12 3a8.4 8.4 0 0 1 9 8.5z"/></svg>
+        WhatsApp-da yazın
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; padding-top: 28px; font-size: 13.5px; color: #8B8177;">
+      <span>© 2026 special crafts · by semedova</span>
+      <div style="display: flex; gap: 24px;"><span>Instagram</span><span>TikTok</span><span>WhatsApp</span><span>Qaydalar</span></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

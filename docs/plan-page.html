@@ -1,0 +1,798 @@
+<title>special crafts — Sayt Planı</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* ---- Light-first: loqodan gələn krem palitra. :root = standart (açıq). ---- */
+:root{
+  --ground:#EDE7DE;
+  --surface:#F7F3ED;
+  --surface-2:#E5DDD1;
+  --line:#DCD3C6;
+  --line-soft:#E6DFD4;
+  --ink:#1A1714;
+  --ink-muted:#6B635A;
+  --ink-faint:#8B8177;
+  --teal:#1F6B5B;
+  --teal-deep:#175447;
+  --amber:#8A6A2C;
+  --gold:#A98237;
+  --walnut:#6B4A2F;
+  --stok:#3E7D5A;
+  --sold:#8B8177;
+  --shadow:0 0 0 1px var(--line), 0 14px 34px -28px rgba(26,23,20,.45);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#171412; --surface:#211D19; --surface-2:#2A251F;
+    --line:#3A332B; --line-soft:#2E2822;
+    --ink:#F2ECE2; --ink-muted:#B0A797; --ink-faint:#8B8177;
+    --teal:#5FB39D; --teal-deep:#2E8A76; --amber:#D6AC63; --gold:#C9A227; --walnut:#A8794A;
+    --stok:#6BBF92; --sold:#9A9084;
+    --shadow:0 0 0 1px var(--line), 0 18px 40px -28px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#171412; --surface:#211D19; --surface-2:#2A251F;
+  --line:#3A332B; --line-soft:#2E2822;
+  --ink:#F2ECE2; --ink-muted:#B0A797; --ink-faint:#8B8177;
+  --teal:#5FB39D; --teal-deep:#2E8A76; --amber:#D6AC63; --gold:#C9A227; --walnut:#A8794A;
+  --stok:#6BBF92; --sold:#9A9084;
+  --shadow:0 0 0 1px var(--line), 0 18px 40px -28px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:Inter,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+
+/* ---- Masthead ---- */
+.mast{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--amber);font-weight:600;margin:0 0 18px
+}
+h1{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:600;font-size:clamp(38px,6vw,64px);line-height:1.05;
+  margin:0 0 16px;text-wrap:balance;letter-spacing:-.01em;
+}
+h1 .dom{color:var(--teal)}
+.lede{font-size:clamp(17px,2vw,20px);color:var(--ink-muted);max-width:60ch;margin:0}
+.facts{
+  display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:28px;list-style:none;padding:0
+}
+.facts li{
+  font-size:12.5px;color:var(--ink-muted);
+  border:1px solid var(--line);border-radius:999px;padding:5px 13px;
+  background:var(--surface);
+}
+.facts b{color:var(--ink);font-weight:600}
+
+/* ---- Section index ---- */
+nav.toc{
+  position:sticky;top:0;z-index:10;
+  background:color-mix(in srgb,var(--ground) 92%,transparent);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line-soft);
+  margin-bottom:8px;
+}
+nav.toc ol{
+  display:flex;gap:20px;overflow-x:auto;list-style:none;margin:0;
+  padding:13px 0;font-size:13px;scrollbar-width:thin;
+}
+nav.toc a{color:var(--ink-muted);text-decoration:none;white-space:nowrap;border-bottom:1px solid transparent;padding-bottom:2px}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--teal);border-bottom-color:var(--teal)}
+
+/* ---- Sections ---- */
+section{padding:56px 0;border-bottom:1px solid var(--line-soft)}
+section:last-of-type{border-bottom:0}
+h2{
+  font-family:"Playfair Display",Georgia,serif;
+  font-weight:600;font-size:clamp(26px,3.4vw,34px);line-height:1.2;
+  margin:0 0 8px;text-wrap:balance;
+}
+.sub{color:var(--ink-faint);font-size:14px;margin:0 0 28px}
+h3{font-size:15px;font-weight:600;letter-spacing:.02em;margin:32px 0 12px;color:var(--ink)}
+h3:first-of-type{margin-top:0}
+p{max-width:68ch}
+a{color:var(--teal)}
+
+/* ---- Pull quote / thesis ---- */
+.thesis{
+  border-left:3px solid var(--amber);
+  padding:4px 0 4px 22px;margin:0 0 28px;
+}
+.thesis p{
+  font-family:"Playfair Display",Georgia,serif;
+  font-size:clamp(20px,2.6vw,26px);line-height:1.35;margin:0;font-style:italic;
+}
+
+/* ---- Cards / grids ---- */
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+.card{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;
+}
+.card h4{margin:0 0 6px;font-size:14px;font-weight:600}
+.card p{margin:0;font-size:13.5px;color:var(--ink-muted);max-width:none}
+
+/* ---- Tables ---- */
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:460px}
+th,td{text-align:right;padding:11px 16px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+th:first-child,td:first-child{text-align:left}
+th{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-faint);font-weight:600;background:var(--surface-2)
+}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums}
+table.plain td:not(:first-child),table.plain th:not(:first-child){text-align:left}
+
+code,.mono{
+  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,monospace;
+  font-size:.9em;
+}
+:not(pre)>code{
+  background:var(--surface-2);border:1px solid var(--line-soft);
+  border-radius:5px;padding:1px 6px;color:var(--amber);
+}
+pre{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:18px 20px;overflow-x:auto;font-size:13px;line-height:1.6;margin:0;
+  color:var(--ink-muted);
+}
+pre b{color:var(--teal);font-weight:600}
+pre i{color:var(--ink-faint);font-style:normal}
+
+/* ---- Step / phase list (a real sequence) ---- */
+.phases{list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.phases li{
+  display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:start;
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px
+}
+.phases .n{
+  font-family:"Playfair Display",Georgia,serif;font-size:30px;line-height:1;
+  color:var(--teal);
+}
+.phases h4{margin:0 0 4px;font-size:15px;font-weight:600}
+.phases .when{font-size:12px;color:var(--amber);letter-spacing:.04em;margin:0 0 8px}
+.phases p{margin:0;font-size:13.5px;color:var(--ink-muted);max-width:none}
+
+/* ---- Flow (Seç → Yaz → ...) ---- */
+.flow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0;padding:0;list-style:none}
+.flow li{
+  background:var(--surface-2);border:1px solid var(--line);border-radius:999px;
+  padding:7px 16px;font-size:13.5px
+}
+.flow li::after{content:"";}
+.arrow{color:var(--ink-faint);font-size:14px}
+
+/* ---- Palette swatches ---- */
+.pal{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.pal li{width:112px}
+.pal .chip{height:52px;border-radius:10px;border:1px solid var(--line)}
+.pal .nm{font-size:11.5px;margin-top:6px;color:var(--ink);display:block}
+.pal .hx{font-size:11px;color:var(--ink-faint);font-family:ui-monospace,Menlo,monospace}
+
+/* ---- Questions ---- */
+ol.q{counter-reset:q;list-style:none;padding:0;margin:0;display:grid;gap:10px}
+ol.q li{
+  counter-increment:q;position:relative;padding:14px 18px 14px 48px;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;font-size:14px
+}
+ol.q li::before{
+  content:counter(q);position:absolute;left:18px;top:14px;
+  color:var(--amber);font-weight:600;font-size:13px;font-variant-numeric:tabular-nums
+}
+ol.q b{color:var(--ink)}
+
+/* ---- Copy block ---- */
+.copybar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}
+button.copy{
+  font:inherit;font-size:13px;font-weight:500;
+  background:var(--teal-deep);color:#fff;border:0;border-radius:9px;
+  padding:8px 16px;cursor:pointer;
+}
+button.copy:hover{background:var(--teal)}
+button.copy:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.promptbox{max-height:440px;overflow:auto}
+
+/* ---- Vəziyyət nişanları ---- */
+.badges{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 22px;padding:0;list-style:none}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  font-size:13.5px;background:var(--surface);
+}
+.badge .dot{width:8px;height:8px;border-radius:50%;flex:none}
+.badge.stok{border-color:color-mix(in srgb,var(--stok) 45%,var(--line))}
+.badge.stok .dot{background:var(--stok)}
+.badge.stok b{color:var(--stok)}
+.badge.sif{border-color:color-mix(in srgb,var(--amber) 40%,var(--line))}
+.badge.sif .dot{background:transparent;border:2px solid var(--amber)}
+.badge.sif b{color:var(--amber)}
+.badge.sat{opacity:.7}
+.badge.sat .dot{background:var(--sold)}
+.badge.sat b{color:var(--sold)}
+.badge span{color:var(--ink-muted);font-size:12.5px}
+
+ul.tick{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+ul.tick li{font-size:14px;color:var(--ink-muted);padding-left:20px;position:relative}
+ul.tick li::before{content:"—";position:absolute;left:0;color:var(--teal)}
+ul.tick b{color:var(--ink);font-weight:600}
+
+footer{padding:40px 0 0;color:var(--ink-faint);font-size:13px;border-top:1px solid var(--line)}
+footer code{color:var(--amber)}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:4px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:560px){
+  .phases li{grid-template-columns:1fr;gap:6px}
+  .mast{padding:44px 0 30px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Sayt planı · v2 · 3 sentyabr 2026</p>
+  <h1>special crafts<br><span class="dom">specialcrafts.store</span></h1>
+  <p class="lede">Epoksid qatran əl işləri üçün kataloq və sifariş saytının tam planlaması — struktur, məzmun, texniki stek, mərhələlər və Claude Design promptu.</p>
+  <ul class="facts">
+    <li>Instagram <b>@special__crafts</b></li>
+    <li><b>5 956</b> izləyici</li>
+    <li>Usta <b>By Semedova</b></li>
+    <li>Domen <b>qeydiyyatda, boş</b></li>
+    <li><b>18</b> məhsul · <b>6</b> kateqoriya</li>
+    <li><b>15</b> stokda hazır</li>
+  </ul>
+</header>
+
+<nav class="toc" aria-label="Bölmələr">
+  <ol>
+    <li><a href="#is">Saytın işi</a></li>
+    <li><a href="#brend">Brend</a></li>
+    <li><a href="#kataloq">Kataloq</a></li>
+    <li><a href="#xerite">Sayt xəritəsi</a></li>
+    <li><a href="#mezmun">Səhifə məzmunu</a></li>
+    <li><a href="#model">Məhsul modeli</a></li>
+    <li><a href="#stek">Texniki stek</a></li>
+    <li><a href="#sekil">Şəkil axını</a></li>
+    <li><a href="#faza">Mərhələlər</a></li>
+    <li><a href="#sual">Açıq suallar</a></li>
+    <li><a href="#prompt">Design promptu</a></li>
+  </ol>
+</nav>
+
+<section id="is">
+  <h2>Saytın işi nədir</h2>
+  <p class="sub">Bir cümləlik qərar — qalan hər şey bundan çıxır</p>
+  <div class="thesis"><p>Sayt onlayn mağaza deyil. O, sifarişə çevirən kataloqdur.</p></div>
+  <p>Məhsullar əl ilə tökülür və hər biri tək nüsxədir. Bir hissəsi <b>hazır rəfdədir</b>, bir hissəsi isə <b>sifarişlə 5–7 günə hazırlanır</b>. Klassik «səbətə at → kartla ödə» axını ikinci qrupa uyğun gəlmir: müştəridə «sabah gəlir» gözləntisi yaradır və məyusluqla bitir. Ona görə əsas hərəkət başqadır.</p>
+
+  <h3>Üç məhsul vəziyyəti — saytın strukturunu bu müəyyən edir</h3>
+  <ul class="badges">
+    <li class="badge stok"><span class="dot"></span><b>Stokda var</b> <span>1–2 gün ərzində çatdırılır</span></li>
+    <li class="badge sif"><span class="dot"></span><b>Sifarişlə</b> <span>5–7 iş günü</span></li>
+    <li class="badge sat"><span class="dot"></span><b>Satılıb</b> <span>bənzərini hazırlayırıq</span></li>
+  </ul>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Vəziyyət</th><th>Müştəri kimdir</th><th>Sayt nə vəd edir</th></tr></thead>
+    <tbody>
+      <tr><td><b style="color:var(--stok)">Stokda var</b></td><td>«Bu axşam hədiyyə lazımdır»</td><td>«Stokda var — 1–2 gün ərzində əlinizdə»</td></tr>
+      <tr><td><b style="color:var(--amber)">Sifarişlə</b></td><td>Planlı alıcı, xüsusi münasibət</td><td>«5–7 iş günündə hazırlanır»</td></tr>
+      <tr><td><b style="color:var(--sold)">Satılıb</b></td><td>—</td><td>Kart soluq, «Bənzərini sifariş edin»</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:18px">Bu ayrım <b>hər kartda, hər filtrdə və hər sifariş düyməsində</b> görünməlidir. Səbəb sadədir: <b>gözləmə müddəti alıcının ən böyük etirazıdır</b> — stokda olan məhsul bu etirazı tamamilə aradan qaldırır. Ona görə stokda olanlar ana səhifədə ayrıca bölmə alır və kataloqda standart olaraq birinci sıralanır.</p>
+
+  <h3>Əsas konversiya axını</h3>
+  <ul class="flow" style="margin-bottom:10px">
+    <li style="color:var(--stok);font-weight:600">Stokda var</li><li class="arrow">·</li>
+    <li>Seç</li><li class="arrow">→</li>
+    <li><b>WhatsApp — «Al»</b></li><li class="arrow">→</li>
+    <li>1–2 gündə əlində</li>
+  </ul>
+  <ul class="flow">
+    <li style="color:var(--amber);font-weight:600">Sifarişlə</li><li class="arrow">·</li>
+    <li>Seç</li><li class="arrow">→</li>
+    <li>Rəng · ölçü · həkk</li><li class="arrow">→</li>
+    <li><b>WhatsApp — «Sifariş et»</b></li><li class="arrow">→</li>
+    <li>Təsdiq</li><li class="arrow">→</li>
+    <li>5–7 gündə hazır</li>
+  </ul>
+  <pre style="margin-top:16px"><i>Düymə vəziyyətə görə iki fərqli mesaj yaradır:</i>
+
+<i># Stokda olan məhsul</i>
+Salam! specialcrafts.store saytından yazıram.
+STOKDA olan məhsulu almaq istəyirəm:
+Təsbeh — «Kəhrəba» (kod: <b>TSB-014</b>) · 65 ₼
+Çatdırılma ünvanı: ________
+
+<i># Sifarişlə hazırlanan məhsul</i>
+Salam! specialcrafts.store saytından yazıram.
+SİFARİŞ vermək istəyirəm:
+Təsbeh — «Kəhrəba» (kod: <b>TSB-014</b>)
+Ölçü: 33 dənə · Rəng: kəhrəba/qızılı · Həkk: ________
+Nə vaxta lazımdır: ________</pre>
+  <h3>İlk 3 ayın ölçüləcək hədəfləri</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Metrika</th><th>Hədəf</th></tr></thead>
+    <tbody>
+      <tr><td>Saytdan başlayan WhatsApp sifarişi</td><td class="num">ayda ≥ 25</td></tr>
+      <tr><td>Instagram bio klikindən keçid</td><td class="num">ayda ≥ 400</td></tr>
+      <tr><td>«təsbeh sifariş», «epoksid hədiyyə» üzrə Google</td><td>ilk səhifə</td></tr>
+      <tr><td>Korporativ / topdan sorğu</td><td class="num">ayda ≥ 2</td></tr>
+      <tr><td>Stokda olan məhsulun rəfdə qalma müddəti</td><td class="num">≤ 14 gün</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="brend">
+  <h2>Brend nə deyir</h2>
+  <p class="sub">Instagram bio-su saytın bütün mesajlaşmasının özəyidir</p>
+  <pre><i>Bio, hərfi:</i>
+
+Unikal əl işləri 💎
+Sifarişlər 5-7 gün öncədən qəbul edilir 📆
+Təsbeh, domino, külqabı, saat və daha çox ✨
+DM ilə əlaqə</pre>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h4>Unikal</h4><p>Hər əşya təkdir, seriya istehsalı deyil. Sayt «tək nüsxə» nişanını hər kartda göstərməlidir.</p></div>
+    <div class="card"><h4>5–7 gün</h4><p>Gecikmə deyil, dəyərdir — açıq yazılır. Stokda hazır olan məhsullar isə bu gözləməni tamamilə keçir.</p></div>
+    <div class="card"><h4>DM ilə əlaqə</h4><p>Hazırkı satış kanalı mesajlaşmadır. Sayt onu əvəz etmir, gücləndirir.</p></div>
+  </div>
+
+  <h3>Kateqoriyalar</h3>
+  <p>Instagram highlight-ları bir struktur təklif edirdi; göndərilən şəkillər isə başqa mənzərə göstərdi. Aşağıda ikisi yan-yana:</p>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Kateqoriya</th><th>Kod</th><th>Highlight-da</th><th>Şəkillərdə</th></tr></thead>
+    <tbody>
+      <tr><td><b>Saat</b></td><td><code>SAT</code></td><td>✓</td><td><b>8 məhsul</b> — kataloqun 44%-i</td></tr>
+      <tr><td><b>Şahmat</b></td><td><code>SHM</code></td><td>✓</td><td>4 məhsul</td></tr>
+      <tr><td><b>Domino</b></td><td><code>DMN</code></td><td>✓</td><td>2 məhsul</td></tr>
+      <tr><td><b>Divar pannosu</b> — xəttatlıq</td><td><code>PNO</code></td><td style="color:var(--amber)">yox idi</td><td><b>2 məhsul — yeni</b></td></tr>
+      <tr><td><b>Açar asılqanı</b></td><td><code>ACR</code></td><td style="color:var(--amber)">yox idi</td><td><b>1 məhsul — yeni</b></td></tr>
+      <tr><td><b>Rəhil</b></td><td><code>RHL</code></td><td style="color:var(--amber)">yox idi</td><td><b>1 məhsul — yeni</b></td></tr>
+      <tr><td>Təsbeh</td><td><code>TSB</code></td><td>✓ bio-nun 1-ci sözü</td><td style="color:var(--sold)">şəkil yoxdur</td></tr>
+      <tr><td>Külqabı</td><td><code>KLQ</code></td><td>✓</td><td style="color:var(--sold)">şəkil yoxdur</td></tr>
+      <tr><td>Güzgü &amp; daraq</td><td><code>GZD</code></td><td>✓</td><td style="color:var(--sold)">şəkil yoxdur</td></tr>
+      <tr><td>Sep &amp; xonça</td><td><code>SPX</code></td><td>✓</td><td style="color:var(--sold)">şəkil yoxdur</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Rəqabət mövqeyi</h3>
+  <p>Azərbaycanda epoksid əl işləri yeni sahədir və əksər satıcı yalnız Instagram və tap.az üzərindən işləyir — öz domeni və düzgün kataloqu olan demək olar ki yoxdur. Üstünlük buradadır:</p>
+  <ul class="tick">
+    <li><b>Google görünürlüyü</b> — «təsbeh sifariş Bakı», «epoksid şahmat», «əl işi hədiyyə» axtarışları</li>
+    <li><b>Təkrar iş azalır</b> — qiymət və ölçü bir dəfə yazılır, hər DM-də təkrarlanmır</li>
+    <li><b>Korporativ sifariş</b> — şirkətlər Instagram profilinə deyil, sayta baxır</li>
+  </ul>
+</section>
+
+<section id="kataloq">
+  <h2>Kataloqun hazırkı vəziyyəti</h2>
+  <p class="sub">21 şəkildən 18 məhsul · 15-i stokda · fayl: <code>content/products.json</code></p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Kateqoriya</th><th>Stokda</th><th>Sifarişlə</th><th>Cəmi</th><th>5-ə çatmaq üçün</th></tr></thead>
+    <tbody>
+      <tr><td>Saat</td><td class="num"><b style="color:var(--stok)">5</b></td><td class="num">3</td><td class="num">8</td><td style="color:var(--stok)">✓ tamam</td></tr>
+      <tr><td>Şahmat</td><td class="num"><b style="color:var(--stok)">4</b></td><td class="num">0</td><td class="num">4</td><td>1 məhsul əskik</td></tr>
+      <tr><td>Domino</td><td class="num"><b style="color:var(--stok)">2</b></td><td class="num">0</td><td class="num">2</td><td>3 məhsul əskik</td></tr>
+      <tr><td>Divar pannosu</td><td class="num"><b style="color:var(--stok)">2</b></td><td class="num">0</td><td class="num">2</td><td>3 məhsul əskik</td></tr>
+      <tr><td>Açar asılqanı</td><td class="num"><b style="color:var(--stok)">1</b></td><td class="num">0</td><td class="num">1</td><td>4 məhsul əskik</td></tr>
+      <tr><td>Rəhil</td><td class="num"><b style="color:var(--stok)">1</b></td><td class="num">0</td><td class="num">1</td><td>4 məhsul əskik</td></tr>
+      <tr><td><b>Cəmi</b></td><td class="num"><b>15</b></td><td class="num"><b>3</b></td><td class="num"><b>18</b></td><td><b>15 məhsul əskik</b></td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:16px">Yalnız saatlarda 5 stok tamamlandı — orada 8 fərqli iş var idi, 5-i stokda, 3-ü «sifarişlə» nümunəsi kimi qeyd olundu. Digər kateqoriyalarda mövcud şəkillərin <b>hamısı</b> stokda işarələndi, amma 5-ə çatmır.</p>
+
+  <h3>Ən vacib tapıntı — kataloq bio ilə uyğun gəlmir</h3>
+  <div class="thesis"><p>Bio «Təsbeh, domino, külqabı, saat» deyir. Şəkillərdə bir dənə də təsbeh yoxdur.</p></div>
+  <p>Kataloqun 44%-i saatdır. Bio-nun birinci sözü olan <b>təsbeh</b>, həmçinin <b>külqabı</b>, <b>güzgü-daraq</b> və <b>sep-xonça</b> üçün heç bir şəkil gəlmədi — halbuki hər birinin öz Instagram highlight-ı var. Əvəzində planda olmayan üç kateqoriya çıxdı:</p>
+  <div class="grid g3">
+    <div class="card"><h4>Divar pannosu — xəttatlıq</h4><p>Ayətəl-Kürsi və Kəlmeyi-şəhadət pannoları. Highlight-larda yox idi, amma Azərbaycan bazarında ən yüksək çekli hədiyyə seqmentlərindən biridir.</p></div>
+    <div class="card"><h4>Açar asılqanı</h4><p>Ucuz giriş məhsulu — ilk alış üçün ideal, «sınamaq» maneəsini aşağı salır.</p></div>
+    <div class="card"><h4>Rəhil</h4><p>Dini hədiyyə seqmenti. Panno ilə birlikdə dəst kimi satıla bilər.</p></div>
+  </div>
+  <p style="margin-top:18px">Sayt bu gün açılsa, Instagram-dan gələn ziyarətçi vəd ediləni tapmayacaq. İki yoldan biri seçilməlidir: ya təsbeh və külqabı şəkilləri əlavə olunur, ya da sayt strukturu real çeşidə uyğunlaşdırılır.</p>
+
+  <h3>İşlənməyən 3 şəkil</h3>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Fayl</th><th>Problem</th></tr></thead>
+    <tbody>
+      <tr><td><code>SU-NISANLI-Moscou-nane-saat.jpg</code></td><td>Üzərində <b>başqasının su nişanı</b> («Moscou») və ekran görüntüsü haşiyəsi var. Öz işiniz deyilsə sayta qoyula bilməz</td></tr>
+      <tr><td><code>DUBLIKAT-SHM-001-ile-eyni.jpg</code></td><td><code>SHM-001</code> ilə eyni fayl — md5 üst-üstə düşür</td></tr>
+      <tr><td><code>SHM-003-1.jpg</code></td><td><b>360×360 px</b> — kataloq üçün çox kiçik, yenidən çəkilməlidir</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="tick" style="margin-top:18px">
+    <li><b>SHM-004</b> şəklində Galatasaray emblemi var. Klub loqoları ticarət nişanıdır — saytda açıq göstərmək DM-dən fərqli risk yaradır. Kataloqda «Klub temalı şahmat — fərdi komanda rəngləri ilə» kimi yazdım</li>
+    <li><b>SAT-002</b> üçün iki şəkil bir məhsula aid sayıldı (biri yaxın plan) — təsdiq lazımdır</li>
+    <li><b>SAT-004</b> zəif işıqda çəkilib, yenidən çəkilməlidir</li>
+    <li><b>RHL-001</b> — məhsulun dəqiq adı təsdiqlənməlidir</li>
+    <li><b>Qiymətlər</b> bütün 18 məhsulda boşdur — kataloqun işə düşməsi üçün qalan yeganə kritik boşluq</li>
+  </ul>
+
+  <h3>Loqo</h3>
+  <p><code>assets/logo/special-crafts-logo.jpg</code> — 1080×1080. Dairəvi möhür: krem fon, qara serif «SPECIAL CRAFTS / BY SEMEDOVA», ortada bir-birinə uzanan iki əl və ulduzlar. İki qeyd:</p>
+  <ul class="tick">
+    <li>Üst yazıda <b>«HANDCRAFTS AZERBAIJANN»</b> — sonda iki N var. Sayta qoyulmazdan əvvəl düzəldilməlidir</li>
+    <li>Fayl <b>JPG</b>-dir, fonu şəffaf deyil. Sayt üçün şəffaf fonlu PNG və ya SVG lazımdır</li>
+  </ul>
+</section>
+
+<section id="xerite">
+  <h2>Sayt xəritəsi</h2>
+  <p class="sub">1-ci faza: 15 səhifə, yalnız Azərbaycan dilində</p>
+<pre><b>/</b>                        Ana səhifə
+<b>/kataloq</b>                 Bütün məhsullar + filtr
+  ├ ?stok=var              <i>Stokda olanlar — Instagram story linki</i>
+  ├ ?stok=sifarisle        <i>Sifarişlə hazırlananlar</i>
+  ├ /kataloq/tesbeh        Təsbeh
+  ├ /kataloq/domino        Domino
+  ├ /kataloq/sahmat        Şahmat
+  ├ /kataloq/kulqabi       Külqabı
+  ├ /kataloq/saat          Saat
+  ├ /kataloq/guzgu-daraq   Güzgü &amp; daraq dəsti
+  ├ /kataloq/sep-xonca     Sep &amp; xonça
+  └ /kataloq/diger         Digər işlər
+<b>/mehsul/[kod]</b>            Məhsul detalı   <i>məs. /mehsul/tsb-014</i>
+<b>/ferdi-sifaris</b>           Fərdi sifariş — necə işləyir
+<b>/korporativ</b>              Korporativ və topdan hədiyyələr
+<b>/haqqimizda</b>              Usta, atelye, sərgilər
+<b>/qaydalar</b>                Çatdırılma, ödəniş, qulluq təlimatı
+<b>/elaqe</b>                   Əlaqə</pre>
+  <div class="grid g2" style="margin-top:18px">
+    <div class="card"><h4>Menyu</h4><p>Kataloq · Fərdi sifariş · Korporativ · Haqqımızda · Əlaqə. «Qaydalar» yalnız footer-də.</p></div>
+    <div class="card"><h4>Dil</h4><p>1-ci faza yalnız AZ. Rus dili 2-ci fazada <code>/ru/…</code> — Bakı bazarının nəzərəçarpan hissəsi rusdillidir. İngilis dili yalnız real xarici sifariş olarsa.</p></div>
+  </div>
+</section>
+
+<section id="mezmun">
+  <h2>Səhifə məzmunu</h2>
+  <p class="sub">Ana səhifənin sıralaması və məhsul səhifəsinin anatomiyası</p>
+
+  <h3>Ana səhifə — yuxarıdan aşağı</h3>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Blok</th><th>Nə edir</th></tr></thead>
+    <tbody>
+      <tr><td><b>Hero</b></td><td>Tünd fon, bir böyük məhsul şəkli. «Unikal əl işləri» + «Kataloqa bax» / «WhatsApp-da yaz»</td></tr>
+      <tr><td><b>Kateqoriya şəbəkəsi</b></td><td>8 kart. Saytın ən vacib blokudur — trafikin əsas hissəsi buradan bölünür</td></tr>
+      <tr><td><b style="color:var(--stok)">Stokda hazır</b></td><td>«Dərhal göndərilir» — 4–6 kart, yaşıl nişan və qiymət, «Hamısına bax →». <b>Kateqoriyalardan dərhal sonra gəlir</b>, çünki gözləmə etirazını aradan qaldıran yeganə bölmədir. Stok boşdursa blok avtomatik gizlənir</td></tr>
+      <tr><td><b>Seçilmiş işlər</b></td><td>6–8 məhsul, üfüqi sürüşən lent, qarışıq vəziyyətlər</td></tr>
+      <tr><td><b>Necə işləyir</b></td><td>İki sütun yan-yana — <b style="color:var(--stok)">Stokda var:</b> Seç → Yaz → 1–2 gündə əlində · <b style="color:var(--amber)">Sifarişlə:</b> Seç → Yaz → Təsdiqlə → 5–7 gün</td></tr>
+      <tr><td><b>Atelyedən</b></td><td>Töküm və cilalama fotoları — əl işi olduğunun sübutu</td></tr>
+      <tr><td><b>Hədiyyə paketləməsi</b></td><td>«Hədiyyəlik» qərarını asanlaşdırır — satışa birbaşa dəyər qatır</td></tr>
+      <tr><td><b>Sərgilər</b></td><td>Festival fotoları + «5 900+ izləyici» sosial sübutu</td></tr>
+      <tr><td><b>CTA zolağı + footer</b></td><td>WhatsApp · Instagram · telefon</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Kataloq</h3>
+  <ul class="tick">
+    <li><b>Üç tab:</b> «Hamısı» · «Stokda var» · «Sifarişlə». URL-də saxlanır (<code>/kataloq?stok=var</code>) ki, Instagram story-də birbaşa link verilə bilsin</li>
+    <li><b>Standart sıralama:</b> stokda olanlar əvvəl → sonra yeni → sonra qiymət. Ən sürətli konversiyanı aşağıda gizlətmək mənasızdır</li>
+    <li><b>Filtrlər:</b> vəziyyət · kateqoriya · rəng ailəsi · qiymət aralığı</li>
+    <li><b>«Satılıb» kartı silinmir</b> — 55% şəffaflıqda qalır, klik olunur, düyməsi «Bənzərini sifariş et» olur</li>
+    <li><b>Boş stok halı:</b> «Hazırda stokda iş yoxdur — sifarişlə 5–7 günə hazırlayırıq»</li>
+  </ul>
+
+  <h3>Məhsul detalı — saytın ən vacib səhifəsi</h3>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Blok</th><th>Məzmun</th></tr></thead>
+    <tbody>
+      <tr><td>Qalereya</td><td>3–6 şəkil, zoom. Ən azı biri əldə/masada <b>miqyas</b> göstərsin</td></tr>
+      <tr><td>Başlıq</td><td>Ad + kod — «Təsbeh — Kəhrəba», <code>TSB-014</code></td></tr>
+      <tr><td>Qiymət</td><td>Rəqəmlə: <b>65 ₼</b>. Bilinmirsə «Ölçüyə görə — 45 ₼-dən»</td></tr>
+      <tr><td><b>Vəziyyət zolağı</b></td><td>Qiymətin dərhal altında, ən görünən yerdə: <b style="color:var(--stok)">Stokda var — 1–2 gün</b> · <b style="color:var(--amber)">Sifarişlə — 5–7 iş günü</b> · <b style="color:var(--sold)">Satılıb</b></td></tr>
+      <tr><td>Xüsusiyyətlər</td><td>Material, ölçü (mm), çəki, dənə sayı, ağac növü</td></tr>
+      <tr><td>Fərdiləşdirmə</td><td><b>Yalnız «sifarişlə» məhsullarda:</b> rəng nöqtələri, ölçü variantı, həkk mətni. Stokda olan əşya artıq hazırdır — seçim təklif etmək yanlış gözlənti yaradır, ona görə blok gizlənir və yerinə «Bu rəngdə fərdi hazırlanmasını istəyirsiniz? →» linki qoyulur</td></tr>
+      <tr><td><b>Sifariş düyməsi</b></td><td><b>WhatsApp — kod, vəziyyət və seçimlər avtomatik doldurulmuş.</b> Mətn dəyişir: «Al — stokda var» / «Sifariş et» / «Bənzərini sifariş et»</td></tr>
+      <tr><td>Etibar sətri</td><td>Əl işi · Tək nüsxə · Hədiyyə qutusu daxildir · Bakıdaxili çatdırılma</td></tr>
+      <tr><td>Satıldıqda</td><td>Səhifə <b>silinmir</b>, «Satılıb» halına keçir — Google mövqeyi və Instagram-dakı köhnə linklər qorunur, ziyarətçi sifariş axınına yönləndirilir</td></tr>
+      <tr><td>Aşağıda</td><td>«Bənzər işlər» — eyni kateqoriyadan 4 məhsul</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Digər səhifələr</h3>
+  <div class="grid g2">
+    <div class="card"><h4>Fərdi sifariş</h4><p>Addım-addım izah + real nümunə (müştəri ideyası → hazır iş). Sorğu forması: ad, əlaqə, məhsul növü, rəng, tarix, ideya, referans şəkil yükləmə.</p></div>
+    <div class="card"><h4>Korporativ</h4><p>Logo həkki, korporativ rənglər, 10+ dəst, faktura. Az əməklə ən yüksək orta çeki gətirən kanal — buraxılmamalıdır.</p></div>
+    <div class="card"><h4>Haqqımızda</h4><p>Ustanın hekayəsi, atelye fotoları, sərgi iştirakları, «niyə epoksid» qısa mətni.</p></div>
+    <div class="card"><h4>Qaydalar</h4><p>Çatdırılma (Bakı / rayon / Azərpoçt), ödəniş üsulları, <b>epoksid qulluq təlimatı</b>, dəyişdirmə şərtləri.</p></div>
+  </div>
+</section>
+
+<section id="model">
+  <h2>Məhsul məlumat modeli</h2>
+  <p class="sub">Bir kod — üç yerdə eyni dil</p>
+  <p>Məhsul kodu eyni anda <b>şəkil faylının adı</b>, <b>WhatsApp mesajındakı istinad</b> və <b>Instagram post-unda yazılan istinaddır</b>. Bir dəfə təyin olunur, hər yerdə işləyir.</p>
+<pre>{
+  "kod": <b>"TSB-014"</b>,
+  "ad": "Təsbeh — Kəhrəba",
+  "kateqoriya": "tesbeh",
+  "qiymet": 65,
+  "valyuta": "AZN",
+  "teksNusxe": true,
+
+  <b>"stok": "var",</b>              <i>// "var" | "sifarisle" | "satilib"</i>
+  <b>"stokSayi": 1,</b>              <i>// "var" halında neçə ədəd qalıb</i>
+  "hazirliqGunu": null,       <i>// "sifarisle" halında "5-7", stokda null</i>
+  "catdirilmaGunu": "1-2",    <i>// stokda olan üçün</i>
+  "satilibTarixi": null,
+  "material": ["Epoksid qatran", "Qoz ağacı"],
+  "olcu": { "dene": 33, "boncukMm": 10, "uzunlukMm": 340 },
+  "rengAilesi": ["kehreba", "qizili"],
+  "rengSecimleri": ["Kəhrəba", "Okean", "Qara-qızılı"],  <i>// yalnız sifarişlə</i>
+  "hekkMumkun": true,                                    <i>// yalnız sifarişlə</i>
+  "sekiller": ["/assets/products/tesbeh/tsb-014-1.webp", …],
+  "tesvir": "Qoz ağacı və kəhrəba rəngli qatranla əl ilə tökülüb…",
+  "aktiv": true
+}</pre>
+
+  <h3>Stok idarəsi — layihənin yeganə davamlı öhdəliyi</h3>
+  <p>Stokda olan məhsulların əksəriyyəti <b>tək nüsxədir</b>. Ən pis ssenari: müştəri artıq satılmış əşyanı sifariş edir. Riskləri belə bağlayırıq:</p>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Risk</th><th>Həll</th></tr></thead>
+    <tbody>
+      <tr><td>Satılmış əşya saytda qalır</td><td>Sifariş WhatsApp-dan keçdiyi üçün <b>hər zaman insan təsdiqi var</b> — səhv bağlanmadan tutulur</td></tr>
+      <tr><td>Statusu yeniləmək unudulur</td><td>Faza 1-də stok siyahısı qısa saxlanır (10–15 məhsul). Faza 2-də CMS-də bir kliklə dəyişir</td></tr>
+      <tr><td>Eyni məhsuldan 2 ədəd var</td><td><code>stokSayi</code> sahəsi — 0-a düşəndə status avtomatik <code>satilib</code> olur</td></tr>
+      <tr><td>Instagram-da satılır, saytda qalır</td><td><b>Bir qayda:</b> əşya harada satılırsa satılsın, dərhal <code>stokSayi</code> azaldılır. Gündəlik ~30 saniyəlik əməliyyatdır</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:16px;font-size:14px;color:var(--ink-muted)">Faza 1-də praktiki tövsiyə: bütün stok bir <code>stok.json</code> faylında saxlanılsın, dəyişiklik bir sətir redaktəsi olsun. Mürəkkəb anbar sistemi bu ölçüdə biznesə lazım deyil və istifadə olunmayacaq.</p>
+</section>
+
+<section id="stek">
+  <h2>Texniki stek</h2>
+  <p class="sub">Next.js 15 · Tailwind CSS 4 · Vercel</p>
+  <div class="tw"><table class="plain">
+    <thead><tr><th>Qərar</th><th>Seçim</th><th>Səbəb</th></tr></thead>
+    <tbody>
+      <tr><td>Framework</td><td><b>Next.js 15</b> (App Router, statik)</td><td>SEO, şəkil optimizasiyası, pulsuz hosting</td></tr>
+      <tr><td>Stil</td><td>Tailwind CSS 4</td><td>Sürət, dizayn sisteminin token kimi saxlanması</td></tr>
+      <tr><td>Şəkil</td><td><code>next/image</code> + WebP/AVIF</td><td>Yavaş mobil internet üçün kritik</td></tr>
+      <tr><td>Məzmun</td><td>Faza 1: JSON · Faza 2: Sanity CMS</td><td>Əvvəl sadəlik, sonra usta özü idarə etsin</td></tr>
+      <tr><td>Hosting</td><td>Vercel Hobby (pulsuz)</td><td>Domen bağlanır, SSL avtomatik</td></tr>
+      <tr><td>Form</td><td>Resend + WhatsApp deep link</td><td>Ayrıca server lazım deyil</td></tr>
+      <tr><td>Ödəniş <i>(Faza 3)</i></td><td><b>Epoint.az</b> — <i>əvvəlcə yalnız stokda olanlar üçün</i></td><td>Lisenziyalı, Kapital Bank dəstəkli, Apple/Google Pay var. Stokda olan əşyanın qiyməti sabitdir və dərhal göndərilir — onlayn ödəniş məhz burada məna kəsb edir</td></tr>
+    </tbody>
+  </table></div>
+  <div class="grid g3" style="margin-top:18px">
+    <div class="card"><h4>Nə üçün Shopify yox</h4><p>Aylıq abunə valyutada, AZN ödənişi ilə əlavə problem, kiçik və unikal kataloq üçün artıqdır. Sifariş axını onsuz da WhatsApp-dır.</p></div>
+    <div class="card"><h4>Nə üçün sadə HTML yox</h4><p>Kataloq tez-tez dəyişəcək; filtr, SEO və şəkil optimizasiyası lazımdır.</p></div>
+    <div class="card"><h4>Performans hədəfi</h4><p>LCP &lt; 2,5 s (4G), Lighthouse ≥ 90. Trafikin ~85%-i mobil olacaq — <b>mobil əvvəl dizayn məcburidir</b>.</p></div>
+  </div>
+
+  <h3>SEO</h3>
+  <ul class="tick">
+    <li><b>Açar sözlər:</b> təsbeh sifariş Bakı · epoksid təsbeh · əl işi hədiyyə · epoksid şahmat · unikal hədiyyə Bakı · korporativ hədiyyə Azərbaycan</li>
+    <li><b>Schema.org:</b> hər məhsulda <code>Product</code> + <code>Offer</code> JSON-LD → Google-da qiymət və şəkil görünür; ana səhifədə <code>LocalBusiness</code></li>
+    <li><b>URL-lər ASCII:</b> <code>/mehsul/tsb-014</code> — diakritiksiz, paylaşımda pozulmasın</li>
+    <li><b>Məzmun aktivləri:</b> 4–6 qısa yazı — «Təsbeh necə seçilir», «Epoksid işlərə qulluq», «Toy xonçası üçün fikirlər»</li>
+  </ul>
+</section>
+
+<section id="sekil">
+  <h2>Şəkil axını</h2>
+  <p class="sub">Telegram → <code>_INBOX/</code> → kateqoriyalar</p>
+  <p>Qovluq strukturu artıq hazırdır. Siz Telegram-dakı bütün şəkilləri <code>_INBOX/</code>-a atırsınız — ad, sıra, format fərqi yoxdur. Qalanını mən görürəm: tanıma, kateqoriyaya bölmə, <code>TSB-014-1.webp</code> formatında adlandırma, dublikat təmizləmə, JSON qeydi.</p>
+<pre>assets/
+├── <b>_INBOX/</b>              <i>← Telegram şəkillərini BURA atın</i>
+├── <b>logo/</b>                <i>← SVG ideal, yoxdursa ən böyük PNG</i>
+├── products/
+│   ├── tesbeh/   domino/   sahmat/   kulqabi/
+│   └── saat/     guzgu-daraq/   sep-xonca/   diger/
+├── packaging/            <i>hədiyyə paketləməsi</i>
+└── brend/
+    ├── sergi/            <i>sərgi və festival</i>
+    ├── atelye/           <i>iş yeri</i>
+    └── proses/           <i>töküm, cilalama — video da olar</i></pre>
+  <h3>Şəkil tövsiyələri</h3>
+  <ul class="tick">
+    <li>Ən azı <b>1200 px</b> eni</li>
+    <li>Kataloq kartları üçün <b>kvadrat 1:1</b> kadr ən yaxşısıdır</li>
+    <li>Hər məhsulun bir şəklində <b>miqyas</b> görünsün — əldə, masada</li>
+    <li>Eyni kateqoriyada oxşar fon və işıq → kataloq peşəkar görünür</li>
+  </ul>
+  <p style="margin-top:16px;color:var(--ink-muted);font-size:14px">Sizdən yalnız <b>qiymətlər və ölçülər</b> lazımdır — sadə siyahı halında kifayətdir.</p>
+</section>
+
+<section id="faza">
+  <h2>Mərhələlər</h2>
+  <p class="sub">Hər faza öz-özlüyündə işlək nəticə verir</p>
+  <ol class="phases">
+    <li>
+      <span class="n">1</span>
+      <div>
+        <h4>MVP kataloq</h4>
+        <p class="when">≈ 1–2 həftə</p>
+        <p>Dizayn sistemi · Ana səhifə · <b>«Stokda hazır» bölməsi</b> · Kataloq + vəziyyət filtri · Məhsul detalı (üç vəziyyət halı) · Haqqımızda · Qaydalar · Əlaqə · WhatsApp sifariş axını (vəziyyətə görə fərqli mesaj) · SEO · Vercel + domen.<br><b>Nəticə:</b> Instagram bio-suna qoyula bilən işlək sayt.</p>
+      </div>
+    </li>
+    <li>
+      <span class="n">2</span>
+      <div>
+        <h4>İdarəetmə və böyümə</h4>
+        <p class="when">≈ 1 həftə</p>
+        <p>Sanity CMS — usta özü məhsul əlavə edir və <b>stok statusunu bir kliklə dəyişir</b> · Fərdi sifariş forması · Korporativ səhifə · Rus dili · Bloq · Instagram feed inteqrasiyası.</p>
+      </div>
+    </li>
+    <li>
+      <span class="n">3</span>
+      <div>
+        <h4>Onlayn ödəniş</h4>
+        <p class="when">tələb sübut olunanda</p>
+        <p><b>Yalnız stokda olan məhsullar üçün</b> səbət + Epoint.az ödənişi · Sifariş izləmə · Kupon və endirim · avtomatik stok azaltma.<br>Sifarişlə hazırlananlar bu fazada da WhatsApp axınında qalır — qiymət fərdiləşdirmədən asılıdır.</p>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section id="sual">
+  <h2>Açıq suallar</h2>
+  <p class="sub">Cavabsız qalsa da Faza 1 başlaya bilər — qiymət sahələri müvəqqəti «Sifarişlə» qalar</p>
+  <ol class="q">
+    <li><b>Qiymətlər</b> — hər kateqoriya üçün aralıq, və ya məhsul-məhsul siyahı</li>
+    <li><b>«Sepler; klonlar»</b> highlight-ı dəqiq nə deməkdir? Kateqoriya adı buna görə yazılacaq</li>
+    <li><b>WhatsApp nömrəsi</b> — <code>wa.me/9940506169987</code> bir rəqəm artıq görünür. Düzgün nömrə?</li>
+    <li><b>Stok həcmi</b> — hazırda təxminən neçə hazır məhsul var və hansı kateqoriyalarda? «Stokda hazır» blokunun saytda nə qədər yer tutacağını bu müəyyən edir</li>
+    <li><b>Stok yenilənməsi</b> — məhsul Instagram-dan satılanda saytda statusu kim və nə vaxt dəyişəcək? Gündə bir dəfə kifayətdir, amma qayda olmalıdır</li>
+    <li><b>Çatdırılma</b> — Bakıdaxili qiymət? Rayonlara necə göndərilir? Stokda olan üçün 1–2 gün realdırmı?</li>
+    <li><b>Ödəniş</b> — hazırda necə alınır: nağd, kart köçürməsi, m10?</li>
+    <li><b>Hüquqi status</b> — VÖEN / fərdi sahibkar varmı? Epoint və korporativ faktura üçün lazımdır</li>
+    <li><b>Logo</b> — fayl hansı formatdadır? SVG varsa ideal</li>
+    <li><b>TikTok</b> — izləyici sayı və orada fərqli məzmun varmı?</li>
+  </ol>
+</section>
+
+<section id="prompt">
+  <h2>Claude Design promptu</h2>
+  <p class="sub">Kopyalayıb <code>/design</code> ilə verin</p>
+
+  <h3>Təklif olunan palitra</h3>
+  <ul class="pal">
+    <li><div class="chip" style="background:#EDE7DE"></div><span class="nm">Fon (krem)</span><span class="hx">#EDE7DE</span></li>
+    <li><div class="chip" style="background:#F7F3ED"></div><span class="nm">Kart</span><span class="hx">#F7F3ED</span></li>
+    <li><div class="chip" style="background:#1A1714"></div><span class="nm">Mətn</span><span class="hx">#1A1714</span></li>
+    <li><div class="chip" style="background:#1F6B5B"></div><span class="nm">Zümrüd — CTA</span><span class="hx">#1F6B5B</span></li>
+    <li><div class="chip" style="background:#A98237"></div><span class="nm">Antik qızıl</span><span class="hx">#A98237</span></li>
+    <li><div class="chip" style="background:#171412"></div><span class="nm">Panno fonu</span><span class="hx">#171412</span></li>
+    <li><div class="chip" style="background:#3E7D5A"></div><span class="nm">Stokda var</span><span class="hx">#3E7D5A</span></li>
+    <li><div class="chip" style="background:#8B8177"></div><span class="nm">Satılıb</span><span class="hx">#8B8177</span></li>
+  </ul>
+  <div class="thesis" style="margin:18px 0 0"><p>Loqonu və məhsulları gördükdən sonra istiqamət dəyişdi: tünd yox, krem.</p></div>
+  <p style="margin-top:16px">Əvvəlki plan tünd firuzəyi «resin qalereyası» təklif edirdi. Loqo isə <b>krem fonda qara serifdir</b>, məhsulların əksəriyyəti də (saatlar, pannolar, açar asılqanı) <b>ağ-krem mərmər + qızıl damar</b> rəngindədir — tünd fonda bu işlər «yanmır», boz görünür. Yalnız şahmat və domino dərin tonlardadır.</p>
+  <p><b>Zümrüd</b> əsas hərəkət rəngidir — şahmat lövhəsindən gəlir və WhatsApp yaşılına yaxın olduğu üçün sifariş düyməsi təbii oxunur. <b>Antik qızıl</b> yalnız incə detal və nişan üçün; parlaq qızıl krem fonda oxunmur. <b>Tünd fon</b> yalnız iki yerdə qalır: xəttatlıq pannoları bölməsi və footer. Başlıq şrifti <b>Playfair Display</b> (loqodakı serifə uyğun), mətn <b>Inter</b> — hər ikisi <b>ə ğ ı ö ş ü ç</b> hərflərini dəstəkləyir.</p>
+
+  <h3>Hazır prompt</h3>
+  <div class="copybar">
+    <span style="font-size:13px;color:var(--ink-faint)">8 artboard · dizayn sistemi, desktop və mobil, üç vəziyyət halı</span>
+    <button class="copy" id="cp" type="button">Promptu kopyala</button>
+  </div>
+  <pre class="promptbox" id="pbox">/design
+
+<b>specialcrafts.store</b> — Azərbaycanda epoksid qatran (resin) əl işləri satan brendin saytı üçün tam dizayn kanvası hazırla. Bütün mətnlər Azərbaycan dilində olmalıdır.
+
+<b>BREND.</b> special crafts (usta: By Semedova, Instagram @special__crafts, ~6 000 izləyici). Epoksid qatrandan divar saatları, şahmat və domino dəstləri, xəttatlıq pannoları, açar asılqanları və rəhillər hazırlayır. Hər əşya əl ilə tökülür və tək nüsxədir.
+<b>Loqo:</b> dairəvi möhür — krem fonda qara serif «SPECIAL CRAFTS / BY SEMEDOVA», ortada bir-birinə uzanan iki əlin nazik xətt təsviri. Bütün dizayn bu loqodan çıxış etməlidir.
+<b>Real kataloq (18 məhsul, 6 kateqoriya):</b> Saat (8) · Şahmat (4) · Domino (2) · Divar pannosu — xəttatlıq (2) · Açar asılqanı (1) · Rəhil (1). Məhsulların əksəriyyəti ağ-krem mərmər + qızıl damar rəngindədir; şahmat və domino isə dərin zümrüd və gecə mavisidir.
+Sayt onlayn mağaza deyil — sifarişə çevirən kataloqdur. Əsas hərəkət: məhsuldan → WhatsApp. «Səbətə at» düyməsi YOXDUR.
+
+<b>ƏN VACİB QAYDA — ÜÇ MƏHSUL VƏZİYYƏTİ.</b>
+Kataloqda iki cür məhsul var və dizayn bunları hər yerdə açıq şəkildə ayırmalıdır:
+  • <b>Stokda var</b> — dolu yaşıl nöqtə + mətn, #3E7D5A, «Stokda var — 1–2 gün ərzində çatdırılır»
+  • <b>Sifarişlə</b> — antik qızıl dairə konturu + mətn, #A98237, «Sifarişlə hazırlanır — 5–7 iş günü»
+  • <b>Satılıb</b> — boz nöqtə, #8B8177, «Satılıb — bənzərini sifarişlə hazırlayırıq»
+Bu nişan hər məhsul kartında, hər məhsul səhifəsində qiymətin dərhal altında və kataloq filtrində görünür. Gözləmə müddəti alıcının ən böyük etirazıdır — stokda olan məhsul bu etirazı aradan qaldırır, ona görə onlar saytda ön plandadır və standart sıralamada birinci gəlir.
+Sifariş düyməsinin mətni də vəziyyətə görə dəyişir: «Al — stokda var» / «Sifariş et» / «Bənzərini sifariş et».
+
+<b>SƏNƏT İSTİQAMƏTİ.</b> Zərgərlik qalereyası, elan saytı yox. Epoksid qatranın öz təbiətini əks etdir: dərinlik, şəffaflıq, parıltı, ağac ilə kontrast. Tünd, sakit, bahalı. Məhsul şəkilləri tünd fonda daş kimi işıqlanır. Səxavətli boşluq, az sayda böyük element, vizual səs-küy yoxdur.
+Qaçmalı: parlaq banner, endirim stikeri, gradient düymələr, stok ikon dəstləri, dolu kartlar.
+
+<b>PALİTRA</b> (AÇIQ, krem rejim əsasdır — loqo krem fonda qara serifdir və məhsulların əksəriyyəti ağ-qızılı mərmərdir; tünd sayt bu işləri boz göstərir).
+Fon (isti krem) #EDE7DE · Səth/kart #F7F3ED · Kənar xətt #DCD3C6 · Əsas mətn (isti qara) #1A1714 · İkinci mətn #6B635A · Zümrüd (əsas hərəkət) #1F6B5B · Antik qızıl (detal, nişan) #A98237 · Dərin fon (yalnız panno bölməsi və footer) #171412 · Stokda var #3E7D5A · Satılıb #8B8177.
+Zümrüd = əsas hərəkət rəngi (şahmat lövhəsindən gəlir, WhatsApp yaşılına yaxındır). Antik qızıl = yalnız incə detal və nişan; parlaq qızıl (#C9A227) krem fonda oxunmur, işlətmə. Tünd fon yalnız iki yerdə: xəttatlıq pannoları bölməsi və footer.
+
+<b>TİPOQRAFİYA.</b> Başlıqlar: Playfair Display (və ya Cormorant Garamond), zərif serif. Mətn və interfeys: Inter, 16 px, 1.6 sətir hündürlüyü.
+MƏCBURİ: şriftlər Azərbaycan hərflərini tam dəstəkləməlidir. Hər artboard-da bu sınaq sətrini göstər:
+  Ə ə Ğ ğ İ ı Ö ö Ş ş Ü ü Ç ç — «Unikal əl işləri»
+Hərflər düzgün görünmürsə şrifti dəyiş. Məhsul kodları (TSB-014) monospace və ya letter-spacing artırılmış.
+
+<b>FORMA DİLİ.</b> Künc radiusu 12–16 px, kartlarda 1 px #DCD3C6 kənar, kölgə çox yumşaq və isti tonda. Loqo dairəvi olduğu üçün bir-iki yerdə dairə motivi təkrarlana bilər (kateqoriya nişanı, bölmə ayırıcısı) — həddindən artıq yox. Şəkillər kvadrat 1:1. Bütün şəkil yerlərini [ŞƏKİL: təsbeh — kəhrəba, tünd fon] kimi işarələnmiş yer tutucularla göstər.
+
+<b>ARTBOARD-LAR.</b>
+
+<b>1 — Dizayn sistemi (1440 × 1700)</b>
+Rəng nümunələri HEX ilə, tipografiya şkalası, düymələr (əsas / ikinci / WhatsApp yaşılı), form sahələri, filtr çipi.
+Üç vəziyyət nişanı yan-yana («Stokda var» / «Sifarişlə · 5–7 gün» / «Satılıb») və digər nişanlar («Tək nüsxə», «Əl işi»).
+Məhsul kartının üç halı yan-yana: stokda (normal), sifarişlə (normal), satılıb (kart 55% şəffaflıqda, diaqonal lent yox — sadəcə soluqluq və nişan).
+
+<b>2 — Ana səhifə, desktop (1440 × 4400)</b>
+1) Yapışqan başlıq: logo · Kataloq · Fərdi sifariş · Korporativ · Haqqımızda · Əlaqə · sağda WhatsApp düyməsi.
+2) Hero — tam enli tünd fon, bir böyük məhsul şəkli. Başlıq «Unikal əl işləri», alt mətn «Hər biri əllə tökülür, təkrarlanmır.» Düymələr: «Kataloqa bax» + «Stokda olanlar».
+3) Kateqoriya şəbəkəsi — 6 kart, 3×2: Saat · Şahmat · Domino · Divar pannosu · Açar asılqanı · Rəhil. (Təsbeh və külqabı şəkillər gələndə əlavə olunacaq — indi boş kateqoriya göstərmə.)
+4) <b>«Stokda hazır — dərhal göndərilir»</b> — 4–6 məhsul kartı, hər birində yaşıl «Stokda var» nişanı və qiymət. Başlığın sağında «Hamısına bax →». Bu blok kateqoriyalardan dərhal sonra gəlir və vizual olaraq seçilir (fon bir ton açıq, #1B292D).
+5) «Seçilmiş işlər» — 6 məhsul, üfüqi sürüşən lent, qarışıq vəziyyətlər.
+6) «Necə işləyir» — iki sütun yan-yana: solda yaşıl başlıqlı «Stokda var» (Seç → Yaz → 1–2 gündə əlində), sağda kəhrəba başlıqlı «Sifarişlə» (Seç → Yaz → Təsdiqlə → 5–7 gündə hazır).
+7) «Atelyedən» — 3 proses fotosu, asimmetrik yerləşim.
+8) «Hədiyyə paketləməsi» — geniş şəkil + qısa mətn.
+9) «Sərgilər» — 3 foto + «5 900+ izləyici» sosial sübutu.
+10) Sifariş CTA zolağı (tünd #171412 fonlu) + footer.
+
+<b>3 — Kataloq, desktop (1440 × 2500)</b>
+Yuxarıda üç tab: «Hamısı» · «Stokda var» · «Sifarişlə» (aktiv tab firuzəyi altxətt ilə), sağında sıralama və nəticə sayı.
+Solda filtr paneli: vəziyyət, kateqoriya, rəng ailəsi, qiymət aralığı.
+Sağda 3 sütunlu şəbəkə, 9–12 kart — içində ən azı 5 «stokda var», 5 «sifarişlə» və 1 «satılıb» kart olsun ki, üç halın bir arada necə göründüyü aydın olsun. Stokda olanlar birinci sıralanıb.
+Kartda: şəkil · vəziyyət nişanı · ad · kod · qiymət · «Tək nüsxə».
+
+<b>4 — Məhsul detalı «SİFARİŞLƏ», desktop (1440 × 2600)</b>
+Solda qalereya (böyük şəkil + 4 kiçik), sağda: başlıq ««Okean» firuzəyi divar saatı» · kod SAT-006 · qiymət 190 ₼ · qızılı vəziyyət zolağı «Sifarişlə hazırlanır — 5–7 iş günü» · qısa təsvir · rəng seçimi (dairəvi nöqtələr: Okean firuzəyi / Ağ-qızılı / Bej mərmər) · ölçü seçimi (Ø40 sm / Ø50 sm) · rəqəm tipi (roma / ərəb) · böyük «Sifariş et» düyməsi (zümrüd) · altında incə mətn «WhatsApp açılır, mesaj avtomatik doldurulur» · xüsusiyyətlər cədvəli (material, diametr, çəki, mexanizm, hazırlıq müddəti) · etibar sətri: Əl işi · Tək nüsxə · Hədiyyə qutusu daxildir · Bakıdaxili çatdırılma. Aşağıda «Bənzər işlər» — 4 kart.
+
+<b>5 — Məhsul detalı «STOKDA VAR» + «SATILIB», desktop (1440 × 1800)</b>
+Eyni səhifə şablonu, amma yalnız sağ sütun iki dəfə yan-yana göstərilsin ki, fərq aydın olsun:
+— Solda: stokda var halı — yaşıl vəziyyət zolağı «Stokda var — 1–2 gün ərzində çatdırılır», rəng/ölçü/həkk seçimləri YOXDUR (əşya artıq hazırdır), onların yerinə incə link «Bu rəngdə fərdi hazırlanmasını istəyirsiniz? →», düymə mətni «Al — stokda var», əlavə sətir «Son 1 ədəd». Nümunə məhsul: ««Zümrüd» şahmat dəsti», kod SHM-001.
+— Sağda: satılıb halı — boz vəziyyət zolağı «Satılıb», qiymət üstündən xətt çəkilmiş, düymə «Bənzərini sifariş et» (ikinci dərəcəli üslub), altında «Bu iş tək nüsxə idi. Oxşarını 5–7 gün ərzində hazırlaya bilərik.»
+
+<b>6 — Ana səhifə, mobil (390 × 3800)</b>
+Eyni bölmələr, tək sütun. «Stokda hazır» bölməsi üfüqi sürüşən lent. Kateqoriyalar 2×4. Aşağıda yapışqan WhatsApp düyməsi. Hero mətni qısaldılmış.
+
+<b>7 — Məhsul detalı, mobil (390 × 2200)</b>
+Stokda var halı. Şəkil qalereyası sürüşən lent + nöqtə göstəricisi. Vəziyyət nişanı şəklin dərhal altında. Yapışqan aşağı zolaq: solda qiymət və kiçik yaşıl «Stokda var», sağda «Al» düyməsi.
+
+<b>8 — Haqqımızda + Fərdi sifariş, desktop (1440 × 2800)</b>
+Ustanın portreti və hekayəsi, atelye fotoları, sərgi lentləri; aşağıda fərdi sifariş axını (4 addım) və sorğu forması (ad, əlaqə, məhsul növü, rəng, tarix, ideya, referans şəkil yükləmə).
+
+<b>QAYDALAR.</b>
+— Mobil əvvəl düşün: trafikin ~85%-i Instagram-dan mobil gələcək.
+— Bütün qiymətlər manatla: 65 ₼.
+— Heç bir yerdə «Səbətə at» yazma.
+— Vəziyyət nişanı heç bir kartda və heç bir məhsul səhifəsində buraxılmasın.
+— Məhsul şəkillərinin əksəriyyəti ağ-qızılı mərmərdir: kartların fonu onlardan bir ton fərqlənsin ki, məhsul «üzməsin».
+— Xəttatlıq pannoları bölməsi tünd fonda (#171412) verilsin — qalan sayt krem qalır.
+— Real Azərbaycan mətni yaz, Lorem ipsum işlətmə.
+— Hər artboard-a yuxarıda kiçik ad etiketi qoy.</pre>
+</section>
+
+<footer>
+  <p>Sənədlər: <code>~/specialcrafts.store/docs/PLAN.md</code> · <code>DESIGN-PROMPT.md</code> · <code>BRAND.md</code> · <code>assets/README.md</code><br>
+  Mənbə: Instagram @special__crafts (2 sentyabr 2026), domen DNS/WHOIS yoxlaması. TikTok profili avtomatik oxuna bilmədi.</p>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('cp'), box=document.getElementById('pbox');
+  if(!btn||!box) return;
+  btn.addEventListener('click', function(){
+    var txt=box.innerText;
+    var done=function(){ btn.textContent='Kopyalandı ✓'; setTimeout(function(){ btn.textContent='Promptu kopyala'; },1800); };
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done, select);
+      } else { select(); }
+    }catch(e){ select(); }
+    function select(){
+      try{
+        var r=document.createRange(); r.selectNodeContents(box);
+        var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        btn.textContent='Seçildi — ⌘C basın';
+        setTimeout(function(){ btn.textContent='Promptu kopyala'; },2600);
+      }catch(e2){}
+    }
+  });
+})();
+</script>
