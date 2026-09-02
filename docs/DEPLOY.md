@@ -1,42 +1,68 @@
-# Yayımlama — Vercel + domen
+# Yayımlama
 
-## 1. Repo
+## Hazırkı vəziyyət
+
+Sayt **GitHub Pages**-də yayımdadır:
+
+**https://talat019.github.io/specialcrafts.store/**
+
+Repo: [talat019/specialcrafts.store](https://github.com/talat019/specialcrafts.store) (açıq)
+
+## Necə yenilənir
+
+`main` budağına hər push avtomatik yeni yayım işə salır — `.github/workflows/deploy.yml`.
 
 ```bash
-cd ~/Desktop/specialcrafts.store
-git init && git add . && git commit -m "Faza 1 — kataloq saytı"
+# məsələn qiymətləri əlavə etdikdən sonra
+git add content/products.json
+git commit -m "Qiymətlər əlavə edildi"
+git push
 ```
 
-`.gitignore` artıq `node_modules/`, `.next/`, `assets/inbox/` və 3,5 MB-lıq dizayn faylını kənarda saxlayır.
+2–3 dəqiqə sonra sayt yenilənir. Gedişatı burada izləmək olar:
+`gh run list` və ya GitHub-da **Actions** tabı.
 
-GitHub-da boş repo yaradıb:
+## `specialcrafts.store` domenini bağlamaq
+
+Domen Namecheap-dədir. İki addım:
+
+### 1. Namecheap → Advanced DNS
+
+| Tip | Host | Dəyər |
+|---|---|---|
+| A | `@` | `185.199.108.153` |
+| A | `@` | `185.199.109.153` |
+| A | `@` | `185.199.110.153` |
+| A | `@` | `185.199.111.153` |
+| CNAME | `www` | `talat019.github.io.` |
+
+### 2. Repo tərəfi
+
+`.github/workflows/deploy.yml` faylında iki sətir dəyişir — alt qovluq yolu artıq lazım deyil:
+
+```yaml
+    env:
+      NEXT_PUBLIC_BASE_PATH: ""
+      NEXT_PUBLIC_SITE_URL: https://specialcrafts.store
+```
+
+Və `CNAME` faylı əlavə olunur ki, GitHub domeni tanısın:
 
 ```bash
-git remote add origin git@github.com:<istifadəçi>/specialcrafts.store.git
-git push -u origin main
+echo "specialcrafts.store" > public/CNAME
+git add -A && git commit -m "Öz domenə keçid" && git push
+gh api -X PUT repos/talat019/specialcrafts.store/pages -f cname=specialcrafts.store
 ```
 
-## 2. Vercel
+DNS-in yayılması bir neçə saat çəkə bilər. Sonra GitHub avtomatik SSL sertifikatı verir.
 
-1. [vercel.com/new](https://vercel.com/new) → repo seçilir.
-2. Framework avtomatik **Next.js** tanınır, ayar dəyişmək lazım deyil.
-3. Deploy.
+## Alternativ: Vercel
 
-Pulsuz **Hobby** planı bu ölçüdə sayt üçün kifayətdir.
+Vercel daha yaxşı şəkil optimizasiyası verir (`next/image` server tərəfdə işləyir — hazırda statik ixracda söndürülüb). Keçmək üçün:
 
-## 3. Domen
+1. [vercel.com](https://vercel.com) hesabı açın, GitHub ilə giriş edin.
+2. `talat019/specialcrafts.store` repo-sunu import edin.
+3. `next.config.ts` içindən `output: "export"` və `images.unoptimized` sətirlərini silin.
+4. Domeni Vercel → Settings → Domains bölməsindən bağlayın.
 
-Namecheap-dəki `specialcrafts.store` domenini Vercel-ə bağlamaq üçün:
-
-- Vercel → Project → **Settings → Domains** → `specialcrafts.store` əlavə et.
-- Namecheap → **Advanced DNS**:
-  - `A` qeydi: `@` → Vercel-in verdiyi IP
-  - `CNAME`: `www` → `cname.vercel-dns.com`
-- SSL avtomatik verilir (bir neçə dəqiqə çəkir).
-
-## 4. Yayımdan sonra
-
-- `src/lib/site.ts` içində `url` dəyişməyib olduğuna əmin ol (`https://specialcrafts.store`).
-- Google Search Console-a `sitemap.xml` göndər.
-- Instagram bio-suna linki qoy: `specialcrafts.store/?utm_source=instagram`
-- Instagram story-lərində birbaşa link: `specialcrafts.store/kataloq?stok=var`
+Bu addım sizin Vercel hesabınızı tələb edir, ona görə mən edə bilmədim.

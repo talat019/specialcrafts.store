@@ -7,8 +7,10 @@ Epoksid qatran əl işləri — onlayn kataloq və WhatsApp sifariş saytı.
 | Brend | special crafts / By Semedova |
 | Instagram | [@special__crafts](https://instagram.com/special__crafts) |
 | TikTok | [@special__crafts](https://tiktok.com/@special__crafts) |
-| Domen | `specialcrafts.store` (qeydiyyatda, hələ yayımlanmayıb) |
-| Status | **Faza 1 hazırdır** — sayt qurulub və işləyir; qiymətlər gözlənilir |
+| **Canlı sayt** | **https://talat019.github.io/specialcrafts.store/** |
+| Repo | [talat019/specialcrafts.store](https://github.com/talat019/specialcrafts.store) |
+| Domen | `specialcrafts.store` — qeydiyyatda, hələ bağlanmayıb (bax [docs/DEPLOY.md](docs/DEPLOY.md)) |
+| Status | **Faza 1 yayımda** — qiymətlər gözlənilir |
 
 ## İşə salmaq
 
