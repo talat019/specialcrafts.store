@@ -22,6 +22,26 @@ const raw = JSON.parse(readFileSync("content/products.json", "utf-8")) as {
   mehsullar: Raw[];
 };
 
+type Tr = Record<string, { en: { ad: string; tesvir: string }; ru: { ad: string; tesvir: string } }>;
+const tr = JSON.parse(readFileSync("content/translations.json", "utf-8")) as Tr;
+
+/** Kateqoriya adlarının tərcüməsi. */
+const catNames: Record<string, { en: string; ru: string }> = {
+  saat: { en: "Wall clocks", ru: "Настенные часы" },
+  sahmat: { en: "Chess sets", ru: "Шахматы" },
+  domino: { en: "Domino sets", ru: "Домино" },
+  panno: { en: "Wall panels", ru: "Настенные панно" },
+  "acar-asilqani": { en: "Key holders", ru: "Держатели для ключей" },
+  rehil: { en: "Quran stands", ru: "Пюпитры для Корана" },
+  "guzgu-daraq": { en: "Mirror & comb", ru: "Зеркало и гребень" },
+  aksesuar: { en: "Jewellery", ru: "Украшения" },
+  suvenir: { en: "Gifts & decor", ru: "Сувениры и декор" },
+  tesbeh: { en: "Prayer beads", ru: "Тасбих" },
+  kulqabi: { en: "Ashtrays", ru: "Пепельницы" },
+  "sep-xonca": { en: "Trousseau trays", ru: "Подносы для приданого" },
+  diger: { en: "Other work", ru: "Прочие работы" },
+};
+
 async function main() {
   // yalnız məhsulu olan kateqoriyalar
   const used = new Set(raw.mehsullar.map((m) => m.kateqoriya));
@@ -29,10 +49,18 @@ async function main() {
   for (const [i, c] of raw.kateqoriyalar.filter((c) => used.has(c.acar)).entries()) {
     await db
       .insert(categories)
-      .values({ key: c.acar, name: c.ad, code: c.kod, sortOrder: i })
+      .values({
+        key: c.acar, name: c.ad, code: c.kod, sortOrder: i,
+        nameEn: catNames[c.acar]?.en ?? c.ad,
+        nameRu: catNames[c.acar]?.ru ?? c.ad,
+      })
       .onConflictDoUpdate({
         target: categories.key,
-        set: { name: c.ad, code: c.kod, sortOrder: i },
+        set: {
+          name: c.ad, code: c.kod, sortOrder: i,
+          nameEn: catNames[c.acar]?.en ?? c.ad,
+          nameRu: catNames[c.acar]?.ru ?? c.ad,
+        },
       });
   }
 
@@ -43,6 +71,8 @@ async function main() {
     const values = {
       code: m.kod,
       name: m.ad,
+      nameEn: tr[m.kod]?.en.ad ?? null,
+      nameRu: tr[m.kod]?.ru.ad ?? null,
       categoryKey: m.kateqoriya,
       price: m.qiymet == null ? null : String(m.qiymet),
       currency: m.valyuta,
@@ -57,6 +87,8 @@ async function main() {
       colorOptions: m.rengSecimleri,
       engraving: m.hekkMumkun,
       description: m.tesvir,
+      descriptionEn: tr[m.kod]?.en.tesvir ?? null,
+      descriptionRu: tr[m.kod]?.ru.tesvir ?? null,
       active: m.aktiv,
       note: m._qeyd,
       updatedAt: new Date(),

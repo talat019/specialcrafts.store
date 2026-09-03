@@ -15,8 +15,9 @@ export const site = {
   instagram: "https://instagram.com/special__crafts",
   tiktok: "https://tiktok.com/@special__crafts",
   followers: "5 900+",
-  leadTime: "5–7 iş günü",
-  stockDelivery: "1–2 iş günü",
+  /** Rəqəm hissəsi — «iş günü» sözü lüğətdən gəlir (bax lib/product-view.ts) */
+  leadDays: "5–7",
+  stockDays: "1–2",
 } as const;
 
 export const nav = [

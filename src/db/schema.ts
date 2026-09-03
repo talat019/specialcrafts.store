@@ -5,7 +5,9 @@ import {
 // ---------------- Kateqoriyalar ----------------
 export const categories = pgTable("categories", {
   key: text("key").primaryKey(),            // "saat"
-  name: text("name").notNull(),             // "Saat"
+  name: text("name").notNull(),             // "Saat" (az)
+  nameEn: text("name_en"),
+  nameRu: text("name_ru"),
   code: text("code").notNull(),             // "SAT"
   sortOrder: integer("sort_order").notNull().default(0),
 });
@@ -16,7 +18,9 @@ export const products = pgTable(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     code: text("code").notNull().unique(),                 // "SAT-006"
-    name: text("name").notNull(),
+    name: text("name").notNull(),               // azərbaycanca (əsas)
+    nameEn: text("name_en"),
+    nameRu: text("name_ru"),
     categoryKey: text("category_key").notNull().references(() => categories.key),
     price: numeric("price", { precision: 10, scale: 2 }),   // null = qiymət hələ yoxdur
     currency: text("currency").notNull().default("USD"),
@@ -31,6 +35,8 @@ export const products = pgTable(
     colorOptions: jsonb("color_options").$type<string[]>().notNull().default([]),
     engraving: boolean("engraving").notNull().default(false),
     description: text("description").notNull().default(""),
+    descriptionEn: text("description_en"),
+    descriptionRu: text("description_ru"),
     active: boolean("active").notNull().default(true),
     note: text("note"),
     soldAt: timestamp("sold_at", { withTimezone: true }),

@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import type { Category, Product, Stock } from "@/lib/product-view";
+import { L, type Locale } from "@/i18n/config";
+import { fill, type Dictionary } from "@/i18n";
 import { ProductCard } from "./ProductCard";
 import { waGeneral } from "@/lib/whatsapp";
 
@@ -15,6 +17,8 @@ type Props = {
   categories: Category[];
   categoryCounts: Record<string, number>;
   totalCount: number;
+  locale: Locale;
+  t: Dictionary;
 };
 
 function parseStock(v: string | null): Stock | null {
@@ -25,15 +29,17 @@ function countStock(list: Product[], s: Stock) {
   return list.filter((p) => p.stok === s).length;
 }
 
-export function Catalog({ all, activeCategory, title, intro, categories, categoryCounts, totalCount }: Props) {
+export function Catalog({
+  all, activeCategory, title, intro, categories, categoryCounts, totalCount, locale, t,
+}: Props) {
   const activeStock = parseStock(useSearchParams().get("stok"));
   const items = activeStock ? all.filter((p) => p.stok === activeStock) : all;
-  const base = activeCategory ? `/kataloq/${activeCategory}` : "/kataloq";
+  const base = activeCategory ? L(locale, `/kataloq/${activeCategory}`) : L(locale, "/kataloq");
 
   const tabs: { key: Stock | null; label: string; count: number; tone: string }[] = [
-    { key: null, label: "Hamısı", count: all.length, tone: "text-ink" },
-    { key: "var", label: "Stokda var", count: countStock(all, "var"), tone: "text-stock-dark" },
-    { key: "sifarisle", label: "Sifarişlə", count: countStock(all, "sifarisle"), tone: "text-gold-dark" },
+    { key: null, label: t.common.all, count: all.length, tone: "text-ink" },
+    { key: "var", label: t.status.inStock, count: countStock(all, "var"), tone: "text-stock-dark" },
+    { key: "sifarisle", label: t.status.made, count: countStock(all, "sifarisle"), tone: "text-gold-dark" },
   ];
 
   return (
@@ -44,28 +50,28 @@ export function Catalog({ all, activeCategory, title, intro, categories, categor
 
         <div className="mt-7 flex flex-wrap items-end justify-between gap-4 border-b border-line">
           <div className="flex gap-6 lg:gap-8">
-            {tabs.map((t) => {
-              const on = activeStock === t.key;
+            {tabs.map((tab) => {
+              const on = activeStock === tab.key;
               return (
                 <Link
-                  key={t.label}
-                  href={t.key ? `${base}?stok=${t.key}` : base}
+                  key={tab.label}
+                  href={tab.key ? `${base}?stok=${tab.key}` : base}
                   scroll={false}
                   className={`flex items-center gap-2 pb-3 text-[15px] lg:text-base ${
                     on ? "border-b-2 border-ink font-semibold" : "font-medium"
-                  } ${t.tone}`}
+                  } ${tab.tone}`}
                 >
-                  {t.key === "var" && <span className="block size-2 rounded-full bg-stock" aria-hidden="true" />}
-                  {t.key === "sifarisle" && (
+                  {tab.key === "var" && <span className="block size-2 rounded-full bg-stock" aria-hidden="true" />}
+                  {tab.key === "sifarisle" && (
                     <span className="block size-2 rounded-full border-2 border-gold" aria-hidden="true" />
                   )}
-                  {t.label} <span className="font-normal text-ink-faint">{t.count}</span>
+                  {tab.label} <span className="font-normal text-ink-faint">{tab.count}</span>
                 </Link>
               );
             })}
           </div>
           <span className="pb-3 text-sm text-ink-muted">
-            Sıralama: <b className="font-semibold text-ink">Stokda olanlar əvvəl</b>
+            {t.common.sortBy}: <b className="font-semibold text-ink">{t.common.sortInStockFirst}</b>
           </span>
         </div>
       </div>
@@ -74,37 +80,35 @@ export function Catalog({ all, activeCategory, title, intro, categories, categor
         <aside>
           <details className="lg:hidden">
             <summary className="mb-4 cursor-pointer list-none rounded-xl border border-line bg-surface px-4 py-3 font-semibold">
-              Kateqoriyalar
+              {t.common.category}
             </summary>
-            <CategoryList active={activeCategory} activeStock={activeStock} categories={categories} counts={categoryCounts} total={totalCount} />
+            <CategoryList {...{ activeCategory, activeStock, categories, categoryCounts, totalCount, locale, t }} />
           </details>
           <div className="hidden lg:block">
-            <CategoryList active={activeCategory} activeStock={activeStock} categories={categories} counts={categoryCounts} total={totalCount} />
+            <CategoryList {...{ activeCategory, activeStock, categories, categoryCounts, totalCount, locale, t }} />
           </div>
         </aside>
 
         <div>
           {items.length === 0 ? (
             <div className="rounded-2xl border border-line bg-surface p-10 text-center">
-              <p className="font-display text-[22px]">Bu filtrlə iş tapılmadı</p>
+              <p className="font-display text-[22px]">{t.catalog.emptyTitle}</p>
               <p className="mx-auto mt-3 max-w-[46ch] text-ink-muted">
-                {activeStock === "var"
-                  ? "Hazırda bu kateqoriyada stokda iş yoxdur — sifarişlə 5–7 günə hazırlayırıq."
-                  : "İstədiyinizi WhatsApp-da yazın, hazırlayaq."}
+                {activeStock === "var" ? t.catalog.emptyInStock : t.catalog.emptyOther}
               </p>
               <a
-                href={waGeneral("Kataloqda tapmadığım bir iş üçün yazıram:")}
+                href={waGeneral()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-6 inline-block rounded-full bg-emerald px-7 py-3.5 font-semibold text-surface transition-colors hover:bg-emerald-dark"
               >
-                WhatsApp-da yazın
+                {t.catalog.emptyCta}
               </a>
             </div>
           ) : (
             <div className="grid grid-cols-2 gap-4 lg:grid-cols-3 lg:gap-5">
               {items.map((p, i) => (
-                <ProductCard key={p.kod} p={p} priority={i < 3} />
+                <ProductCard key={p.kod} p={p} locale={locale} t={t} priority={i < 3} />
               ))}
             </div>
           )}
@@ -115,30 +119,38 @@ export function Catalog({ all, activeCategory, title, intro, categories, categor
 }
 
 function CategoryList({
-  active, activeStock, categories, counts, total,
+  activeCategory, activeStock, categories, categoryCounts, totalCount, locale, t,
 }: {
-  active: string | null; activeStock: Stock | null;
-  categories: Category[]; counts: Record<string, number>; total: number;
+  activeCategory: string | null;
+  activeStock: Stock | null;
+  categories: Category[];
+  categoryCounts: Record<string, number>;
+  totalCount: number;
+  locale: Locale;
+  t: Dictionary;
 }) {
   const q = activeStock ? `?stok=${activeStock}` : "";
   return (
     <nav className="flex flex-col gap-3">
-      <span className="eyebrow text-[11px] text-ink-faint">Kateqoriya</span>
+      <span className="eyebrow text-[11px] text-ink-faint">{t.common.category}</span>
       <Link
-        href={`/kataloq${q}`}
-        className={`flex items-center justify-between text-[14.5px] ${active === null ? "font-semibold text-emerald" : "text-ink"}`}
+        href={`${L(locale, "/kataloq")}${q}`}
+        className={`flex items-center justify-between text-[14.5px] ${activeCategory === null ? "font-semibold text-emerald" : "text-ink"}`}
       >
-        Hamısı <span className="text-ink-faint">{total}</span>
+        {t.common.all} <span className="text-ink-faint">{totalCount}</span>
       </Link>
       {categories.map((c) => (
         <Link
           key={c.acar}
-          href={`/kataloq/${c.acar}${q}`}
-          className={`flex items-center justify-between text-[14.5px] ${active === c.acar ? "font-semibold text-emerald" : "text-ink"}`}
+          href={`${L(locale, `/kataloq/${c.acar}`)}${q}`}
+          className={`flex items-center justify-between text-[14.5px] ${activeCategory === c.acar ? "font-semibold text-emerald" : "text-ink"}`}
         >
-          {c.ad} <span className="text-ink-faint">{counts[c.acar] ?? 0}</span>
+          {c.ad} <span className="text-ink-faint">{categoryCounts[c.acar] ?? 0}</span>
         </Link>
       ))}
     </nav>
   );
 }
+
+// fill() lüğət şablonları üçün ehtiyatda saxlanılır
+void fill;

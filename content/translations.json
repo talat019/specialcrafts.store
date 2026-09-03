@@ -1,0 +1,342 @@
+{
+  "SAT-001": {
+    "en": {
+      "ad": "«Split» white-and-gold wall clock",
+      "tesvir": "A wall clock poured in two halves with a white-cream marble effect. The edges are set with clear crystals and the hours are gilded Roman numerals."
+    },
+    "ru": {
+      "ad": "Настенные часы «Разлом», белое золото",
+      "tesvir": "Часы, отлитые из двух половин, с эффектом бело-кремового мрамора. Края усыпаны прозрачными кристаллами, цифры — золотые римские."
+    }
+  },
+  "SAT-002": {
+    "en": {
+      "ad": "«Crystal» white-and-gold wall clock",
+      "tesvir": "A white marble clock with a thick crystal border and gold leaf. Roman numerals sit on a gilded ring."
+    },
+    "ru": {
+      "ad": "Настенные часы «Кристалл», белое золото",
+      "tesvir": "Белые мраморные часы с широкой каймой из кристаллов и золотой фольгой. Римские цифры на золотом кольце."
+    }
+  },
+  "SAT-003": {
+    "en": {
+      "ad": "«Wings» wall clock",
+      "tesvir": "A large wing-shaped wall clock worked with mirror shards and silver crystals. A statement piece."
+    },
+    "ru": {
+      "ad": "Настенные часы «Крылья»",
+      "tesvir": "Большие часы в форме крыльев с зеркальными осколками и серебристыми кристаллами. Акцентная вещь."
+    }
+  },
+  "SAT-004": {
+    "en": {
+      "ad": "«Marble» beige wall clock",
+      "tesvir": "A simple round wall clock with beige-and-white marble veining and gilded Roman numerals."
+    },
+    "ru": {
+      "ad": "Настенные часы «Мрамор», бежевые",
+      "tesvir": "Простые круглые часы с бежево-белыми мраморными прожилками и золотыми римскими цифрами."
+    }
+  },
+  "SAT-005": {
+    "en": {
+      "ad": "«Geode» white-and-gold wall clock",
+      "tesvir": "A geode-style wall clock with white and gold veining, crystal bands and gilded Roman numerals."
+    },
+    "ru": {
+      "ad": "Настенные часы «Геода», белое золото",
+      "tesvir": "Часы в стиле геоды с белыми и золотыми прожилками, полосами кристаллов и золотыми римскими цифрами."
+    }
+  },
+  "SAT-006": {
+    "en": {
+      "ad": "«Ocean» turquoise wall clock",
+      "tesvir": "A wall clock with a turquoise-blue ocean effect and black Arabic numerals. The colour can be chosen to order."
+    },
+    "ru": {
+      "ad": "Настенные часы «Океан», бирюзовые",
+      "tesvir": "Часы с эффектом бирюзово-синего океана и чёрными арабскими цифрами. Цвет можно выбрать под заказ."
+    }
+  },
+  "SAT-007": {
+    "en": {
+      "ad": "«Sand wave» wall clock",
+      "tesvir": "A wall clock worked with sand-coloured waves and gold dust, finished with gilded Roman numerals."
+    },
+    "ru": {
+      "ad": "Настенные часы «Песчаная волна»",
+      "tesvir": "Часы с песочными волнами и золотой пылью, с золотыми римскими цифрами."
+    }
+  },
+  "SAT-008": {
+    "en": {
+      "ad": "«Night and gold» wall clock",
+      "tesvir": "A marble-effect wall clock where black, white and gold veins run together, with black Arabic numerals."
+    },
+    "ru": {
+      "ad": "Настенные часы «Ночь и золото»",
+      "tesvir": "Часы с мраморным эффектом, где сходятся чёрные, белые и золотые прожилки, с чёрными арабскими цифрами."
+    }
+  },
+  "SHM-001": {
+    "en": {
+      "ad": "«Emerald» chess set",
+      "tesvir": "A chess board cast from walnut and emerald-green resin. Gold leaf detailing with turquoise and frosted white pieces. Collector-grade work."
+    },
+    "ru": {
+      "ad": "Шахматный набор «Изумруд»",
+      "tesvir": "Доска из ореха и изумрудно-зелёной смолы. Детали из золотой фольги, бирюзовые и матово-белые фигуры. Коллекционная работа."
+    }
+  },
+  "SHM-002": {
+    "en": {
+      "ad": "«Midnight blue» chess set",
+      "tesvir": "A deep blue and black resin board with translucent blue and black pieces."
+    },
+    "ru": {
+      "ad": "Шахматный набор «Ночная синь»",
+      "tesvir": "Доска из глубоко-синей и чёрной смолы с полупрозрачными синими и чёрными фигурами."
+    }
+  },
+  "SHM-003": {
+    "en": {
+      "ad": "«White and gold» chess set",
+      "tesvir": "A white-and-black board with gold-leaf piece bases and a gilded border."
+    },
+    "ru": {
+      "ad": "Шахматный набор «Белое золото»",
+      "tesvir": "Бело-чёрная доска с основаниями фигур из золотой фольги и золотой каймой."
+    }
+  },
+  "SHM-004": {
+    "en": {
+      "ad": "Club-themed chess set",
+      "tesvir": "A chess set made to order in team colours with an emblem. Can be ordered with any club or corporate logo."
+    },
+    "ru": {
+      "ad": "Шахматный набор с клубной темой",
+      "tesvir": "Набор, изготавливаемый под заказ в цветах команды с эмблемой. Возможен любой клубный или корпоративный логотип."
+    }
+  },
+  "SHM-005": {
+    "en": {
+      "ad": "«Oak and olive» chess set",
+      "tesvir": "A board assembled cube by cube from oak and olive-toned resin. The pieces are cast with gold and silver leaf, and the file and rank coordinates are engraved into the frame. Collector-grade work."
+    },
+    "ru": {
+      "ad": "Шахматный набор «Дуб и олива»",
+      "tesvir": "Доска, собранная куб за кубом из дуба и смолы оливкового оттенка. Фигуры отлиты с золотой и серебряной фольгой, по краям выгравированы координаты. Коллекционная работа."
+    }
+  },
+  "DMN-001": {
+    "en": {
+      "ad": "«Midnight blue» domino set",
+      "tesvir": "A 28-tile domino set cast from blue resin with a stardust effect. Presented in a laser-cut wooden box."
+    },
+    "ru": {
+      "ad": "Набор домино «Ночная синь»",
+      "tesvir": "Набор из 28 костяшек, отлитых из синей смолы с эффектом звёздной пыли. В деревянной шкатулке с лазерной резьбой."
+    }
+  },
+  "DMN-002": {
+    "en": {
+      "ad": "«Black and gold» domino set",
+      "tesvir": "A 28-tile domino set with gold pips and mother-of-pearl detail on black resin, in a laser-cut wooden box."
+    },
+    "ru": {
+      "ad": "Набор домино «Чёрное золото»",
+      "tesvir": "Набор из 28 костяшек с золотыми точками и перламутровыми деталями на чёрной смоле, в деревянной шкатулке с лазерной резьбой."
+    }
+  },
+  "PNO-001": {
+    "en": {
+      "ad": "«Ayat al-Kursi» wall panel",
+      "tesvir": "A wall panel with gilded calligraphy on black resin and black crystal detail in the corners."
+    },
+    "ru": {
+      "ad": "Настенное панно «Аят аль-Курси»",
+      "tesvir": "Панно с золотой каллиграфией на чёрной смоле и чёрными кристаллами по углам."
+    }
+  },
+  "PNO-002": {
+    "en": {
+      "ad": "«Kalima Shahada» wall panel",
+      "tesvir": "A square wall panel in black, gold and white geode style, with gilded calligraphy, crystals and gold-leaf veins."
+    },
+    "ru": {
+      "ad": "Настенное панно «Калима шахада»",
+      "tesvir": "Квадратное панно в стиле геоды — чёрное, золотое и белое, с золотой каллиграфией, кристаллами и прожилками из золотой фольги."
+    }
+  },
+  "ACR-001": {
+    "en": {
+      "ad": "«Geode» key holder",
+      "tesvir": "A wall key holder in white-and-gold geode style with crystal veins. Four brass hooks."
+    },
+    "ru": {
+      "ad": "Держатель для ключей «Геода»",
+      "tesvir": "Настенный держатель в бело-золотом стиле геоды с прожилками из кристаллов. Четыре латунных крючка."
+    }
+  },
+  "RHL-001": {
+    "en": {
+      "ad": "«Emerald» Quran stand",
+      "tesvir": "A folding Quran stand cast from emerald-green resin with gold shimmer, finished with a white tassel."
+    },
+    "ru": {
+      "ad": "Пюпитр для Корана «Изумруд»",
+      "tesvir": "Складной пюпитр из изумрудно-зелёной смолы с золотым блеском и белой кистью."
+    }
+  },
+  "GZD-001": {
+    "en": {
+      "ad": "«Wildflowers» mirror and comb set",
+      "tesvir": "Dried wildflowers and leaves set in white resin. A carved mirror and comb, given together as a gift set."
+    },
+    "ru": {
+      "ad": "Набор «Полевые цветы»: зеркало и гребень",
+      "tesvir": "Сухие полевые цветы и листья в белой смоле. Резное зеркало и гребень — подарочный набор."
+    }
+  },
+  "GZD-002": {
+    "en": {
+      "ad": "«Yellow petal» mirror and comb set",
+      "tesvir": "Yellow petals and gold leaf in clear resin. A mirror and comb set."
+    },
+    "ru": {
+      "ad": "Набор «Жёлтый лепесток»: зеркало и гребень",
+      "tesvir": "Жёлтые лепестки и золотая фольга в прозрачной смоле. Набор из зеркала и гребня."
+    }
+  },
+  "SVN-001": {
+    "en": {
+      "ad": "«Garden» triple tealight holder",
+      "tesvir": "Dried flowers and red foil in clear resin. Three wells for tealights."
+    },
+    "ru": {
+      "ad": "Тройной подсвечник «Сад»",
+      "tesvir": "Сухие цветы и красная фольга в прозрачной смоле. Три гнезда под чайные свечи."
+    }
+  },
+  "SVN-002": {
+    "en": {
+      "ad": "«Violet and gold» triple tealight holder",
+      "tesvir": "Violet flowers and gold leaf in milky resin. Three wells for tealights."
+    },
+    "ru": {
+      "ad": "Тройной подсвечник «Фиалка и золото»",
+      "tesvir": "Фиалковые цветы и золотая фольга в молочной смоле. Три гнезда под чайные свечи."
+    }
+  },
+  "SVN-003": {
+    "en": {
+      "ad": "Bookmark — dried flowers",
+      "tesvir": "A bookmark with a silk tassel. Each one is poured by hand with dried flowers — five colour variants available."
+    },
+    "ru": {
+      "ad": "Закладка — сухие цветы",
+      "tesvir": "Закладка с шёлковой кистью. Каждая отлита вручную с сухими цветами — пять цветовых вариантов."
+    }
+  },
+  "SVN-004": {
+    "en": {
+      "ad": "«Heart» desk piece",
+      "tesvir": "A pink-foil heart frame holding a smaller heart of dried rose petals, mounted on a base."
+    },
+    "ru": {
+      "ad": "Настольная фигура «Сердце»",
+      "tesvir": "Рамка-сердце с розовой фольгой и меньшее сердце из сухих лепестков розы на подставке."
+    }
+  },
+  "AKS-001": {
+    "en": {
+      "ad": "«Shore» pendant — shells and sand",
+      "tesvir": "An ocean scene poured with real sea sand and shells in a round silver setting."
+    },
+    "ru": {
+      "ad": "Кулон «Берег» — ракушки и песок",
+      "tesvir": "Морской пейзаж с настоящим песком и ракушками в круглой серебристой оправе."
+    }
+  },
+  "AKS-002": {
+    "en": {
+      "ad": "«Wave» pendant — blue ocean",
+      "tesvir": "A round pendant with a deep blue wave, white foam and shells."
+    },
+    "ru": {
+      "ad": "Кулон «Волна» — синий океан",
+      "tesvir": "Круглый кулон с глубоко-синей волной, белой пеной и ракушками."
+    }
+  },
+  "AKS-003": {
+    "en": {
+      "ad": "«Pink umbel» pendant",
+      "tesvir": "A teardrop pendant with pink dried cow parsley and a touch of shimmer."
+    },
+    "ru": {
+      "ad": "Кулон «Розовый зонтик»",
+      "tesvir": "Кулон-капля с розовым сухим соцветием и лёгким блеском."
+    }
+  },
+  "AKS-004": {
+    "en": {
+      "ad": "«Sunflower» pendant",
+      "tesvir": "A teardrop pendant with yellow sunflower petals set in milky resin."
+    },
+    "ru": {
+      "ad": "Кулон «Подсолнух»",
+      "tesvir": "Кулон-капля с жёлтыми лепестками подсолнуха в молочной смоле."
+    }
+  },
+  "AKS-005": {
+    "en": {
+      "ad": "«Hydrangea» pendant",
+      "tesvir": "A teardrop pendant holding a whole turquoise hydrangea petal in resin."
+    },
+    "ru": {
+      "ad": "Кулон «Гортензия»",
+      "tesvir": "Кулон-капля с целым бирюзовым лепестком гортензии в смоле."
+    }
+  },
+  "AKS-006": {
+    "en": {
+      "ad": "«Daisy» pendant — bronze",
+      "tesvir": "A white daisy in a patterned bronze teardrop setting, on a leather cord."
+    },
+    "ru": {
+      "ad": "Кулон «Ромашка» — бронза",
+      "tesvir": "Белая ромашка в узорной бронзовой оправе-капле на кожаном шнуре."
+    }
+  },
+  "AKS-007": {
+    "en": {
+      "ad": "Initial pendant — night sky",
+      "tesvir": "A deep blue night sky with a moon and white flowers. The gilded letter in the centre is made to your choice — a name, a surname or a letter you love."
+    },
+    "ru": {
+      "ad": "Кулон с буквой — ночное небо",
+      "tesvir": "Глубоко-синее ночное небо с луной и белыми цветами. Золотая буква в центре — на ваш выбор: имя, фамилия или любимая буква."
+    }
+  },
+  "AKS-008": {
+    "en": {
+      "ad": "«Forget-me-not» earrings",
+      "tesvir": "Round gilded earrings with blue forget-me-nots and gold leaf."
+    },
+    "ru": {
+      "ad": "Серьги «Незабудка»",
+      "tesvir": "Круглые золотистые серьги с синими незабудками и золотой фольгой."
+    }
+  },
+  "AKS-009": {
+    "en": {
+      "ad": "«Red foil» hair clip",
+      "tesvir": "Red foil, a petal and a leaf in clear resin, mounted on a gilded metal clip."
+    },
+    "ru": {
+      "ad": "Заколка «Красная фольга»",
+      "tesvir": "Красная фольга, лепесток и листок в прозрачной смоле на золотистой металлической основе."
+    }
+  }
+}

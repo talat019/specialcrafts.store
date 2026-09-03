@@ -31,9 +31,18 @@ export function priceLabel(p: Pick<Product, "qiymet">): string {
   return p.qiymet == null ? "Qiymət üçün yazın" : money(p.qiymet);
 }
 
-export function leadTimeLabel(p: Pick<Product, "stok" | "hazirliqGunu">): string {
-  if (p.stok === "var") return "1–2 iş günü";
-  return `${(p.hazirliqGunu ?? "5-7").replace("-", "–")} iş günü`;
+/** "5-7" + "working days" → "5–7 working days" */
+export function days(n: string, unit: string): string {
+  return `${n.replace("-", "–")} ${unit}`;
+}
+
+export function leadTimeLabel(
+  p: Pick<Product, "stok" | "hazirliqGunu">,
+  unit: string,
+  stockDays = "1–2",
+): string {
+  if (p.stok === "var") return days(stockDays, unit);
+  return days(p.hazirliqGunu ?? "5-7", unit);
 }
 
 /** Səbətə yalnız stokda olan və qiyməti bəlli məhsul atıla bilər. */
