@@ -10,7 +10,7 @@
 | Brend adı | **special crafts** (Instagram-da profil adı: *By Semedova*) |
 | İxtisas | Epoksid qatran (resin) əl işləri, fərdi sifariş |
 | Instagram | [@special__crafts](https://instagram.com/special__crafts) — ~5 956 izləyici, 141 izləmə |
-| TikTok | [@special__crafts](https://tiktok.com/@special__crafts) — statistika təsdiqlənməyib |
+| TikTok | [@by_semedova](https://www.tiktok.com/@by_semedova) — 2026-09-04-də müəllif tərəfindən düzəldildi; statistika hələ təsdiqlənməyib |
 | WhatsApp | `wa.me/9940506169987` → **+994 50 616 99 87** (rəqəm sayı yoxlanmalıdır) |
 | Domen | `specialcrafts.store` — qeydiyyatda, **hazırda boşdur** (Namecheap parking, `192.64.119.57`) |
 

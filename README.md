@@ -5,7 +5,7 @@ Epoksid qatran əl işləri — kataloq, onlayn ödəniş və admin paneli.
 | | |
 |---|---|
 | Brend | special crafts / By Semedova |
-| Instagram | [@special__crafts](https://instagram.com/special__crafts) · TikTok [@special__crafts](https://tiktok.com/@special__crafts) |
+| Instagram | [@special__crafts](https://instagram.com/special__crafts) · TikTok [@by_semedova](https://www.tiktok.com/@by_semedova) |
 | **Canlı sayt** | **https://specialcrafts.store** (SolOcean VPS, Docker + Caddy) |
 | Status | **Yayımdadır** — ödəniş test rejimində, qiymətlər gözlənilir |
 | Kataloq | **34 məhsul · 9 kateqoriya** · 14-ü qiymətli və səbətə atıla bilir |
