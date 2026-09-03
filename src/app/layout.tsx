@@ -20,6 +20,9 @@ const manrope = Manrope({
   display: "swap",
 });
 
+// Məzmun bazadan gəlir — səhifələr build zamanı deyil, sorğu anında qurulur
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {

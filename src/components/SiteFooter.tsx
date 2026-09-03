@@ -5,7 +5,8 @@ import { waGeneral } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./Icons";
 
 export async function SiteFooter() {
-  const categories = await getCategories();
+  // baza müvəqqəti əlçatmazdırsa footer kateqoriyasız göstərilir, səhifə çökmür
+  const categories = await getCategories().catch(() => []);
   return (
     <footer className="bg-dark text-dark-ink">
       <div className="mx-auto max-w-[1440px] px-5 py-14 lg:px-14 lg:py-16">
