@@ -62,6 +62,12 @@ services:
     profiles: ["cli"]
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER:-sc}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-specialcrafts}
+    # Mənbə image-dən deyil, iş qovluğundan oxunur — `git pull`-dan sonra
+    # tools image-ini yenidən qurmağa ehtiyac qalmır (köhnə seed işlətmə riski aradan qalxır)
+    volumes:
+      - ./content:/app/content:ro
+      - ./src:/app/src:ro
+      - ./drizzle.config.ts:/app/drizzle.config.ts:ro
     networks:
       - internal
     depends_on:
