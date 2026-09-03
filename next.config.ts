@@ -5,6 +5,8 @@ import type { NextConfig } from "next";
  * (Statik ixrac Faza 1-də idi; artıq API marşrutları var.)
  */
 const nextConfig: NextConfig = {
+  // Docker üçün: kiçik icra paketi (.next/standalone)
+  output: "standalone",
   images: {
     formats: ["image/avif", "image/webp"],
   },

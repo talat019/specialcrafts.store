@@ -1,0 +1,80 @@
+services:
+  web:
+    build:
+      context: .
+      target: runner
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://specialcrafts.store}
+    container_name: specialcrafts-web
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-sc}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD .env-də təyin olunmalıdır}@postgres:5432/${POSTGRES_DB:-specialcrafts}
+      SESSION_SECRET: ${SESSION_SECRET:?SESSION_SECRET .env-də təyin olunmalıdır — openssl rand -hex 32}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-https://specialcrafts.store}
+      PAYMENT_MODE: ${PAYMENT_MODE:-test}
+      PAYRIFF_MERCHANT: ${PAYRIFF_MERCHANT:-}
+      PAYRIFF_SECRET: ${PAYRIFF_SECRET:-}
+      PAYRIFF_BASE_URL: ${PAYRIFF_BASE_URL:-https://api.payriff.com/api/v2}
+      KAPITAL_MERCHANT: ${KAPITAL_MERCHANT:-}
+      KAPITAL_CERT: ${KAPITAL_CERT:-}
+      KAPITAL_KEY: ${KAPITAL_KEY:-}
+      KAPITAL_BASE_URL: ${KAPITAL_BASE_URL:-https://tstpg.kapitalbank.az}
+      TZ: Asia/Baku
+    volumes:
+      # admin paneldən yüklənən şəkillər — image yenilənəndə itməsin
+      - uploads_data:/app/public/uploads
+    networks:
+      - proxy
+      - internal
+    depends_on:
+      postgres:
+        condition: service_healthy
+    security_opt:
+      - no-new-privileges:true
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: specialcrafts-postgres
+    restart: unless-stopped
+    # Host portu YOXDUR — baza yalnız daxili şəbəkədə, internetdən əlçatmazdır
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-sc}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD .env-də təyin olunmalıdır}
+      POSTGRES_DB: ${POSTGRES_DB:-specialcrafts}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - internal
+    security_opt:
+      - no-new-privileges:true
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  # Birdəfəlik əmrlər: migration, seed, admin yaratma.
+  # `docker compose --profile cli run --rm tools npm run db:push`
+  tools:
+    build:
+      context: .
+      target: tools
+    profiles: ["cli"]
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-sc}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-specialcrafts}
+    networks:
+      - internal
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  uploads_data:
+
+networks:
+  proxy:
+    external: true
+    name: proxy
+  internal:
+    name: specialcrafts_internal

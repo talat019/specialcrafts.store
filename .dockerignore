@@ -1,0 +1,12 @@
+node_modules
+.next
+out
+.git
+.github
+design
+assets/inbox
+assets/_yoxlanmali
+docs
+*.log
+.env*.local
+.DS_Store

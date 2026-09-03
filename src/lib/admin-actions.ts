@@ -97,7 +97,9 @@ export async function saveProductAction(id: string | null, _prev: unknown, fd: F
   // şəkil yükləmə
   const files = fd.getAll("sekiller").filter((f): f is File => f instanceof File && f.size > 0);
   if (files.length && productId) {
-    const dir = path.join(process.cwd(), "public", "assets", "products", values.categoryKey);
+    // yüklənən şəkillər ayrıca qovluqda — Docker-də bu qovluq volume kimi bağlanır,
+    // repodan gələn assets/products isə image-in içində qalır
+    const dir = path.join(process.cwd(), "public", "uploads", values.categoryKey);
     await mkdir(dir, { recursive: true });
     const existing = await db.select().from(productImages).where(eq(productImages.productId, productId));
     let n = existing.length;
@@ -110,7 +112,7 @@ export async function saveProductAction(id: string | null, _prev: unknown, fd: F
       await writeFile(path.join(dir, name), Buffer.from(await file.arrayBuffer()));
       await db.insert(productImages).values({
         productId,
-        url: `/assets/products/${values.categoryKey}/${name}`,
+        url: `/uploads/${values.categoryKey}/${name}`,
         sortOrder: n,
       });
     }
