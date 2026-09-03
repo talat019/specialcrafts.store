@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { adminCategories, adminProducts } from "@/lib/admin-actions";
 import { StockControls } from "@/components/admin/StockControls";
+import { money } from "@/lib/money";
 
 export default async function AdminProducts() {
   const [items, cats] = await Promise.all([adminProducts(), adminCategories()]);
@@ -40,7 +41,7 @@ export default async function AdminProducts() {
                 </td>
                 <td className="px-4 py-3 text-ink-muted">{catName[p.categoryKey] ?? p.categoryKey}</td>
                 <td className={`px-4 py-3 tabular-nums ${p.price == null ? "text-gold-dark" : ""}`}>
-                  {p.price == null ? "yoxdur" : `${Number(p.price)} ₼`}
+                  {p.price == null ? "yoxdur" : money(Number(p.price))}
                 </td>
                 <td className="px-4 py-3"><StockControls id={p.id} stock={p.stock} qty={p.stockQty} /></td>
                 <td className="px-4 py-3 text-right">

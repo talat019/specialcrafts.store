@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { adminOrder } from "@/lib/admin-actions";
 import { deliveryOptions, orderStatusLabels, paymentStatusLabels } from "@/lib/orders";
 import { OrderControls } from "@/components/admin/OrderControls";
+import { money } from "@/lib/money";
 
 export default async function SifarisDetal({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -38,16 +39,16 @@ export default async function SifarisDetal({ params }: { params: Promise<{ id: s
                 <span>
                   <Link href={`/mehsul/${i.code.toLowerCase()}`} target="_blank" className="font-semibold hover:text-emerald">{i.name}</Link>
                   <span className="code ml-2 text-[12px] text-ink-faint">{i.code}</span>
-                  <span className="block text-[13.5px] text-ink-muted">{i.unitPrice} ₼ × {i.qty}</span>
+                  <span className="block text-[13.5px] text-ink-muted">{money(i.unitPrice)} × {i.qty}</span>
                 </span>
-                <span className="tabular-nums font-semibold">{i.lineTotal} ₼</span>
+                <span className="tabular-nums font-semibold">{money(i.lineTotal)}</span>
               </li>
             ))}
           </ul>
           <dl className="mt-4 flex flex-col gap-1.5 border-t border-line pt-4 text-[15px]">
-            <div className="flex justify-between"><dt className="text-ink-muted">Məhsullar</dt><dd className="tabular-nums">{order.subtotal} ₼</dd></div>
-            <div className="flex justify-between"><dt className="text-ink-muted">Çatdırılma</dt><dd className="tabular-nums">{order.deliveryFee} ₼</dd></div>
-            <div className="mt-1 flex justify-between font-display text-[24px]"><dt>Cəmi</dt><dd className="tabular-nums">{order.total} ₼</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-muted">Məhsullar</dt><dd className="tabular-nums">{money(order.subtotal)}</dd></div>
+            <div className="flex justify-between"><dt className="text-ink-muted">Çatdırılma</dt><dd className="tabular-nums">{money(order.deliveryFee)}</dd></div>
+            <div className="mt-1 flex justify-between font-display text-[24px]"><dt>Cəmi</dt><dd className="tabular-nums">{money(order.total)}</dd></div>
           </dl>
 
           <h2 className="mt-8 font-display text-[20px]">Müştəri</h2>

@@ -93,7 +93,7 @@ export async function createOrderAction(
     orderId: order.id,
     reference: order.reference,
     amount: +total.toFixed(2),
-    currency: "AZN",
+    currency: site.currency,
     description: `${site.name} — sifariş ${order.reference}`,
     customerName: f.ad,
     customerPhone: f.telefon,

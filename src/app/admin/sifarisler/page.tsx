@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { adminOrders } from "@/lib/admin-actions";
+import { money } from "@/lib/money";
 import { orderStatusLabels, paymentStatusLabels } from "@/lib/orders";
 
 const payTone: Record<string, string> = {
@@ -36,7 +37,7 @@ export default async function AdminOrders() {
                     {new Intl.DateTimeFormat("az-AZ", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" }).format(o.createdAt)}
                   </td>
                   <td className="px-4 py-3">{o.customerName}<br /><span className="text-[13px] text-ink-faint">{o.customerPhone}</span></td>
-                  <td className="px-4 py-3 tabular-nums">{o.total} ₼</td>
+                  <td className="px-4 py-3 tabular-nums">{money(o.total)}</td>
                   <td className="px-4 py-3">
                     <span className={`rounded-full border px-2.5 py-1 text-[12px] font-semibold ${payTone[o.paymentStatus] ?? "border-line"}`}>
                       {paymentStatusLabels[o.paymentStatus] ?? o.paymentStatus}

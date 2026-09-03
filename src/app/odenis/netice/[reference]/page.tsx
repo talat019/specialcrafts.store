@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getOrder, getOrderByReference, orderStatusLabels } from "@/lib/orders";
 import { site } from "@/lib/site";
 import { waGeneral } from "@/lib/whatsapp";
+import { money } from "@/lib/money";
 
 export const metadata = { title: "Sifariş nəticəsi", robots: { index: false } };
 export const revalidate = 0;
@@ -52,13 +53,13 @@ export default async function NeticePage({
           {items.map((i) => (
             <li key={i.id} className="flex justify-between gap-3">
               <span>{i.name} <span className="text-ink-faint">× {i.qty}</span></span>
-              <span className="tabular-nums">{i.lineTotal} ₼</span>
+              <span className="tabular-nums">{money(i.lineTotal)}</span>
             </li>
           ))}
         </ul>
         <dl className="flex flex-col gap-1.5 border-t border-line pt-3 text-[15px]">
-          <div className="flex justify-between"><dt className="text-ink-muted">Çatdırılma</dt><dd className="tabular-nums">{Number(order.deliveryFee) === 0 ? "pulsuz" : `${order.deliveryFee} ₼`}</dd></div>
-          <div className="flex justify-between font-display text-[22px]"><dt>Cəmi</dt><dd className="tabular-nums">{order.total} ₼</dd></div>
+          <div className="flex justify-between"><dt className="text-ink-muted">Çatdırılma</dt><dd className="tabular-nums">{Number(order.deliveryFee) === 0 ? "pulsuz" : money(order.deliveryFee)}</dd></div>
+          <div className="flex justify-between font-display text-[22px]"><dt>Cəmi</dt><dd className="tabular-nums">{money(order.total)}</dd></div>
           <div className="mt-2 flex justify-between text-[14px]"><dt className="text-ink-muted">Status</dt><dd className="font-semibold">{orderStatusLabels[order.status] ?? order.status}</dd></div>
         </dl>
       </div>

@@ -6,6 +6,9 @@ export const site = {
   description:
     "Epoksid qatrandan əl ilə hazırlanmış divar saatları, şahmat və domino dəstləri, xəttatlıq pannoları. Bir hissəsi stokda hazırdır, qalanı 5–7 günə sifarişlə hazırlanır.",
   city: "Bakı",
+  /** Mağazanın vahid valyutası. Manata keçmək üçün yalnız bu iki sətir dəyişir. */
+  currency: "USD",
+  currencySymbol: "$",
   // TODO: nömrəni təsdiqləyin — Instagram bio-sunda bir rəqəm artıq görünürdü
   whatsapp: "994506169987",
   phoneDisplay: "+994 50 616 99 87",

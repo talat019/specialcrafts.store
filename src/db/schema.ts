@@ -19,7 +19,7 @@ export const products = pgTable(
     name: text("name").notNull(),
     categoryKey: text("category_key").notNull().references(() => categories.key),
     price: numeric("price", { precision: 10, scale: 2 }),   // null = qiymət hələ yoxdur
-    currency: text("currency").notNull().default("AZN"),
+    currency: text("currency").notNull().default("USD"),
     stock: text("stock").notNull().default("sifarisle"),    // var | sifarisle | satilib
     stockQty: integer("stock_qty").notNull().default(0),
     leadDays: text("lead_days"),
@@ -66,7 +66,7 @@ export const orders = pgTable(
     subtotal: numeric("subtotal", { precision: 10, scale: 2 }).notNull(),
     deliveryFee: numeric("delivery_fee", { precision: 10, scale: 2 }).notNull().default("0"),
     total: numeric("total", { precision: 10, scale: 2 }).notNull(),
-    currency: text("currency").notNull().default("AZN"),
+    currency: text("currency").notNull().default("USD"),
     status: text("status").notNull().default("yeni"),       // yeni|hazirlanir|gonderilib|tamamlandi|legv
     paymentStatus: text("payment_status").notNull().default("gozlenilir"), // gozlenilir|odenilib|ugursuz|legv|qaytarilib
     paymentProvider: text("payment_provider"),              // payriff | kapital | test
@@ -101,7 +101,7 @@ export const payments = pgTable(
     providerOrderId: text("provider_order_id"),
     providerSessionId: text("provider_session_id"),
     amount: numeric("amount", { precision: 10, scale: 2 }).notNull(),
-    currency: text("currency").notNull().default("AZN"),
+    currency: text("currency").notNull().default("USD"),
     status: text("status").notNull().default("gozlenilir"),
     paymentUrl: text("payment_url"),
     request: jsonb("request"),

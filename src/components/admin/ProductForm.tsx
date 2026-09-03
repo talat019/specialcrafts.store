@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useActionState } from "react";
 import { deleteImageAction, saveProductAction } from "@/lib/admin-actions";
+import { SYMBOL } from "@/lib/money";
 
 type Cat = { key: string; name: string; code: string };
 type Img = { id: string; url: string };
@@ -88,7 +89,7 @@ export function ProductForm({
 
       <aside className="flex h-fit flex-col gap-5 rounded-2xl border border-line bg-surface p-6">
         <div>
-          <label className={label} htmlFor="qiymet">Qiymət (₼)</label>
+          <label className={label} htmlFor="qiymet">Qiymət ({SYMBOL})</label>
           <input id="qiymet" name="qiymet" defaultValue={initial.price} className={field} placeholder="boş = «Qiymət üçün yazın»" />
           <p className="mt-1.5 text-[13px] text-ink-faint">Qiymət olmadan məhsul səbətə atıla bilmir.</p>
         </div>

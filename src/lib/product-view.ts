@@ -1,6 +1,8 @@
 /** Məhsulun tipləri və görüntüləmə köməkçiləri — baza importu YOXDUR,
  *  ona görə həm serverdə, həm brauzer komponentlərində işlədilə bilər. */
 
+import { money } from "./money";
+
 export type Stock = "var" | "sifarisle" | "satilib";
 
 export type Product = {
@@ -26,7 +28,7 @@ export type Product = {
 export type Category = { acar: string; ad: string; kod: string };
 
 export function priceLabel(p: Pick<Product, "qiymet">): string {
-  return p.qiymet == null ? "Qiymət üçün yazın" : `${p.qiymet} ₼`;
+  return p.qiymet == null ? "Qiymət üçün yazın" : money(p.qiymet);
 }
 
 export function leadTimeLabel(p: Pick<Product, "stok" | "hazirliqGunu">): string {

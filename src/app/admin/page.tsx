@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { adminOrders, adminStats } from "@/lib/admin-actions";
 import { orderStatusLabels, paymentStatusLabels } from "@/lib/orders";
+import { money } from "@/lib/money";
 
 export default async function AdminHome() {
   const [stats, orders] = await Promise.all([adminStats(), adminOrders()]);
@@ -10,7 +11,7 @@ export default async function AdminHome() {
     { label: "Məhsul", value: stats.products.hamisi, note: `${stats.products.stokda} stokda` },
     { label: "Qiyməti olmayan", value: stats.products.qiymetsiz, note: "səbətə atıla bilmir", warn: stats.products.qiymetsiz > 0 },
     { label: "Sifariş", value: stats.orders.hamisi, note: `${stats.orders.yeni} yeni` },
-    { label: "Ödənilmiş", value: `${stats.orders.mebleg.toFixed(0)} ₼`, note: `${stats.orders.odenilib} sifariş` },
+    { label: "Ödənilmiş", value: money(Math.round(stats.orders.mebleg)), note: `${stats.orders.odenilib} sifariş` },
   ];
 
   return (
@@ -48,7 +49,7 @@ export default async function AdminHome() {
                 <tr key={o.id} className="border-t border-line">
                   <td className="px-4 py-3"><Link href={`/admin/sifarisler/${o.id}`} className="code font-semibold hover:text-emerald">{o.reference}</Link></td>
                   <td className="px-4 py-3">{o.customerName}<br /><span className="text-[13px] text-ink-faint">{o.customerPhone}</span></td>
-                  <td className="px-4 py-3 tabular-nums">{o.total} ₼</td>
+                  <td className="px-4 py-3 tabular-nums">{money(o.total)}</td>
                   <td className="px-4 py-3">{paymentStatusLabels[o.paymentStatus] ?? o.paymentStatus}</td>
                   <td className="px-4 py-3">{orderStatusLabels[o.status] ?? o.status}</td>
                 </tr>

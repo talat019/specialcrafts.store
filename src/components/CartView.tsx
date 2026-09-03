@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useCart } from "@/lib/cart";
+import { money } from "@/lib/money";
 import { resolveCartAction } from "@/lib/actions";
 import type { ResolvedLine } from "@/lib/order-labels";
 
@@ -82,7 +83,7 @@ export function CartView() {
                     className="size-8 rounded-lg border border-line-strong text-lg leading-none"
                   >+</button>
                 </div>
-                <span className="font-display text-[20px]">{i.cem} ₼</span>
+                <span className="font-display text-[20px]">{money(i.cem)}</span>
               </div>
             </div>
             <button
@@ -96,7 +97,7 @@ export function CartView() {
       <aside className="h-fit rounded-2xl border border-line bg-surface p-6">
         <div className="flex justify-between border-b border-line pb-4">
           <span className="text-ink-muted">Məhsullar</span>
-          <span className="font-semibold tabular-nums">{subtotal} ₼</span>
+          <span className="font-semibold tabular-nums">{money(subtotal)}</span>
         </div>
         <p className="mt-4 text-[13.5px] text-ink-faint">
           Çatdırılma haqqı növbəti addımda seçilir.

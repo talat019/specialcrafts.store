@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/lib/cart";
+import { money } from "@/lib/money";
 import { createOrderAction, resolveCartAction } from "@/lib/actions";
 import type { ResolvedLine } from "@/lib/order-labels";
 
@@ -103,7 +104,7 @@ export function CheckoutForm({
                 <span className="block font-semibold">{d.label}</span>
                 <span className="block text-[13.5px] text-ink-muted">{d.note}</span>
               </span>
-              <span className="font-semibold tabular-nums">{d.fee === 0 ? "pulsuz" : `${d.fee} ₼`}</span>
+              <span className="font-semibold tabular-nums">{d.fee === 0 ? "pulsuz" : money(d.fee)}</span>
             </label>
           ))}
           {method !== "goturme" && (
@@ -141,15 +142,15 @@ export function CheckoutForm({
                 {i.sekil && <Image src={i.sekil} alt="" fill sizes="48px" className="object-cover" />}
               </div>
               <span className="flex-1 text-[14px] leading-snug">{i.ad} <span className="text-ink-faint">× {i.qty}</span></span>
-              <span className="text-[14px] font-semibold tabular-nums">{i.cem} ₼</span>
+              <span className="text-[14px] font-semibold tabular-nums">{money(i.cem)}</span>
             </li>
           ))}
         </ul>
         <dl className="mt-4 flex flex-col gap-2 text-[15px]">
-          <div className="flex justify-between"><dt className="text-ink-muted">Məhsullar</dt><dd className="tabular-nums">{subtotal} ₼</dd></div>
-          <div className="flex justify-between"><dt className="text-ink-muted">Çatdırılma</dt><dd className="tabular-nums">{fee === 0 ? "pulsuz" : `${fee} ₼`}</dd></div>
+          <div className="flex justify-between"><dt className="text-ink-muted">Məhsullar</dt><dd className="tabular-nums">{money(subtotal)}</dd></div>
+          <div className="flex justify-between"><dt className="text-ink-muted">Çatdırılma</dt><dd className="tabular-nums">{fee === 0 ? "pulsuz" : money(fee)}</dd></div>
           <div className="mt-2 flex justify-between border-t border-line pt-3 font-display text-[24px]">
-            <dt>Cəmi</dt><dd className="tabular-nums">{total} ₼</dd>
+            <dt>Cəmi</dt><dd className="tabular-nums">{money(total)}</dd>
           </div>
         </dl>
 
@@ -161,7 +162,7 @@ export function CheckoutForm({
           type="submit" disabled={pending}
           className="mt-5 w-full rounded-xl bg-emerald px-6 py-4 font-bold text-surface transition-colors hover:bg-emerald-dark disabled:opacity-60"
         >
-          {pending ? "Göndərilir…" : `Ödənişə keç — ${total} ₼`}
+          {pending ? "Göndərilir…" : `Ödənişə keç — ${money(total)}`}
         </button>
         <p className="mt-3 text-center text-[13px] text-ink-faint">
           Düyməyə basdıqda ödəniş səhifəsinə yönləndirilirsiniz.

@@ -1,6 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { getOrder, markOrderPaid, markOrderPaymentFailed } from "@/lib/orders";
 import { isTestMode } from "@/lib/payment";
+import { money } from "@/lib/money";
 
 export const metadata = { title: "Test ödənişi", robots: { index: false } };
 
@@ -47,13 +48,13 @@ export default async function TestOdenisPage({ params }: { params: Promise<{ id:
           {items.map((i) => (
             <li key={i.id} className="flex justify-between gap-3">
               <span>{i.name} <span className="text-ink-faint">× {i.qty}</span></span>
-              <span className="tabular-nums">{i.lineTotal} ₼</span>
+              <span className="tabular-nums">{money(i.lineTotal)}</span>
             </li>
           ))}
         </ul>
         <div className="flex justify-between border-t border-line pt-3 font-display text-[24px]">
           <span>Ödəniləcək</span>
-          <span className="tabular-nums">{order.total} ₼</span>
+          <span className="tabular-nums">{money(order.total)}</span>
         </div>
 
         <div className="mt-6 flex flex-col gap-3">
