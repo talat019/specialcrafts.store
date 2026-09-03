@@ -21,8 +21,8 @@ export default async function ElaqePage({ params }: { params: Promise<{ locale: 
 
   const links: [string, string, string][] = [
     ["WhatsApp", site.phoneDisplay, waGeneral()],
-    ["Instagram", "@special__crafts", site.instagram],
-    ["TikTok", "@special__crafts", site.tiktok],
+    ["Instagram", site.instagramHandle, site.instagram],
+    ["TikTok", site.tiktokHandle, site.tiktok],
   ];
 
   return (

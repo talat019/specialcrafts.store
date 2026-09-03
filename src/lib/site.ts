@@ -13,7 +13,9 @@ export const site = {
   whatsapp: "994506169987",
   phoneDisplay: "+994 50 616 99 87",
   instagram: "https://instagram.com/special__crafts",
-  tiktok: "https://tiktok.com/@special__crafts",
+  tiktok: "https://www.tiktok.com/@by_semedova",
+  tiktokHandle: "@by_semedova",
+  instagramHandle: "@special__crafts",
   followers: "5 900+",
   /** Rəqəm hissəsi — «iş günü» sözü lüğətdən gəlir (bax lib/product-view.ts) */
   leadDays: "5–7",
