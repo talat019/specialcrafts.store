@@ -11,6 +11,29 @@ export type Zone = "az-baku" | "az-region" | "caucasus" | "europe" | "world" | "
 /** Məhsulun ölçü/çəki sinfi — çatdırılma qiyməti bundan asılıdır. */
 export type ShipTier = "small" | "medium" | "large";
 
+/**
+ * Hər ölçü sinfinin qablaşdırma qutusu.
+ * Beynəlxalq göndərişdə kuryer FAKTİKİ və HƏCM çəkisindən böyüyünü hesablayır:
+ *   həcm çəkisi = en × uzunluq × hündürlük (sm) ÷ bölən
+ *   bölən: kuryer (DHL/UPS/FedEx) 5000 · poçt/EMS adətən 6000
+ *
+ * Tarif soruşanda kuryerə məhz bu ölçüləri deyin — yalnız çəkini demək azdır.
+ */
+export const BOXES: Record<ShipTier, { l: number; w: number; h: number; confirmed: boolean }> = {
+  // ⚠ təsdiqlənməyib — real qutu ölçüsünü yazın
+  small: { l: 15, w: 12, h: 5, confirmed: false },
+  // ⚠ təsdiqlənməyib
+  medium: { l: 30, w: 22, h: 10, confirmed: false },
+  // ✓ təsdiqlənib (2026-09-04) — saat, şahmat, panno
+  large: { l: 40, w: 40, h: 8, confirmed: true },
+};
+
+/** Həcm çəkisi (kq). Kuryer üçün bölən 5000, poçt üçün 6000. */
+export function volumetricKg(tier: ShipTier, divisor: 5000 | 6000 = 5000): number {
+  const b = BOXES[tier];
+  return +((b.l * b.w * b.h) / divisor).toFixed(2);
+}
+
 /** zona × ölçü sinfi → qiymət (USD). Sifarişdəki ƏN BÖYÜK sinif tətbiq olunur. */
 export const RATES: Record<Exclude<Zone, "pickup">, Record<ShipTier, number>> = {
   "az-baku":   { small: 3,  medium: 3,  large: 5 },

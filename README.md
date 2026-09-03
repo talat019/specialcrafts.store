@@ -78,6 +78,17 @@ Zona × ölçü sinfi cədvəli — `src/lib/shipping.ts` içindəki `RATES`. Si
 > ⚠ **Bu rəqəmlər təxminidir.** Azərpoçt / kuryer ilə real tarifi dəqiqləşdirdikdən sonra
 > yalnız `RATES` cədvəli dəyişdirilir — qalan kod toxunulmur.
 
+**Qutu ölçüləri və həcm çəkisi** (`BOXES` cədvəli):
+
+| Sinif | Qutu (sm) | Həcm | ÷5000 kuryer | ÷6000 poçt | Təsdiq |
+|---|---|---:|---:|---:|---|
+| Böyük | 40 × 40 × 8 | 12 800 sm³ | 2,56 kq | 2,13 kq | ✓ |
+| Orta | 30 × 22 × 10 | 6 600 sm³ | 1,32 kq | 1,10 kq | ⚠ təxmini |
+| Kiçik | 15 × 12 × 5 | 900 sm³ | 0,18 kq | 0,15 kq | ⚠ təxmini |
+
+Kuryer faktiki və həcm çəkisindən **böyüyünü** hesablayır. Tarif soruşanda qutunun
+ölçülərini deyin — yalnız çəkini demək azdır.
+
 Məhsulun ölçü sinfi (`ship_tier`) kateqoriyaya görə verilir və admin paneldən deyil,
 `TIER_BY_CATEGORY` cədvəlindən gəlir. Siyahıda olmayan ölkə ən uzaq zona kimi hesablanır.
 
