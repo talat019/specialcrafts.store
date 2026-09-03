@@ -8,7 +8,9 @@ Epoksid qatran əl işləri — kataloq, onlayn ödəniş və admin paneli.
 | Instagram | [@special__crafts](https://instagram.com/special__crafts) · TikTok [@special__crafts](https://tiktok.com/@special__crafts) |
 | **Canlı sayt** | **https://specialcrafts.store** (SolOcean VPS, Docker + Caddy) |
 | Status | **Yayımdadır** — ödəniş test rejimində, qiymətlər gözlənilir |
-| Kataloq | **34 məhsul · 9 kateqoriya** |
+| Kataloq | **34 məhsul · 9 kateqoriya** · 14-ü qiymətli və səbətə atıla bilir |
+| Dillər | **İngiliscə (standart)** · Rusca · Azərbaycanca |
+| Valyuta | USD (`src/lib/money.ts` — bir yerdən dəyişir) |
 
 ## İşə salmaq
 
@@ -44,6 +46,20 @@ Callback gövdəsinə **etibar edilmir**: bildiriş gələndə ödənişin keçd
 API-si ilə yenidən soruşulur. Təsdiq gələndə stok avtomatik azalır, ədəd sıfıra düşəndə
 məhsul «Satılıb» halına keçir — səhifəsi silinmir. Təkrar callback stoku ikinci dəfə
 azaltmır.
+
+### Dillər
+
+`/en`, `/ru`, `/az` — standart ingiliscədir. Prefiksiz ünvan brauzerin dilinə görə
+yönləndirilir, seçim `sc_locale` çərəzində saxlanılır.
+
+| Nə | Harada |
+|---|---|
+| İnterfeys mətnləri | `src/i18n/en.ts` · `ru.ts` · `az.ts` (üçü eyni struktur) |
+| Məhsul və kateqoriya adları | bazada `name_en` / `name_ru` sütunları |
+| İlkin tərcümə mənbəyi | `content/translations.json` |
+
+Tərcümə yoxdursa azərbaycancaya qayıdır — yəni yeni məhsul əlavə edəndə sayt sınmır.
+Admin paneli yalnız azərbaycancadır.
 
 ### Üç məhsul vəziyyəti
 
