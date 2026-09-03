@@ -11,6 +11,7 @@ Epoksid qatran əl işləri — kataloq, onlayn ödəniş və admin paneli.
 | Kataloq | **34 məhsul · 9 kateqoriya** · 14-ü qiymətli və səbətə atıla bilir |
 | Dillər | **İngiliscə (standart)** · Rusca · Azərbaycanca |
 | Valyuta | USD (`src/lib/money.ts` — bir yerdən dəyişir) |
+| Çatdırılma | **Dünyanın hər yerinə** — 81 ölkə, 5 zona (`src/lib/shipping.ts`) |
 
 ## İşə salmaq
 
@@ -60,6 +61,25 @@ yönləndirilir, seçim `sc_locale` çərəzində saxlanılır.
 
 Tərcümə yoxdursa azərbaycancaya qayıdır — yəni yeni məhsul əlavə edəndə sayt sınmır.
 Admin paneli yalnız azərbaycancadır.
+
+### Çatdırılma
+
+Zona × ölçü sinfi cədvəli — `src/lib/shipping.ts` içindəki `RATES`. Sifarişdəki **ən böyük**
+əşya tarifi müəyyən edir; qiymət sifariş üzrədir, məhsul üzrə deyil.
+
+| Zona | Kiçik | Orta | Böyük | Müddət |
+|---|---:|---:|---:|---|
+| Bakı | $3 | $3 | $5 | 1–2 gün |
+| Azərbaycan | $5 | $5 | $8 | 2–4 gün |
+| Qonşu ölkələr | $15 | $25 | $45 | 5–10 gün |
+| Avropa | $20 | $35 | $65 | 7–14 gün |
+| Qalan dünya | $25 | $45 | $85 | 10–21 gün |
+
+> ⚠ **Bu rəqəmlər təxminidir.** Azərpoçt / kuryer ilə real tarifi dəqiqləşdirdikdən sonra
+> yalnız `RATES` cədvəli dəyişdirilir — qalan kod toxunulmur.
+
+Məhsulun ölçü sinfi (`ship_tier`) kateqoriyaya görə verilir və admin paneldən deyil,
+`TIER_BY_CATEGORY` cədvəlindən gəlir. Siyahıda olmayan ölkə ən uzaq zona kimi hesablanır.
 
 ### Üç məhsul vəziyyəti
 

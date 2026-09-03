@@ -34,6 +34,7 @@ export const products = pgTable(
     colorFamily: jsonb("color_family").$type<string[]>().notNull().default([]),
     colorOptions: jsonb("color_options").$type<string[]>().notNull().default([]),
     engraving: boolean("engraving").notNull().default(false),
+    shipTier: text("ship_tier").notNull().default("medium"), // small | medium | large
     description: text("description").notNull().default(""),
     descriptionEn: text("description_en"),
     descriptionRu: text("description_ru"),
@@ -67,6 +68,10 @@ export const orders = pgTable(
     customerPhone: text("customer_phone").notNull(),
     customerEmail: text("customer_email"),
     deliveryMethod: text("delivery_method").notNull(),      // baki | rayon | goturme
+    country: text("country").notNull().default("AZ"),       // ISO-3166 alpha-2
+    shippingZone: text("shipping_zone").notNull().default("az-baku"),
+    city: text("city"),
+    postalCode: text("postal_code"),
     address: text("address"),
     note: text("note"),
     subtotal: numeric("subtotal", { precision: 10, scale: 2 }).notNull(),

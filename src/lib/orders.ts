@@ -4,7 +4,8 @@ import { orderItems, orders, payments, productImages, products } from "@/db/sche
 import type { CartLine } from "./cart";
 
 export * from "./order-labels";
-import { deliveryFee, type DeliveryMethod, type ResolvedLine } from "./order-labels";
+import type { DeliveryMethod, ResolvedLine } from "./order-labels";
+import { maxTier, shippingCost, zoneForCountry, type ShipTier, type Zone } from "./shipping";
 export type { DeliveryMethod, ResolvedLine };
 
 /** SC-260903-4821 formatında istinad nömrəsi. */
@@ -36,6 +37,7 @@ export async function resolveCart(lines: CartLine[]): Promise<{
       stock: products.stock,
       stockQty: products.stockQty,
       active: products.active,
+      shipTier: products.shipTier,
     })
     .from(products)
     .where(inArray(products.code, codes));
@@ -70,6 +72,7 @@ export async function resolveCart(lines: CartLine[]): Promise<{
       qty,
       cem: +(qiymet * qty).toFixed(2),
       sekil: firstImage.get(r.id) ?? null,
+      shipTier: (r.shipTier ?? "medium") as ShipTier,
     });
   }
 
@@ -81,15 +84,30 @@ export type NewOrderInput = {
   customerName: string;
   customerPhone: string;
   customerEmail?: string | null;
+  country: string;
   deliveryMethod: DeliveryMethod;
+  city?: string | null;
+  postalCode?: string | null;
   address?: string | null;
   note?: string | null;
   items: ResolvedLine[];
   subtotal: number;
 };
 
+/** Səbətdəki ən böyük ölçü sinfinə görə çatdırılma qiyməti. */
+export function shippingFor(
+  country: string,
+  method: DeliveryMethod,
+  items: Pick<ResolvedLine, "shipTier">[],
+): { zone: Zone; fee: number } {
+  const azMethod = method === "goturme" ? "pickup" : method === "rayon" ? "region" : "baku";
+  const zone = zoneForCountry(country, azMethod);
+  const tier = maxTier(items.map((i) => i.shipTier));
+  return { zone, fee: shippingCost(zone, tier) };
+}
+
 export async function createOrder(input: NewOrderInput) {
-  const fee = deliveryFee(input.deliveryMethod);
+  const { zone, fee } = shippingFor(input.country, input.deliveryMethod, input.items);
   const total = +(input.subtotal + fee).toFixed(2);
 
   const [order] = await db
@@ -100,6 +118,10 @@ export async function createOrder(input: NewOrderInput) {
       customerPhone: input.customerPhone,
       customerEmail: input.customerEmail ?? null,
       deliveryMethod: input.deliveryMethod,
+      country: input.country.toUpperCase(),
+      shippingZone: zone,
+      city: input.city ?? null,
+      postalCode: input.postalCode ?? null,
       address: input.address ?? null,
       note: input.note ?? null,
       subtotal: String(input.subtotal),

@@ -5,9 +5,8 @@ import { z } from "zod";
 import { db } from "@/db";
 import { payments } from "@/db/schema";
 import type { CartLine } from "./cart";
-import {
-  createOrder, deliveryFee, resolveCart, type DeliveryMethod,
-} from "./orders";
+import { createOrder, resolveCart, shippingFor, type DeliveryMethod } from "./orders";
+import { COUNTRIES } from "./shipping";
 import { availableProviders, getProvider, type ProviderKey } from "./payment";
 import { site } from "./site";
 
@@ -28,7 +27,10 @@ const checkoutSchema = z.object({
     .max(24)
     .regex(/^[0-9+()\s-]+$/, "Telefon nömrəsi düzgün deyil"),
   email: z.string().trim().email("E-poçt düzgün deyil").max(120).optional().or(z.literal("")),
-  catdirilma: z.enum(["baki", "rayon", "goturme"]),
+  olke: z.string().trim().length(2),
+  catdirilma: z.enum(["baki", "rayon", "goturme", "beynelxalq"]),
+  seher: z.string().trim().max(120).optional().or(z.literal("")),
+  indeks: z.string().trim().max(20).optional().or(z.literal("")),
   unvan: z.string().trim().max(400).optional().or(z.literal("")),
   qeyd: z.string().trim().max(600).optional().or(z.literal("")),
   provayder: z.string().min(1),
@@ -53,8 +55,19 @@ export async function createOrderAction(
   }
   const f = parsed.data;
 
-  if (f.catdirilma !== "goturme" && !f.unvan) {
+  const country = f.olke.toUpperCase();
+  const known = COUNTRIES.some((c) => c.code === country);
+  if (!known) {
+    return { ok: false, error: "Formada xəta var", fieldErrors: { olke: "Bu ölkəyə göndəriş siyahıda yoxdur" } };
+  }
+  const domestic = country === "AZ";
+  const method = (domestic ? f.catdirilma : "beynelxalq") as DeliveryMethod;
+
+  if (method !== "goturme" && !f.unvan) {
     return { ok: false, error: "Formada xəta var", fieldErrors: { unvan: "Çatdırılma ünvanını yazın" } };
+  }
+  if (!domestic && !f.seher) {
+    return { ok: false, error: "Formada xəta var", fieldErrors: { seher: "Şəhəri yazın" } };
   }
 
   // qiymətlər yalnız bazadan — brauzerdən gələn rəqəmə etibar edilmir
@@ -78,14 +91,17 @@ export async function createOrderAction(
     customerName: f.ad,
     customerPhone: f.telefon,
     customerEmail: f.email || null,
-    deliveryMethod: f.catdirilma as DeliveryMethod,
+    country,
+    deliveryMethod: method,
+    city: f.seher || null,
+    postalCode: f.indeks || null,
     address: f.unvan || null,
     note: f.qeyd || null,
     items,
     subtotal,
   });
 
-  const total = subtotal + deliveryFee(f.catdirilma as DeliveryMethod);
+  const total = subtotal + shippingFor(country, method, items).fee;
   const base = process.env.NEXT_PUBLIC_SITE_URL ?? site.url;
   const provider = getProvider(providerKey);
 

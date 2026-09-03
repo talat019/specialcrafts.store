@@ -188,6 +188,19 @@ const en = {
     errGone: "The pieces in your cart are no longer available. Please refresh your cart.",
     errProvider:
       "The payment system did not respond. Try again shortly or write to us on WhatsApp.",
+    country: "Country",
+    city: "City",
+    postalCode: "Postal code",
+    errCountry: "We do not ship to that country yet — write to us on WhatsApp",
+    errCity: "Enter the city",
+    worldwide: "We ship worldwide",
+    shippingCalc:
+      "Shipping is calculated from your country and the size of the pieces in your cart.",
+    transit: "Estimated transit: {days} days",
+    customsNote:
+      "Customs duty and import taxes, where they apply, are paid by the recipient. We declare every parcel as a handmade gift item with its real value.",
+    fragileNote:
+      "Resin is fragile — international parcels are packed in a double box with foam. If a piece arrives broken, send us an unboxing video within 24 hours and we replace it.",
   },
   payment: {
     testTitle: "Test payment page",
@@ -273,6 +286,16 @@ const en = {
     delivery2: "Made-to-order pieces are ready in {lead}, then shipped.",
     delivery3:
       "Delivery inside {city} is by courier. For the regions, write to us on WhatsApp.",
+    worldTitle: "International shipping",
+    worldIntro:
+      "We ship worldwide. The price depends on your country and the size of the pieces in the order — the largest item sets the rate.",
+    tierSmall: "Small (jewellery, bookmarks)",
+    tierMedium: "Medium (domino, mirror set, key holder)",
+    tierLarge: "Large (clocks, chess sets, panels)",
+    zoneCol: "Destination",
+    transitCol: "Transit",
+    ratesNote:
+      "Rates are shown per order, not per item. Customs duty, where it applies, is paid by the recipient.",
     payTitle: "Payment",
     pay1: "You can pay by card on the site, or agree another method on WhatsApp.",
     pay2: "Custom orders require a deposit before work starts.",
@@ -323,6 +346,14 @@ const en = {
     ugursuz: "Failed",
     legv: "Cancelled",
     qaytarilib: "Refunded",
+  },
+  zones: {
+    "az-baku": "Courier in Baku",
+    "az-region": "Delivery within Azerbaijan",
+    caucasus: "Neighbouring countries",
+    europe: "Europe",
+    world: "Rest of the world",
+    pickup: "Collect in person",
   },
   providers: {
     test: "Test payment (no bank connected)",

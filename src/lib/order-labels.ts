@@ -1,16 +1,7 @@
 /** Saf sabitlər — həm serverdə, həm brauzerdə işlədilir (baza importu YOXDUR). */
 
-export type DeliveryMethod = "baki" | "rayon" | "goturme";
-
-export const deliveryOptions: { key: DeliveryMethod; label: string; fee: number; note: string }[] = [
-  { key: "baki", label: "Bakıdaxili kuryer", fee: 5, note: "1–2 iş günü" },
-  { key: "rayon", label: "Rayonlara göndəriş", fee: 8, note: "2–4 iş günü, Azərpoçt" },
-  { key: "goturme", label: "Özüm götürəcəyəm", fee: 0, note: "Ünvan WhatsApp-da razılaşdırılır" },
-];
-
-export function deliveryFee(m: DeliveryMethod): number {
-  return deliveryOptions.find((d) => d.key === m)?.fee ?? 0;
-}
+/** Azərbaycan daxilində çatdırılma üsulu. Xaricə göndərişdə həmişə "beynelxalq". */
+export type DeliveryMethod = "baki" | "rayon" | "goturme" | "beynelxalq";
 
 export const orderStatusLabels: Record<string, string> = {
   yeni: "Yeni",
@@ -36,4 +27,5 @@ export type ResolvedLine = {
   qty: number;
   cem: number;
   sekil: string | null;
+  shipTier: "small" | "medium" | "large";
 };

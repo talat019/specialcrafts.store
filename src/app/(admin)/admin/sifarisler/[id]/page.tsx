@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { adminOrder } from "@/lib/admin-actions";
-import { deliveryOptions, orderStatusLabels, paymentStatusLabels } from "@/lib/orders";
+import { orderStatusLabels, paymentStatusLabels } from "@/lib/orders";
+import { countryName, TRANSIT_DAYS, type Zone } from "@/lib/shipping";
 import { OrderControls } from "@/components/admin/OrderControls";
 import { money } from "@/lib/money";
 
@@ -10,13 +11,15 @@ export default async function SifarisDetal({ params }: { params: Promise<{ id: s
   const data = await adminOrder(id);
   if (!data) notFound();
   const { order, items } = data;
-  const delivery = deliveryOptions.find((d) => d.key === order.deliveryMethod);
 
   const rows: [string, string][] = [
     ["Müştəri", order.customerName],
     ["Telefon", order.customerPhone],
     ["E-poçt", order.customerEmail ?? "—"],
-    ["Çatdırılma", delivery?.label ?? order.deliveryMethod],
+    ["Ölkə", `${countryName(order.country, "az")} (${order.country})`],
+    ["Zona", `${order.shippingZone} · ${TRANSIT_DAYS[order.shippingZone as Zone] ?? "—"} gün`],
+    ["Şəhər", order.city ?? "—"],
+    ["Poçt indeksi", order.postalCode ?? "—"],
     ["Ünvan", order.address ?? "—"],
     ["Qeyd", order.note ?? "—"],
     ["Ödəniş üsulu", order.paymentProvider ?? "—"],

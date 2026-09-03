@@ -189,6 +189,19 @@ const az: Dictionary = {
     errGone: "Səbətdəki məhsullar artıq mövcud deyil. Səbəti yeniləyin.",
     errProvider:
       "Ödəniş sistemi cavab vermədi. Bir az sonra yenidən yoxlayın və ya WhatsApp-da yazın.",
+    country: "Ölkə",
+    city: "Şəhər",
+    postalCode: "Poçt indeksi",
+    errCountry: "Bu ölkəyə hələ göndərmirik — WhatsApp-da yazın",
+    errCity: "Şəhəri yazın",
+    worldwide: "Dünyanın hər yerinə göndəririk",
+    shippingCalc:
+      "Çatdırılma qiyməti ölkənizə və səbətdəki işlərin ölçüsünə görə hesablanır.",
+    transit: "Təxmini yolda müddət: {days} gün",
+    customsNote:
+      "Gömrük rüsumu və idxal vergiləri, tətbiq olunduğu halda, alıcı tərəfindən ödənilir. Hər bağlamanı əl işi kimi, real dəyəri ilə bəyan edirik.",
+    fragileNote:
+      "Qatran kövrəkdir — beynəlxalq bağlamalar ikiqat qutuda, köpüklə paketlənir. İş sınıq gəlibsə, 24 saat ərzində açılış videosu göndərin, dəyişdiririk.",
   },
   payment: {
     testTitle: "Test ödəniş səhifəsi",
@@ -274,6 +287,16 @@ const az: Dictionary = {
     delivery2: "Sifarişlə hazırlananlar {lead} ərzində hazır olur, sonra göndərilir.",
     delivery3:
       "{city}daxili çatdırılma kuryerlə olur. Rayonlara göndəriş üçün WhatsApp-da yazın.",
+    worldTitle: "Beynəlxalq çatdırılma",
+    worldIntro:
+      "Dünyanın hər yerinə göndəririk. Qiymət ölkədən və sifarişdəki işlərin ölçüsündən asılıdır — tarifi ən böyük əşya müəyyən edir.",
+    tierSmall: "Kiçik (aksesuar, kitab ayracı)",
+    tierMedium: "Orta (domino, güzgü dəsti, açar asılqanı)",
+    tierLarge: "Böyük (saat, şahmat, panno)",
+    zoneCol: "İstiqamət",
+    transitCol: "Müddət",
+    ratesNote:
+      "Tariflər sifariş üzrədir, məhsul üzrə deyil. Gömrük rüsumu, tətbiq olunduğu halda, alıcı tərəfindən ödənilir.",
     payTitle: "Ödəniş",
     pay1: "Saytda kartla ödəyə bilərsiniz, yaxud WhatsApp-da başqa üsul razılaşdırarıq.",
     pay2: "Fərdi sifarişlərdə işə başlamaq üçün beh alınır.",
@@ -324,6 +347,14 @@ const az: Dictionary = {
     ugursuz: "Uğursuz",
     legv: "Ləğv edilib",
     qaytarilib: "Qaytarılıb",
+  },
+  zones: {
+    "az-baku": "Bakıdaxili kuryer",
+    "az-region": "Azərbaycan daxilində çatdırılma",
+    caucasus: "Qonşu ölkələr",
+    europe: "Avropa",
+    world: "Dünyanın qalan hissəsi",
+    pickup: "Özüm götürəcəyəm",
   },
   providers: {
     test: "Test ödənişi (bank qoşulmayıb)",

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CheckoutForm } from "@/components/CheckoutForm";
 import { availableProviders, isTestMode } from "@/lib/payment";
-import { deliveryOptions } from "@/lib/order-labels";
+import { RATES, TRANSIT_DAYS, countryOptions } from "@/lib/shipping";
 import { isLocale, type Locale } from "@/i18n/config";
 import { getDictionary } from "@/i18n";
 
@@ -25,28 +25,29 @@ export default async function SifarisPage({ params }: { params: Promise<{ locale
     label: t.providers[p.key as keyof typeof t.providers] ?? p.label,
   }));
 
-  const delivery = deliveryOptions.map((d) => ({
-    key: d.key,
-    fee: d.fee,
-    label:
-      d.key === "baki" ? t.checkout.deliveryBaku
-      : d.key === "rayon" ? t.checkout.deliveryRegion
-      : t.checkout.deliveryPickup,
-    note:
-      d.key === "baki" ? t.checkout.deliveryBakuNote
-      : d.key === "rayon" ? t.checkout.deliveryRegionNote
-      : t.checkout.deliveryPickupNote,
-  }));
-
   return (
     <div className="mx-auto max-w-[1000px] px-5 py-12 lg:px-14 lg:py-16">
       <h1 className="text-[34px] lg:text-[44px]">{t.checkout.title}</h1>
+      <p className="mt-2 flex items-center gap-2 text-[15px] text-ink-muted">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          strokeWidth="1.7" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18" />
+        </svg>
+        {t.checkout.worldwide}
+      </p>
       {isTestMode() && (
         <p className="mt-5 rounded-xl border border-order-line bg-order-tint px-4 py-3 text-[14.5px] text-gold-dark">
           {t.checkout.testNotice.replace(/\*\*/g, "")}
         </p>
       )}
-      <CheckoutForm providers={providers} delivery={delivery} locale={l} t={t} />
+      <CheckoutForm
+        providers={providers}
+        countries={countryOptions(l)}
+        rates={RATES}
+        transit={TRANSIT_DAYS}
+        locale={l}
+        t={t}
+      />
     </div>
   );
 }

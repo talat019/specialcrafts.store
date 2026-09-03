@@ -6,6 +6,7 @@ import { readFileSync } from "node:fs";
 import { eq } from "drizzle-orm";
 import { db } from "./index";
 import { categories, products, productImages } from "./schema";
+import { TIER_BY_CATEGORY } from "../lib/shipping";
 
 type Raw = {
   kod: string; ad: string; kateqoriya: string;
@@ -86,6 +87,7 @@ async function main() {
       colorFamily: m.rengAilesi,
       colorOptions: m.rengSecimleri,
       engraving: m.hekkMumkun,
+      shipTier: TIER_BY_CATEGORY[m.kateqoriya] ?? "medium",
       description: m.tesvir,
       descriptionEn: tr[m.kod]?.en.tesvir ?? null,
       descriptionRu: tr[m.kod]?.ru.tesvir ?? null,
