@@ -6,8 +6,8 @@ Epoksid qatran əl işləri — kataloq, onlayn ödəniş və admin paneli.
 |---|---|
 | Brend | special crafts / By Semedova |
 | Instagram | [@special__crafts](https://instagram.com/special__crafts) · TikTok [@special__crafts](https://tiktok.com/@special__crafts) |
-| Domen | `specialcrafts.store` — qeydiyyatda, hələ bağlanmayıb |
-| Status | **Faza 2–3 hazırdır** — sayt Node hostuna köçürülməyi gözləyir |
+| **Canlı sayt** | **https://specialcrafts.store** (SolOcean VPS, Docker + Caddy) |
+| Status | **Yayımdadır** — ödəniş test rejimində, qiymətlər gözlənilir |
 | Kataloq | **34 məhsul · 9 kateqoriya** |
 
 ## İşə salmaq
@@ -72,11 +72,12 @@ Hər şey `/admin` panelindən:
 - **[docs/DEPLOY.md](docs/DEPLOY.md)** — hostinq və domen
 - **[docs/PLAN.md](docs/PLAN.md)** · **[docs/KATALOQ-HESABATI.md](docs/KATALOQ-HESABATI.md)** · **[docs/DESIGN-PROMPT.md](docs/DESIGN-PROMPT.md)** · **[docs/BRAND.md](docs/BRAND.md)**
 
-## Yayımdan əvvəl qalanlar
+## Qalanlar
 
-1. **Qiymətlər** — 34 məhsulun hamısında boşdur. Qiymət olmadan onlayn ödəniş işləmir.
-2. **Host** — GitHub Pages artıq yaramır (statik deyil). Bax `docs/DEPLOY.md`.
-3. **Merchant hesabları** — Payriff / Kapital Bank. Bax `docs/ODENIS-QOSULMA.md`.
+1. **DNS** — Namecheap-də köhnə parking A qeydi (`192.64.119.57`) silinməlidir; ziyarətçilərin
+   yarısı ona düşür və sayt açılmır. Bax `docs/DEPLOY.md`.
+2. **Qiymətlər** — 34 məhsulun hamısında boşdur. Qiymət olmadan onlayn ödəniş işləmir.
+3. **Payriff təsdiqi** — hesab hələ «in Review». Bax `docs/ODENIS-QOSULMA.md`.
 4. **WhatsApp nömrəsi** — `src/lib/site.ts`, təsdiq gözləyir.
 5. **Loqo** — JPG, yazıda «AZERBAIJAN**N**» səhvi var (neon lövhədə «AZERBAIJANI» yazılıb).
 6. **`SHM-003`** şəkli 360×360 — yenidən çəkilməlidir.

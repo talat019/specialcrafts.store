@@ -1,76 +1,83 @@
 # Yayımlama
 
-## Vacib dəyişiklik
+Sayt **SolOcean VPS-ində** (`solocean-prod`, 2.24.194.242) canlıdır:
 
-Faza 1-də sayt statik idi və **GitHub Pages**-də dayanırdı. Faza 2-də ödəniş, admin panel
-və verilənlər bazası əlavə olundu — bunlar server tələb edir. **GitHub Pages artıq yaramır**
-və Actions iş axını silindi.
+**https://specialcrafts.store**
 
-Köhnə link (`talat019.github.io/specialcrafts.store`) hələ də Faza 1 versiyasını göstərir —
-yeni host seçiləndən sonra onu bağlamaq olar.
+Serverdəki digər layihələrlə eyni konvensiya: `/opt/projects/<layihə>` + xarici `proxy`
+şəbəkəsi + paylaşılan Caddy.
 
-## Nə lazımdır
+| | |
+|---|---|
+| Qovluq | `/opt/projects/specialcrafts` |
+| Konteynerlər | `specialcrafts-web` (Next.js) · `specialcrafts-postgres` |
+| Şəbəkələr | `proxy` (xarici, Caddy görür) · `specialcrafts_internal` |
+| Caddy bloku | `/opt/projects/proxy/Caddyfile` |
+| Mühit | `/opt/projects/specialcrafts/.env` (`chmod 600`, repoda yoxdur) |
 
-- Node 22+ işlədən host
-- PostgreSQL 15+
-- Yüklənən şəkillər üçün **davamlı disk** (`public/assets/products/`)
+Postgres-in **host portu yoxdur** — yalnız daxili şəbəkədə, internetdən əlçatmazdır.
+Admin paneldən yüklənən şəkillər `uploads_data` volume-undadır, image yeniləndikdə itmir.
 
-## Variant A — Öz VPS (tövsiyə olunur)
-
-Kapital Bank sertifikatı və şəkil yükləmə üçün ən rahat yol. Hetzner CX22 ~4 €/ay kifayətdir.
+## Yeniləmə
 
 ```bash
-# serverdə
-git clone https://github.com/talat019/specialcrafts.store.git
-cd specialcrafts.store
-cp .env.example .env.local     # DATABASE_URL, SESSION_SECRET, ödəniş açarları
-npm ci && npm run build
-npm run db:push && npm run db:seed
-npm run admin:create -- siz@mail.com
+ssh solocean-prod
+cd /opt/projects/specialcrafts
+git pull
+docker compose build web
+docker compose up -d web
 ```
 
-Sonra `pm2` və ya `systemd` ilə `npm start`, qarşısında **Caddy** (avtomatik SSL):
+Baza sxemi dəyişibsə:
 
-```
-specialcrafts.store {
-  reverse_proxy localhost:3000
-}
+```bash
+docker compose --profile cli run --rm tools npm run db:push
 ```
 
-Postgres üçün eyni serverdə Docker kifayətdir.
+## Birdəfəlik əmrlər
 
-## Variant B — Vercel
+```bash
+# kataloqu content/products.json-dan yenidən yükləmək
+docker compose --profile cli run --rm tools npm run db:seed
 
-Sürətli, amma iki məhdudiyyət var:
+# admin şifrəsini dəyişmək
+docker compose --profile cli run --rm tools npm run admin:create -- admin@specialcrafts.store "yeni şifrə"
+```
 
-1. **Şəkil yükləmə işləmir** — Vercel-in diski müvəqqətidir. Vercel Blob əlavə edilməlidir
-   (`src/lib/admin-actions.ts` içindəki `writeFile` hissəsi dəyişir).
-2. **Kapital Bank mTLS** — sertifikat env dəyişəni kimi saxlanmalıdır; işləyir, amma
-   sazlaması çətindir.
+## Diaqnostika
 
-Baza üçün **Neon** (pulsuz plan) uyğundur: `DATABASE_URL` Vercel-in Environment Variables
-bölməsinə yazılır.
+```bash
+docker compose logs -f web                    # loglar
+docker compose ps                             # konteyner vəziyyəti
+docker compose exec postgres psql -U sc -d specialcrafts   # baza
+docker exec caddy caddy validate --config /etc/caddy/Caddyfile
+```
 
-## Domen
+## ⚠ DNS — düzəldilməli
 
-Namecheap → Advanced DNS:
+`specialcrafts.store` üçün **iki A qeydi** var:
 
-| Host | VPS üçün | Vercel üçün |
+| IP | Nədir | Vəziyyət |
 |---|---|---|
-| `@` | A → serverin IP-si | Vercel-in verdiyi A qeydi |
-| `www` | CNAME → `specialcrafts.store.` | `cname.vercel-dns.com` |
+| `2.24.194.242` | SolOcean VPS | ✅ işləyir |
+| `192.64.119.57` | Namecheap parking | ❌ cavab vermir |
 
-Sonra `.env.local`-da:
+DNS növbə ilə hər iki ünvanı verir, yəni **ziyarətçilərin təxminən yarısı saytı aça
+bilmir**. Namecheap → Advanced DNS-də `192.64.119.57` sətri **silinməlidir**. Bu, sizin
+registrar hesabınızdadır, mən girə bilmirəm.
 
-```
-NEXT_PUBLIC_SITE_URL=https://specialcrafts.store
-```
+Yalnız bir A qeydi qalmalıdır:
 
-Bu dəyişən ödəniş callback ünvanlarında istifadə olunur — səhv olsa bank cavabı gəlməz.
+| Tip | Host | Dəyər |
+|---|---|---|
+| A | `@` | `2.24.194.242` |
+| CNAME | `www` | `specialcrafts.store.` |
 
-## Yayımdan sonra
+## Ödəniş
 
-- Google Search Console-a `sitemap.xml` göndərin.
-- Instagram bio: `specialcrafts.store/?utm_source=instagram`
-- Story linki: `specialcrafts.store/kataloq?stok=var`
-- `/admin` ünvanını heç yerdə paylaşmayın — `robots.txt` onu indeksdən kənarda saxlayır.
+Hazırda `PAYMENT_MODE=test` — ödəniş simulyasiya olunur, kartdan pul çıxmır.
+Payriff hesabı təsdiqlənəndə `/opt/projects/specialcrafts/.env` faylında
+`PAYMENT_MODE=canli` yazılır və `docker compose up -d web` icra olunur.
+
+Payriff kabinetində callback URL:
+`https://specialcrafts.store/api/odenis/callback/payriff`
