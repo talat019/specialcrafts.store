@@ -1,4 +1,4 @@
-import type { Stock } from "@/lib/products";
+import type { Stock } from "@/lib/product-view";
 import { site } from "@/lib/site";
 
 const dot: Record<Stock, string> = {

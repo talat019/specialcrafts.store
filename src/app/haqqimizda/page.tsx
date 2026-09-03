@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { products } from "@/lib/products";
+import { getProducts } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Haqqımızda",
@@ -9,7 +9,10 @@ export const metadata: Metadata = {
     "special crafts — Bakıda epoksid qatranla işləyən kiçik atelye. Hər iş əl ilə tökülür və tək nüsxədir.",
 };
 
-export default function HaqqimizdaPage() {
+export const revalidate = 0;
+
+export default async function HaqqimizdaPage() {
+  const products = await getProducts();
   return (
     <div className="mx-auto max-w-[1440px] px-5 py-14 lg:px-14 lg:py-20">
       <div className="max-w-[68ch]">

@@ -4,23 +4,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { site } from "@/lib/site";
 import {
-  products,
-  productByCode,
-  related,
-  categoryName,
+  getCategory,
+  getProductByCode,
+  getRelated,
   priceLabel,
   leadTimeLabel,
-  imgSrc,
+  isBuyable,
   type Product,
 } from "@/lib/products";
 import { waProduct, waButtonLabel } from "@/lib/whatsapp";
 import { StatusBar } from "@/components/StatusBadge";
 import { ProductCard } from "@/components/ProductCard";
+import { AddToCart } from "@/components/AddToCart";
 import { WhatsAppIcon } from "@/components/Icons";
 
-export function generateStaticParams() {
-  return products.map((p) => ({ kod: p.kod.toLowerCase() }));
-}
+export const revalidate = 0;
 
 export async function generateMetadata({
   params,
@@ -28,7 +26,7 @@ export async function generateMetadata({
   params: Promise<{ kod: string }>;
 }): Promise<Metadata> {
   const { kod } = await params;
-  const p = productByCode(kod);
+  const p = await getProductByCode(kod);
   if (!p) return {};
   return {
     title: p.ad,
@@ -61,8 +59,11 @@ function specs(p: Product) {
 
 export default async function MehsulPage({ params }: { params: Promise<{ kod: string }> }) {
   const { kod } = await params;
-  const p = productByCode(kod);
+  const p = await getProductByCode(kod);
   if (!p) notFound();
+
+  const [cat, relatedItems] = await Promise.all([getCategory(p.kateqoriya), getRelated(p)]);
+  const buyable = isBuyable(p);
 
   const sold = p.stok === "satilib";
   const ld = {
@@ -96,7 +97,7 @@ export default async function MehsulPage({ params }: { params: Promise<{ kod: st
         <Link href="/kataloq" className="hover:text-ink">Kataloq</Link>
         {" · "}
         <Link href={`/kataloq/${p.kateqoriya}`} className="hover:text-ink">
-          {categoryName(p.kateqoriya)}
+          {cat?.ad ?? p.kateqoriya}
         </Link>
         {" · "}
         <span className="text-ink">{p.ad}</span>
@@ -107,7 +108,7 @@ export default async function MehsulPage({ params }: { params: Promise<{ kod: st
         <div className="flex flex-col gap-3.5">
           <div className="relative aspect-square overflow-hidden rounded-2xl bg-band lg:aspect-[4/5]">
             <Image
-              src={imgSrc(p.sekiller[0])}
+              src={p.sekiller[0]}
               alt={p.ad}
               fill
               sizes="(max-width: 1024px) 100vw, 640px"
@@ -119,7 +120,7 @@ export default async function MehsulPage({ params }: { params: Promise<{ kod: st
             <div className="grid grid-cols-4 gap-3.5">
               {p.sekiller.slice(1).map((s) => (
                 <div key={s} className="relative aspect-square overflow-hidden rounded-xl bg-band">
-                  <Image src={imgSrc(s)} alt={p.ad} fill sizes="160px" className="object-cover" />
+                  <Image src={s} alt={p.ad} fill sizes="160px" className="object-cover" />
                 </div>
               ))}
             </div>
@@ -195,29 +196,48 @@ export default async function MehsulPage({ params }: { params: Promise<{ kod: st
           )}
 
           {/* --------- SİFARİŞ --------- */}
-          <a
-            href={waProduct(p)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`mt-8 flex items-center justify-center gap-2.5 rounded-2xl px-7 py-5 text-[17px] font-bold transition-colors ${
-              sold
-                ? "border-[1.5px] border-ink text-ink hover:bg-ink hover:text-surface"
-                : "bg-emerald text-surface hover:bg-emerald-dark"
-            }`}
-          >
-            {!sold && <WhatsAppIcon className="size-5" />}
-            {waButtonLabel(p)}
-          </a>
-          <p className="mt-3 text-center text-[13.5px] text-ink-faint">
-            {sold
-              ? `Oxşarını ${site.leadTime} ərzində hazırlaya bilərik`
-              : "WhatsApp açılır — məhsul kodu və seçimlər mesaja avtomatik yazılır"}
-          </p>
-          {p.stok === "var" && p.stokSayi <= 1 && (
-            <p className="mt-1.5 text-center text-[13.5px] font-semibold text-stock-dark">
-              Son 1 ədəd
-            </p>
-          )}
+          <div className="mt-8 flex flex-col gap-3">
+            {buyable ? (
+              <>
+                <AddToCart kod={p.kod} max={p.stokSayi} />
+                <a
+                  href={waProduct(p)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2.5 rounded-2xl border border-line-strong px-7 py-4 text-[15px] font-semibold transition-colors hover:border-ink"
+                >
+                  <WhatsAppIcon className="size-[18px]" />
+                  Yaxud WhatsApp-da yazın
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href={waProduct(p)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center justify-center gap-2.5 rounded-2xl px-7 py-5 text-[17px] font-bold transition-colors ${
+                    sold
+                      ? "border-[1.5px] border-ink text-ink hover:bg-ink hover:text-surface"
+                      : "bg-emerald text-surface hover:bg-emerald-dark"
+                  }`}
+                >
+                  {!sold && <WhatsAppIcon className="size-5" />}
+                  {waButtonLabel(p)}
+                </a>
+                <p className="text-center text-[13.5px] text-ink-faint">
+                  {sold
+                    ? `Oxşarını ${site.leadTime} ərzində hazırlaya bilərik`
+                    : p.qiymet == null
+                      ? "Qiymət razılaşdırıldıqdan sonra sifarişi təsdiqləyirik"
+                      : "WhatsApp açılır — məhsul kodu və seçimlər mesaja avtomatik yazılır"}
+                </p>
+              </>
+            )}
+            {buyable && p.stokSayi <= 1 && (
+              <p className="text-center text-[13.5px] font-semibold text-stock-dark">Son 1 ədəd</p>
+            )}
+          </div>
 
           {/* --------- ETİBAR --------- */}
           <ul className="mt-7 flex flex-wrap gap-2">
@@ -252,7 +272,7 @@ export default async function MehsulPage({ params }: { params: Promise<{ kod: st
       <section className="mx-auto max-w-[1440px] px-5 pb-28 pt-16 lg:px-14 lg:pb-24 lg:pt-24">
         <h2 className="mb-6 text-[26px] lg:text-[32px]">Bənzər işlər</h2>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
-          {related(p).map((r) => (
+          {relatedItems.map((r) => (
             <ProductCard key={r.kod} p={r} />
           ))}
         </div>
@@ -280,17 +300,23 @@ export default async function MehsulPage({ params }: { params: Promise<{ kod: st
             {p.stok === "var" ? "Stokda var" : p.stok === "satilib" ? "Satılıb" : "Sifarişlə"}
           </span>
         </div>
-        <a
-          href={waProduct(p)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-4 font-bold ${
-            sold ? "border-[1.5px] border-ink text-ink" : "bg-emerald text-surface"
-          }`}
-        >
-          {!sold && <WhatsAppIcon className="size-[19px]" />}
-          {sold ? "Bənzərini sifariş et" : p.stok === "var" ? "Al" : "Sifariş et"}
-        </a>
+        {buyable ? (
+          <div className="flex-1">
+            <AddToCart kod={p.kod} max={p.stokSayi} />
+          </div>
+        ) : (
+          <a
+            href={waProduct(p)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex flex-1 items-center justify-center gap-2 rounded-xl px-4 py-4 font-bold ${
+              sold ? "border-[1.5px] border-ink text-ink" : "bg-emerald text-surface"
+            }`}
+          >
+            {!sold && <WhatsAppIcon className="size-[19px]" />}
+            {sold ? "Bənzərini sifariş et" : "Sifariş et"}
+          </a>
+        )}
       </div>
     </>
   );

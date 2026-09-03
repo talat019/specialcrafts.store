@@ -1,10 +1,9 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { categories, products } from "@/lib/products";
+import { getCategories, getProducts } from "@/lib/products";
 
-export const dynamic = "force-static";
-
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const [categories, products] = await Promise.all([getCategories(), getProducts()]);
   const now = new Date();
   const staticPages = ["", "/kataloq", "/ferdi-sifaris", "/korporativ", "/haqqimizda", "/qaydalar", "/elaqe"];
 

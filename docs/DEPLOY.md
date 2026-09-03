@@ -1,68 +1,76 @@
 # Yayımlama
 
-## Hazırkı vəziyyət
+## Vacib dəyişiklik
 
-Sayt **GitHub Pages**-də yayımdadır:
+Faza 1-də sayt statik idi və **GitHub Pages**-də dayanırdı. Faza 2-də ödəniş, admin panel
+və verilənlər bazası əlavə olundu — bunlar server tələb edir. **GitHub Pages artıq yaramır**
+və Actions iş axını silindi.
 
-**https://talat019.github.io/specialcrafts.store/**
+Köhnə link (`talat019.github.io/specialcrafts.store`) hələ də Faza 1 versiyasını göstərir —
+yeni host seçiləndən sonra onu bağlamaq olar.
 
-Repo: [talat019/specialcrafts.store](https://github.com/talat019/specialcrafts.store) (açıq)
+## Nə lazımdır
 
-## Necə yenilənir
+- Node 22+ işlədən host
+- PostgreSQL 15+
+- Yüklənən şəkillər üçün **davamlı disk** (`public/assets/products/`)
 
-`main` budağına hər push avtomatik yeni yayım işə salır — `.github/workflows/deploy.yml`.
+## Variant A — Öz VPS (tövsiyə olunur)
+
+Kapital Bank sertifikatı və şəkil yükləmə üçün ən rahat yol. Hetzner CX22 ~4 €/ay kifayətdir.
 
 ```bash
-# məsələn qiymətləri əlavə etdikdən sonra
-git add content/products.json
-git commit -m "Qiymətlər əlavə edildi"
-git push
+# serverdə
+git clone https://github.com/talat019/specialcrafts.store.git
+cd specialcrafts.store
+cp .env.example .env.local     # DATABASE_URL, SESSION_SECRET, ödəniş açarları
+npm ci && npm run build
+npm run db:push && npm run db:seed
+npm run admin:create -- siz@mail.com
 ```
 
-2–3 dəqiqə sonra sayt yenilənir. Gedişatı burada izləmək olar:
-`gh run list` və ya GitHub-da **Actions** tabı.
+Sonra `pm2` və ya `systemd` ilə `npm start`, qarşısında **Caddy** (avtomatik SSL):
 
-## `specialcrafts.store` domenini bağlamaq
+```
+specialcrafts.store {
+  reverse_proxy localhost:3000
+}
+```
 
-Domen Namecheap-dədir. İki addım:
+Postgres üçün eyni serverdə Docker kifayətdir.
 
-### 1. Namecheap → Advanced DNS
+## Variant B — Vercel
 
-| Tip | Host | Dəyər |
+Sürətli, amma iki məhdudiyyət var:
+
+1. **Şəkil yükləmə işləmir** — Vercel-in diski müvəqqətidir. Vercel Blob əlavə edilməlidir
+   (`src/lib/admin-actions.ts` içindəki `writeFile` hissəsi dəyişir).
+2. **Kapital Bank mTLS** — sertifikat env dəyişəni kimi saxlanmalıdır; işləyir, amma
+   sazlaması çətindir.
+
+Baza üçün **Neon** (pulsuz plan) uyğundur: `DATABASE_URL` Vercel-in Environment Variables
+bölməsinə yazılır.
+
+## Domen
+
+Namecheap → Advanced DNS:
+
+| Host | VPS üçün | Vercel üçün |
 |---|---|---|
-| A | `@` | `185.199.108.153` |
-| A | `@` | `185.199.109.153` |
-| A | `@` | `185.199.110.153` |
-| A | `@` | `185.199.111.153` |
-| CNAME | `www` | `talat019.github.io.` |
+| `@` | A → serverin IP-si | Vercel-in verdiyi A qeydi |
+| `www` | CNAME → `specialcrafts.store.` | `cname.vercel-dns.com` |
 
-### 2. Repo tərəfi
+Sonra `.env.local`-da:
 
-`.github/workflows/deploy.yml` faylında iki sətir dəyişir — alt qovluq yolu artıq lazım deyil:
-
-```yaml
-    env:
-      NEXT_PUBLIC_BASE_PATH: ""
-      NEXT_PUBLIC_SITE_URL: https://specialcrafts.store
+```
+NEXT_PUBLIC_SITE_URL=https://specialcrafts.store
 ```
 
-Və `CNAME` faylı əlavə olunur ki, GitHub domeni tanısın:
+Bu dəyişən ödəniş callback ünvanlarında istifadə olunur — səhv olsa bank cavabı gəlməz.
 
-```bash
-echo "specialcrafts.store" > public/CNAME
-git add -A && git commit -m "Öz domenə keçid" && git push
-gh api -X PUT repos/talat019/specialcrafts.store/pages -f cname=specialcrafts.store
-```
+## Yayımdan sonra
 
-DNS-in yayılması bir neçə saat çəkə bilər. Sonra GitHub avtomatik SSL sertifikatı verir.
-
-## Alternativ: Vercel
-
-Vercel daha yaxşı şəkil optimizasiyası verir (`next/image` server tərəfdə işləyir — hazırda statik ixracda söndürülüb). Keçmək üçün:
-
-1. [vercel.com](https://vercel.com) hesabı açın, GitHub ilə giriş edin.
-2. `talat019/specialcrafts.store` repo-sunu import edin.
-3. `next.config.ts` içindən `output: "export"` və `images.unoptimized` sətirlərini silin.
-4. Domeni Vercel → Settings → Domains bölməsindən bağlayın.
-
-Bu addım sizin Vercel hesabınızı tələb edir, ona görə mən edə bilmədim.
+- Google Search Console-a `sitemap.xml` göndərin.
+- Instagram bio: `specialcrafts.store/?utm_source=instagram`
+- Story linki: `specialcrafts.store/kataloq?stok=var`
+- `/admin` ünvanını heç yerdə paylaşmayın — `robots.txt` onu indeksdən kənarda saxlayır.

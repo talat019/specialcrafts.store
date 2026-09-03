@@ -57,6 +57,16 @@
       "acar": "diger",
       "ad": "Digər işlər",
       "kod": "DGR"
+    },
+    {
+      "acar": "aksesuar",
+      "ad": "Aksesuar",
+      "kod": "AKS"
+    },
+    {
+      "acar": "suvenir",
+      "ad": "Suvenir və bəzək",
+      "kod": "SVN"
     }
   ],
   "mehsullar": [
@@ -679,6 +689,548 @@
       "tesvir": "Zümrüd yaşıl və qızıl parıltılı qatrandan tökülmüş qatlanan rəhil, ağ püskül ilə.",
       "aktiv": true,
       "_qeyd": "Məhsulun dəqiq adı təsdiqlənməlidir — rəhil (Quran altlığı) kimi qeyd edilib"
+    },
+    {
+      "kod": "SHM-005",
+      "ad": "«Palıd və zeytun» şahmat dəsti",
+      "kateqoriya": "sahmat",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Palıd ağacı",
+        "Qızıl vərəq",
+        "Gümüş vərəq"
+      ],
+      "olcu": {
+        "lovheSm": null
+      },
+      "rengAilesi": [
+        "zeytun",
+        "qızılı",
+        "ağac"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/sahmat/SHM-005-1.jpg"
+      ],
+      "tesvir": "Palıd ağacı və zeytun rəngli qatrandan yığılmış kub-kub lövhə. Fiqurlar qızıl və gümüş vərəqlə tökülüb, kənarlarda hərf və rəqəm koordinatları həkk olunub. Kolleksiya səviyyəli iş.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "GZD-001",
+      "ad": "«Çöl çiçəkləri» güzgü və daraq dəsti",
+      "kateqoriya": "guzgu-daraq",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Güzgü"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "ağ",
+        "yaşıl"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/guzgu-daraq/GZD-001-1.jpg",
+        "/assets/products/guzgu-daraq/GZD-001-2.jpg"
+      ],
+      "tesvir": "Ağ qatran içində qurudulmuş çöl çiçəkləri və yarpaqlar. Oyma naxışlı güzgü və daraq — birlikdə hədiyyə dəsti kimi verilir.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "GZD-002",
+      "ad": "«Sarı ləçək» güzgü və daraq dəsti",
+      "kateqoriya": "guzgu-daraq",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Qızıl vərəq",
+        "Güzgü"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "şəffaf",
+        "sarı",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/guzgu-daraq/GZD-002-1.jpg"
+      ],
+      "tesvir": "Şəffaf qatranda sarı ləçəklər və qızıl vərəq. Güzgü və daraq dəsti.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SVN-001",
+      "ad": "«Bağça» üçlü şamdan",
+      "kateqoriya": "suvenir",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək"
+      ],
+      "olcu": {
+        "oyukSayi": 3
+      },
+      "rengAilesi": [
+        "şəffaf",
+        "qırmızı",
+        "yaşıl"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/suvenir/SVN-001-1.jpg"
+      ],
+      "tesvir": "Şəffaf qatranda qurudulmuş çiçəklər və qırmızı folqa. Üç çay şamı üçün oyuq.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SVN-002",
+      "ad": "«Bənövşə və qızıl» üçlü şamdan",
+      "kateqoriya": "suvenir",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Qızıl vərəq"
+      ],
+      "olcu": {
+        "oyukSayi": 3
+      },
+      "rengAilesi": [
+        "ağ",
+        "bənövşəyi",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/suvenir/SVN-002-1.jpg"
+      ],
+      "tesvir": "Süd rəngli qatranda bənövşəyi çiçəklər və qızıl vərəq. Üç çay şamı üçün oyuq.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SVN-003",
+      "ad": "Kitab ayracı — qurudulmuş çiçək",
+      "kateqoriya": "suvenir",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": false,
+      "stok": "var",
+      "stokSayi": 5,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "İpək püskül"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "ağ",
+        "çəhrayı",
+        "firuzəyi",
+        "sarı",
+        "bənövşəyi"
+      ],
+      "rengSecimleri": [
+        "Çəhrayı folqa",
+        "Günəbaxan",
+        "Firuzəyi",
+        "Bənövşəyi",
+        "Sarı"
+      ],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/suvenir/SVN-003-1.jpg"
+      ],
+      "tesvir": "İpək püsküllü kitab ayracı. Hər biri qurudulmuş çiçəklə əl ilə tökülüb — beş fərqli rəng variantı var.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "SVN-004",
+      "ad": "«Ürək» masaüstü fiqur",
+      "kateqoriya": "suvenir",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Folqa"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "çəhrayı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/suvenir/SVN-004-1.jpg"
+      ],
+      "tesvir": "Çəhrayı folqalı ürək çərçivə və içində qurudulmuş qızılgül ləçəkləri olan kiçik ürək. Altlıqla birlikdə.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-001",
+      "ad": "«Sahil» kulon — sədəf və qum",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Sədəf",
+        "Dəniz qumu",
+        "Gümüşü çərçivə"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "firuzəyi",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-001-1.jpg"
+      ],
+      "tesvir": "Dairəvi gümüşü çərçivədə həqiqi dəniz qumu və sədəflərlə tökülmüş okean mənzərəsi.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-002",
+      "ad": "«Dalğa» kulon — mavi okean",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Sədəf",
+        "Dəniz qumu",
+        "Gümüşü çərçivə"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "mavi",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-002-1.jpg"
+      ],
+      "tesvir": "Tünd mavi dalğa, ağ köpük və sədəflərlə dairəvi kulon.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-003",
+      "ad": "«Çəhrayı çətir» kulon",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Gümüşü çərçivə"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "çəhrayı",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-003-1.jpg"
+      ],
+      "tesvir": "Damla formalı kulon — çəhrayı qurudulmuş çətirçiçək və parıltı.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-004",
+      "ad": "«Günəbaxan» kulon",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Gümüşü çərçivə"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "sarı",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-004-1.jpg"
+      ],
+      "tesvir": "Damla formalı kulon — sarı günəbaxan ləçəkləri süd rəngli qatranda.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-005",
+      "ad": "«Hortenziya» kulon",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Gümüşü çərçivə"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "firuzəyi"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-005-1.jpg"
+      ],
+      "tesvir": "Damla formalı kulon — firuzəyi hortenziya ləçəyi bütöv şəkildə qatrana alınıb.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-006",
+      "ad": "«Çobanyastığı» kulon — bürünc",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Bürünc çərçivə",
+        "Dəri ip"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "ağ",
+        "bürünc"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-006-1.jpg"
+      ],
+      "tesvir": "Bürünc naxışlı damla çərçivədə ağ çobanyastığı. Dəri ip ilə.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-007",
+      "ad": "Hərf kulonu — gecə səması",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "sifarisle",
+      "stokSayi": 0,
+      "hazirliqGunu": "5-7",
+      "catdirilmaGunu": null,
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Qızılı hərf",
+        "Qızılı zəncir"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "mavi",
+        "qızılı"
+      ],
+      "rengSecimleri": [
+        "Gecə mavisi",
+        "Ağ-qızılı",
+        "Çəhrayı"
+      ],
+      "hekkMumkun": true,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-007-1.jpg"
+      ],
+      "tesvir": "Tünd mavi gecə səması, ay və ağ çiçəklər. Ortasındakı qızılı hərf sizin seçiminizlə hazırlanır — ad, soyad və ya sevdiyiniz hərf.",
+      "aktiv": true,
+      "_qeyd": "Fərdi hərf seçimi — sifariş zamanı hərf soruşulur"
+    },
+    {
+      "kod": "AKS-008",
+      "ad": "«Unutmabeni» sırğa",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": false,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Qızıl vərəq",
+        "Qızılı çərçivə"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "mavi",
+        "qızılı",
+        "ağ"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-008-1.jpg"
+      ],
+      "tesvir": "Qızılı dairəvi sırğa — mavi unutmabeni çiçəkləri və qızıl vərəq.",
+      "aktiv": true,
+      "_qeyd": null
+    },
+    {
+      "kod": "AKS-009",
+      "ad": "«Qırmızı folqa» saç sancağı",
+      "kateqoriya": "aksesuar",
+      "qiymet": null,
+      "qiymetQeyd": "Qiymət təyin edilməyib",
+      "valyuta": "AZN",
+      "teksNusxe": true,
+      "stok": "var",
+      "stokSayi": 1,
+      "hazirliqGunu": null,
+      "catdirilmaGunu": "1-2",
+      "satilibTarixi": null,
+      "material": [
+        "Epoksid qatran",
+        "Qurudulmuş çiçək",
+        "Folqa"
+      ],
+      "olcu": {},
+      "rengAilesi": [
+        "şəffaf",
+        "qırmızı",
+        "qızılı"
+      ],
+      "rengSecimleri": [],
+      "hekkMumkun": false,
+      "sekiller": [
+        "/assets/products/aksesuar/AKS-009-1.jpg"
+      ],
+      "tesvir": "Şəffaf qatranda qırmızı folqa, ləçək və yarpaq. Qızılı metal sancaq üzərində.",
+      "aktiv": true,
+      "_qeyd": null
     }
   ]
 }

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Product } from "@/lib/products";
-import { priceLabel, imgSrc } from "@/lib/products";
+import type { Product } from "@/lib/product-view";
+import { priceLabel } from "@/lib/product-view";
 import { StatusBadge } from "./StatusBadge";
 
 export function ProductCard({ p, priority = false }: { p: Product; priority?: boolean }) {
@@ -13,7 +13,7 @@ export function ProductCard({ p, priority = false }: { p: Product; priority?: bo
     >
       <div className="relative aspect-square overflow-hidden bg-band">
         <Image
-          src={imgSrc(p.sekiller[0])}
+          src={p.sekiller[0] ?? "/assets/logo/special-crafts-logo.jpg"}
           alt={p.ad}
           fill
           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"

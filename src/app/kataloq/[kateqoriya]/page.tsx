@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { Catalog } from "@/components/Catalog";
-import { categories, categoryByKey, productsIn } from "@/lib/products";
+import {
+  getCategories, getCategory, getCategoryCounts, getProducts, getProductsIn,
+} from "@/lib/products";
 
-export function generateStaticParams() {
-  return categories.map((c) => ({ kateqoriya: c.acar }));
-}
+export const revalidate = 0;
 
 export async function generateMetadata({
   params,
@@ -14,11 +14,11 @@ export async function generateMetadata({
   params: Promise<{ kateqoriya: string }>;
 }): Promise<Metadata> {
   const { kateqoriya } = await params;
-  const cat = categoryByKey(kateqoriya);
+  const cat = await getCategory(kateqoriya);
   if (!cat) return {};
   return {
     title: cat.ad,
-    description: `Əl ilə hazırlanmış ${cat.ad.toLowerCase()} — epoksid qatrandan, tək nüsxə. Stokda olanlar dərhal göndərilir.`,
+    description: `Əl ilə hazırlanmış ${cat.ad.toLowerCase()} — epoksid qatrandan. Stokda olanlar dərhal göndərilir.`,
   };
 }
 
@@ -28,9 +28,16 @@ export default async function KateqoriyaPage({
   params: Promise<{ kateqoriya: string }>;
 }) {
   const { kateqoriya } = await params;
-  const cat = categoryByKey(kateqoriya);
+  const cat = await getCategory(kateqoriya);
   if (!cat) notFound();
-  const all = productsIn(kateqoriya);
+
+  const [all, categories, counts, total] = await Promise.all([
+    getProductsIn(kateqoriya),
+    getCategories(),
+    getCategoryCounts(),
+    getProducts().then((p) => p.length),
+  ]);
+  if (!all.length) notFound();
 
   return (
     <Suspense>
@@ -39,6 +46,9 @@ export default async function KateqoriyaPage({
         activeCategory={kateqoriya}
         title={cat.ad}
         intro={`${all.length} iş · kod prefiksi ${cat.kod}`}
+        categories={categories}
+        categoryCounts={counts}
+        totalCount={total}
       />
     </Suspense>
   );

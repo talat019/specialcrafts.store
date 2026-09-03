@@ -1,6 +1,5 @@
 import { site } from "./site";
-import type { Product } from "./products";
-import { priceLabel } from "./products";
+import { priceLabel, type Product } from "./product-view";
 
 function link(text: string): string {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Manrope } from "next/font/google";
 import { site } from "@/lib/site";
+import { CartProvider } from "@/lib/cart";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import "./globals.css";
@@ -55,9 +56,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }}
         />
-        <SiteHeader />
-        <main>{children}</main>
-        <SiteFooter />
+        <CartProvider>
+          <SiteHeader />
+          <main>{children}</main>
+          <SiteFooter />
+        </CartProvider>
       </body>
     </html>
   );

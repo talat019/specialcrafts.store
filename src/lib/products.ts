@@ -1,93 +1,128 @@
-import catalog from "../../content/products.json";
+import { and, asc, eq, inArray, ne, sql, type SQL } from "drizzle-orm";
+import { db } from "@/db";
+import { categories, productImages, products as productsTable } from "@/db/schema";
 
-export type Stock = "var" | "sifarisle" | "satilib";
-
-export type Product = {
-  kod: string;
-  ad: string;
-  kateqoriya: string;
-  qiymet: number | null;
-  qiymetQeyd: string | null;
-  valyuta: string;
-  teksNusxe: boolean;
-  stok: Stock;
-  stokSayi: number;
-  hazirliqGunu: string | null;
-  catdirilmaGunu: string | null;
-  satilibTarixi: string | null;
-  material: string[];
-  olcu: Record<string, number | null>;
-  rengAilesi: string[];
-  rengSecimleri: string[];
-  hekkMumkun: boolean;
-  sekiller: string[];
-  tesvir: string;
-  aktiv: boolean;
-  _qeyd: string | null;
-};
-
-export type Category = { acar: string; ad: string; kod: string };
-
-const all = catalog.mehsullar as unknown as Product[];
-const cats = catalog.kateqoriyalar as unknown as Category[];
+export * from "./product-view";
+import type { Category, Product, Stock } from "./product-view";
 
 /** Stokda olanlar birinci, sonra sifarişlə, sonra satılıb. */
-const rank: Record<Stock, number> = { var: 0, sifarisle: 1, satilib: 2 };
+const stockRank = sql`case ${productsTable.stock}
+  when 'var' then 0 when 'sifarisle' then 1 else 2 end`;
 
-export function sortForCatalog(list: Product[]): Product[] {
-  return [...list].sort((a, b) => rank[a.stok] - rank[b.stok] || a.kod.localeCompare(b.kod));
+function toProduct(r: Row, images: string[]): Product {
+  return {
+    id: r.id,
+    kod: r.code,
+    ad: r.name,
+    kateqoriya: r.categoryKey,
+    qiymet: r.price == null ? null : Number(r.price),
+    valyuta: r.currency,
+    teksNusxe: r.isUnique,
+    stok: r.stock as Stock,
+    stokSayi: r.stockQty,
+    hazirliqGunu: r.leadDays,
+    catdirilmaGunu: r.deliveryDays,
+    material: r.material ?? [],
+    olcu: r.dimensions ?? {},
+    rengSecimleri: r.colorOptions ?? [],
+    hekkMumkun: r.engraving,
+    sekiller: images,
+    tesvir: r.description,
+  };
 }
 
-export const products = sortForCatalog(all.filter((p) => p.aktiv));
+type Row = typeof productsTable.$inferSelect;
+
+/**
+ * Məhsullar + şəkilləri.
+ * Şəkillər ayrıca sorğu ilə gətirilir — korrelyasiyalı alt-sorğu
+ * drizzle-in cədvəl adlandırması ilə etibarlı işləmir.
+ */
+async function query(where?: SQL | undefined) {
+  const rows = (await db
+    .select()
+    .from(productsTable)
+    .where(where ? and(eq(productsTable.active, true), where) : eq(productsTable.active, true))
+    .orderBy(stockRank, asc(productsTable.code))) as Row[];
+
+  if (!rows.length) return [];
+
+  const imgs = await db
+    .select({
+      productId: productImages.productId,
+      url: productImages.url,
+      sortOrder: productImages.sortOrder,
+    })
+    .from(productImages)
+    .where(inArray(productImages.productId, rows.map((r) => r.id)))
+    .orderBy(asc(productImages.sortOrder));
+
+  const byProduct = new Map<string, string[]>();
+  for (const i of imgs) {
+    const list = byProduct.get(i.productId) ?? [];
+    list.push(i.url);
+    byProduct.set(i.productId, list);
+  }
+
+  return rows.map((r) => toProduct(r, byProduct.get(r.id) ?? []));
+}
+
+export async function getProducts(): Promise<Product[]> {
+  return query();
+}
+
+export async function getProductsIn(categoryKey: string): Promise<Product[]> {
+  return query(eq(productsTable.categoryKey, categoryKey));
+}
+
+export async function getProductByCode(code: string): Promise<Product | null> {
+  const rows = await query(eq(productsTable.code, code.toUpperCase()));
+  return rows[0] ?? null;
+}
 
 /** Yalnız məhsulu olan kateqoriyalar — boş kateqoriya göstərilmir. */
-export const categories: Category[] = cats.filter((c) =>
-  products.some((p) => p.kateqoriya === c.acar),
-);
-
-export function categoryByKey(key: string): Category | undefined {
-  return categories.find((c) => c.acar === key);
+export async function getCategories(): Promise<Category[]> {
+  const rows = await db
+    .select({ acar: categories.key, ad: categories.name, kod: categories.code })
+    .from(categories)
+    .orderBy(asc(categories.sortOrder));
+  const counts = await getCategoryCounts();
+  return rows.filter((c) => (counts[c.acar] ?? 0) > 0);
 }
 
-export function productsIn(key: string): Product[] {
-  return products.filter((p) => p.kateqoriya === key);
+export async function getCategoryCounts(): Promise<Record<string, number>> {
+  const rows = await db
+    .select({ key: productsTable.categoryKey, n: sql<number>`count(*)::int` })
+    .from(productsTable)
+    .where(eq(productsTable.active, true))
+    .groupBy(productsTable.categoryKey);
+  return Object.fromEntries(rows.map((r) => [r.key, r.n]));
 }
 
-export function productByCode(code: string): Product | undefined {
-  return products.find((p) => p.kod.toLowerCase() === code.toLowerCase());
+export async function getStockCounts(): Promise<Record<Stock, number> & { hamisi: number }> {
+  const rows = await db
+    .select({ stock: productsTable.stock, n: sql<number>`count(*)::int` })
+    .from(productsTable)
+    .where(eq(productsTable.active, true))
+    .groupBy(productsTable.stock);
+  const m = Object.fromEntries(rows.map((r) => [r.stock, r.n])) as Record<string, number>;
+  return {
+    var: m.var ?? 0,
+    sifarisle: m.sifarisle ?? 0,
+    satilib: m.satilib ?? 0,
+    hamisi: rows.reduce((s, r) => s + r.n, 0),
+  };
 }
 
-export function related(p: Product, count = 4): Product[] {
-  const same = products.filter((x) => x.kateqoriya === p.kateqoriya && x.kod !== p.kod);
+export async function getRelated(p: Product, count = 4): Promise<Product[]> {
+  const same = await query(
+    and(eq(productsTable.categoryKey, p.kateqoriya), ne(productsTable.code, p.kod)),
+  );
   if (same.length >= count) return same.slice(0, count);
-  const rest = products.filter((x) => x.kateqoriya !== p.kateqoriya && x.kod !== p.kod);
+  const rest = (await query(ne(productsTable.categoryKey, p.kateqoriya))).filter(
+    (x) => x.kod !== p.kod,
+  );
   return [...same, ...rest].slice(0, count);
-}
-
-export const inStockCount = products.filter((p) => p.stok === "var").length;
-export const madeToOrderCount = products.filter((p) => p.stok === "sifarisle").length;
-
-export function categoryName(key: string): string {
-  return cats.find((c) => c.acar === key)?.ad ?? key;
-}
-
-/** Qiymət yazısı. Qiymət hələ təyin edilməyibsə uydurmuruq. */
-export function priceLabel(p: Product): string {
-  if (p.qiymet == null) return "Qiymət üçün yazın";
-  return `${p.qiymet} ₼`;
-}
-
-export const statusText: Record<Stock, string> = {
-  var: "Stokda var",
-  sifarisle: "Sifarişlə",
-  satilib: "Satılıb",
-};
-
-/** Hazırlıq müddətini insani formata salır: "5-7" → "5–7 iş günü". */
-export function leadTimeLabel(p: Product): string {
-  if (p.stok === "var") return "1–2 iş günü";
-  const d = p.hazirliqGunu ?? "5-7";
-  return `${d.replace("-", "–")} iş günü`;
 }
 
 /**
@@ -95,18 +130,21 @@ export function leadTimeLabel(p: Product): string {
  * Kod siyahısı redaktor seçimidir — hər kateqoriyadan ən güclü şəkil.
  * Seçilmiş iş satılıbsa, yeri qalan stok məhsulları ilə doldurulur.
  */
-const featuredCodes = ["SHM-001", "SAT-002", "PNO-002", "DMN-001", "ACR-001"];
+const featuredCodes = ["SHM-005", "AKS-001", "SAT-002", "GZD-001", "PNO-002", "DMN-001"];
 
-export function featuredInStock(count = 5): Product[] {
+export async function getFeaturedInStock(count = 5): Promise<Product[]> {
+  const inStock = await query(eq(productsTable.stock, "var"));
   const picked = featuredCodes
-    .map((c) => products.find((p) => p.kod === c && p.stok === "var"))
+    .map((c) => inStock.find((p) => p.kod === c))
     .filter((p): p is Product => Boolean(p));
-  const rest = products.filter((p) => p.stok === "var" && !picked.includes(p));
+  const rest = inStock.filter((p) => !picked.includes(p));
   return [...picked, ...rest].slice(0, count);
 }
 
-/** Şəkil yolunu basePath ilə uyğunlaşdırır (statik ixracda lazımdır). */
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-export function imgSrc(path: string): string {
-  return `${basePath}${path}`;
+export async function getCategory(key: string): Promise<Category | null> {
+  const [row] = await db
+    .select({ acar: categories.key, ad: categories.name, kod: categories.code })
+    .from(categories)
+    .where(eq(categories.key, key));
+  return row ?? null;
 }

@@ -1,15 +1,27 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { categories, products, productsIn, inStockCount, featuredInStock, imgSrc } from "@/lib/products";
+import {
+  getCategories, getCategoryCounts, getFeaturedInStock, getProducts, getProductsIn, getStockCounts,
+} from "@/lib/products";
 import { ProductCard } from "@/components/ProductCard";
 import { ArrowRight } from "@/components/Icons";
 
-const hero = products.find((p) => p.kod === "SHM-001") ?? products[0];
-const inStock = featuredInStock(5);
-const panels = productsIn("panno").slice(0, 2);
+export const revalidate = 0;
 
-export default function Home() {
+export default async function Home() {
+  const [products, categories, counts, inStock, panels, stock] = await Promise.all([
+    getProducts(),
+    getCategories(),
+    getCategoryCounts(),
+    getFeaturedInStock(5),
+    getProductsIn("panno"),
+    getStockCounts(),
+  ]);
+  const hero = products.find((p) => p.kod === "SHM-005") ?? products[0];
+  const inStockCount = stock.var;
+  const panelPair = panels.slice(0, 2);
+
   return (
     <>
       {/* ---------------- HERO ---------------- */}
@@ -44,7 +56,7 @@ export default function Home() {
 
         <div className="relative h-[320px] lg:h-[620px]">
           <Image
-            src={imgSrc(hero.sekiller[0])}
+            src={hero.sekiller[0]}
             alt={hero.ad}
             fill
             sizes="(max-width: 1024px) 100vw, 720px"
@@ -57,7 +69,7 @@ export default function Home() {
           >
             <span className="text-[14.5px] font-semibold">{hero.ad}</span>
             <span className="code text-[11.5px] text-ink-faint">
-              {hero.kod} · qoz ağacı + qatran
+              {hero.kod} · {hero.material.slice(0, 2).join(" + ").toLowerCase()}
             </span>
           </Link>
         </div>
@@ -73,7 +85,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 gap-3.5 lg:grid-cols-3 lg:gap-5">
           {categories.map((c) => {
-            const first = productsIn(c.acar)[0];
+            const first = inStock.find((p) => p.kateqoriya === c.acar) ?? products.find((p) => p.kateqoriya === c.acar)!;
             return (
               <Link
                 key={c.acar}
@@ -82,7 +94,7 @@ export default function Home() {
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-band lg:aspect-[16/11]">
                   <Image
-                    src={imgSrc(first.sekiller[0])}
+                    src={first.sekiller[0]}
                     alt=""
                     fill
                     sizes="(max-width: 1024px) 50vw, 440px"
@@ -92,7 +104,7 @@ export default function Home() {
                 <div className="flex items-baseline justify-between gap-2 px-4 py-3.5 lg:px-5 lg:py-4">
                   <span className="font-display text-[17px] lg:text-[22px]">{c.ad}</span>
                   <span className="shrink-0 text-[13px] text-ink-faint">
-                    {productsIn(c.acar).length} iş
+                    {counts[c.acar] ?? 0} iş
                   </span>
                 </div>
               </Link>
@@ -134,7 +146,7 @@ export default function Home() {
       )}
 
       {/* ---------------- PANNO — TÜND ZOLAQ ---------------- */}
-      {panels.length === 2 && (
+      {panelPair.length === 2 && (
         <section className="bg-dark py-16 text-dark-ink lg:py-22">
           <div className="mx-auto grid max-w-[1440px] items-center gap-10 px-5 lg:grid-cols-2 lg:gap-14 lg:px-14">
             <div className="flex flex-col items-start gap-5">
@@ -155,14 +167,14 @@ export default function Home() {
               </Link>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              {panels.map((p, i) => (
+              {panelPair.map((p, i) => (
                 <Link
                   key={p.kod}
                   href={`/mehsul/${p.kod.toLowerCase()}`}
                   className={`relative aspect-[3/4] overflow-hidden rounded-2xl ${i === 1 ? "lg:mt-9" : ""}`}
                 >
                   <Image
-                    src={imgSrc(p.sekiller[0])}
+                    src={p.sekiller[0]}
                     alt={p.ad}
                     fill
                     sizes="(max-width: 1024px) 45vw, 320px"

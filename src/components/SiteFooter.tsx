@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { categories } from "@/lib/products";
+import { getCategories } from "@/lib/products";
 import { waGeneral } from "@/lib/whatsapp";
 import { WhatsAppIcon } from "./Icons";
 
-export function SiteFooter() {
+export async function SiteFooter() {
+  const categories = await getCategories();
   return (
     <footer className="bg-dark text-dark-ink">
       <div className="mx-auto max-w-[1440px] px-5 py-14 lg:px-14 lg:py-16">

@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import type { Product, Stock } from "@/lib/products";
-import { categories, products as allProducts, productsIn } from "@/lib/products";
+import type { Category, Product, Stock } from "@/lib/product-view";
 import { ProductCard } from "./ProductCard";
 import { waGeneral } from "@/lib/whatsapp";
 
@@ -13,6 +12,9 @@ type Props = {
   activeCategory: string | null;
   title: string;
   intro: string;
+  categories: Category[];
+  categoryCounts: Record<string, number>;
+  totalCount: number;
 };
 
 function parseStock(v: string | null): Stock | null {
@@ -23,7 +25,7 @@ function countStock(list: Product[], s: Stock) {
   return list.filter((p) => p.stok === s).length;
 }
 
-export function Catalog({ all, activeCategory, title, intro }: Props) {
+export function Catalog({ all, activeCategory, title, intro, categories, categoryCounts, totalCount }: Props) {
   const activeStock = parseStock(useSearchParams().get("stok"));
   const items = activeStock ? all.filter((p) => p.stok === activeStock) : all;
   const base = activeCategory ? `/kataloq/${activeCategory}` : "/kataloq";
@@ -74,10 +76,10 @@ export function Catalog({ all, activeCategory, title, intro }: Props) {
             <summary className="mb-4 cursor-pointer list-none rounded-xl border border-line bg-surface px-4 py-3 font-semibold">
               Kateqoriyalar
             </summary>
-            <CategoryList active={activeCategory} activeStock={activeStock} />
+            <CategoryList active={activeCategory} activeStock={activeStock} categories={categories} counts={categoryCounts} total={totalCount} />
           </details>
           <div className="hidden lg:block">
-            <CategoryList active={activeCategory} activeStock={activeStock} />
+            <CategoryList active={activeCategory} activeStock={activeStock} categories={categories} counts={categoryCounts} total={totalCount} />
           </div>
         </aside>
 
@@ -112,7 +114,12 @@ export function Catalog({ all, activeCategory, title, intro }: Props) {
   );
 }
 
-function CategoryList({ active, activeStock }: { active: string | null; activeStock: Stock | null }) {
+function CategoryList({
+  active, activeStock, categories, counts, total,
+}: {
+  active: string | null; activeStock: Stock | null;
+  categories: Category[]; counts: Record<string, number>; total: number;
+}) {
   const q = activeStock ? `?stok=${activeStock}` : "";
   return (
     <nav className="flex flex-col gap-3">
@@ -121,7 +128,7 @@ function CategoryList({ active, activeStock }: { active: string | null; activeSt
         href={`/kataloq${q}`}
         className={`flex items-center justify-between text-[14.5px] ${active === null ? "font-semibold text-emerald" : "text-ink"}`}
       >
-        Hamısı <span className="text-ink-faint">{allProducts.length}</span>
+        Hamısı <span className="text-ink-faint">{total}</span>
       </Link>
       {categories.map((c) => (
         <Link
@@ -129,7 +136,7 @@ function CategoryList({ active, activeStock }: { active: string | null; activeSt
           href={`/kataloq/${c.acar}${q}`}
           className={`flex items-center justify-between text-[14.5px] ${active === c.acar ? "font-semibold text-emerald" : "text-ink"}`}
         >
-          {c.ad} <span className="text-ink-faint">{productsIn(c.acar).length}</span>
+          {c.ad} <span className="text-ink-faint">{counts[c.acar] ?? 0}</span>
         </Link>
       ))}
     </nav>
