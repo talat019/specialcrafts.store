@@ -35,6 +35,32 @@ PAYRIFF_SECRET=************
 5. Kabinetdə **callback URL** olaraq bunu göstərin:
    `https://specialcrafts.store/api/odenis/callback/payriff`
 
+### Hesabın vəziyyəti (2026-09-03)
+
+Açarlar `.env.local`-a yazılıb (`ES1097915`). Canlı API-yə yalnız oxuma sorğusu atıldı —
+sifariş yaradılmadı. Payriff cavabı:
+
+> `Application already in Review, Please wait.`
+
+Yəni **açarlar qəbul olunur, amma hesab hələ Payriff tərəfindən təsdiqlənməyib.**
+Təsdiq gələnə qədər real ödəniş mümkün deyil. Kabinetdə statusu izləyin; təsdiqdən
+sonra `PAYMENT_MODE=canli` yazılır.
+
+### Endpoint-lər (canlı API-də yoxlanılıb)
+
+| Əməliyyat | Ünvan |
+|---|---|
+| Sifariş yaratmaq | `POST /api/v2/orders` |
+| Status öyrənmək | `POST /api/v2/getStatusOrder` |
+| *(v3 alternativi)* | `POST /api/v3/orders` · `GET /api/v3/orders/{id}` |
+
+`/get-status` ünvanı **yoxdur** — sənədlərin bəzi nüsxələrində belə göstərilir, amma
+API 404 qaytarır. Kodda düzəldilib.
+
+**Cavab sahələrinin dəqiq adları** (`orderId`, `paymentUrl`, `orderStatus`) hesab
+aktivləşəndən sonra ilk real sifarişdə təsdiqlənməlidir — kod bir neçə ad variantını
+qəbul edəcək şəkildə yazılıb, amma bu, təxmindir, təsdiq deyil.
+
 ---
 
 ## 2. Kapital Bank e-commerce (birbaşa bank)
